@@ -94,7 +94,7 @@
 <meta property="og:url" content="https://wangxufeng8023.github.io/2017/04/07/深入浅出ES6/index.html">
 <meta property="og:site_name" content="爱演说的程序员">
 <meta property="og:description" content="欢迎来深入浅出ES6的blog,接下里我们会给出ES6的基本语法和简单的联系 let命令    1 解决了闭包的问题，for循环的问题     2 不会变量提升，就是要先声明，在使用     3 暂时性死区，就是在块级作用域有效，在没有       let temp；之前，所有对temp的操作都是不可以的。javascript是没有块级作用域这个说法的     4 不允许重复声明     5 es">
-<meta property="og:updated_time" content="2017-04-06T21:05:59.182Z">
+<meta property="og:updated_time" content="2017-04-06T21:09:11.611Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入浅出ES6">
 <meta name="twitter:description" content="欢迎来深入浅出ES6的blog,接下里我们会给出ES6的基本语法和简单的联系 let命令    1 解决了闭包的问题，for循环的问题     2 不会变量提升，就是要先声明，在使用     3 暂时性死区，就是在块级作用域有效，在没有       let temp；之前，所有对temp的操作都是不可以的。javascript是没有块级作用域这个说法的     4 不允许重复声明     5 es">
@@ -392,6 +392,15 @@
     6 ES5中在一个函数中会把所有函数和变量提升到一开始，这就说明，有些不会被执行的if（fasle）{function a（）{}} a函数，也会被提升，当我们在全矩里面有个a（）函数时，在这里面调用时，会调用if里面的a，覆盖全矩的a
   下面的例子很经典：
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var a = [];</div><div class="line"> <span class="keyword">for</span> (var i = 0; i &lt; 10; i++) &#123;</div><div class="line">   a[i] = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">  console.log(i);</div><div class="line">  &#125;;</div><div class="line"> &#125;</div><div class="line"> a[6](); // 10</div></pre></td></tr></table></figure>
+</code></pre><p>   ##const</p>
+<pre><code>    1 一旦申明必须赋值
+    2和let一样，只能在所声明的块级作用域内有效。
+    3也不能提升，存在暂时性死区。
+    4不可重复声明
+    5.const声明一个只读的常量，一旦声明，敞亮的值就不能改变。const pi = 3014.
+    6.const 本质就是，当基本数值类型字符创，boolean ，数值，const  a=，a是不可以改变的，但是数组和对象是可以变得。
+
+总结let const clas生命的全局变量不属于顶层对象的的属性，而es5中顶层对象和全局属性是一个概念。
 </code></pre>
       
     </div>
