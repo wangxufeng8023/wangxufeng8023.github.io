@@ -94,7 +94,7 @@
 <meta property="og:url" content="https://wangxufeng8023.github.io/2017/04/07/javascript/index.html">
 <meta property="og:site_name" content="爱演说的程序员">
 <meta property="og:description" content="我们会给出JavaScript的基本概念，其中包括一些基本的面试经验。 关于数组创建数组依然有两种方法：1234567const array = [];const array1 = new Array();const array2 = [,,] //数组有两个值都是undefined0 in array1  //true0 in array2  // false new Array(),什么都不会">
-<meta property="og:updated_time" content="2017-04-07T13:52:57.996Z">
+<meta property="og:updated_time" content="2017-04-07T13:57:13.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript">
 <meta name="twitter:description" content="我们会给出JavaScript的基本概念，其中包括一些基本的面试经验。 关于数组创建数组依然有两种方法：1234567const array = [];const array1 = new Array();const array2 = [,,] //数组有两个值都是undefined0 in array1  //true0 in array2  // false new Array(),什么都不会">
@@ -405,6 +405,7 @@
         <p>我们会给出JavaScript的基本概念，其中包括一些基本的面试经验。</p>
 <h2 id="关于数组"><a href="#关于数组" class="headerlink" title="关于数组"></a>关于数组</h2><p>创建数组依然有两种方法：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">const array = [];</div><div class="line">const array1 = new Array();</div><div class="line">const array2 = [,,] //数组有两个值都是undefined</div><div class="line">0 <span class="keyword">in</span> array1  //<span class="literal">true</span></div><div class="line">0 <span class="keyword">in</span> array2  // <span class="literal">false</span> new Array(),什么都不会做，连数组的下标都不会生成，</div><div class="line">var array3 = [,] 数组没有元素，长度为1</div><div class="line">0 <span class="keyword">in</span> array3  //<span class="literal">false</span>;</div></pre></td></tr></table></figure></p>
 <h3 id="稀疏数组："><a href="#稀疏数组：" class="headerlink" title="稀疏数组："></a>稀疏数组：</h3><p>   包含从0开始的不连续索引的数组。通常数组的length属性值代表数组中元素的个数，但是如果数组是稀疏的，length属性值大于元素个数。</p>
+<h3 id="length"><a href="#length" class="headerlink" title="length:"></a>length:</h3> <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> const a = [1,2,3,4]</div><div class="line"> a.length = 3 //[1,2,3]</div><div class="line"> a.length = 0 // []</div><div class="line"> a.length = 4 //长度为4 但是一个空的，没有元素</div><div class="line">Object.defineProperty(a,<span class="string">'length'</span>,&#123;writable:<span class="literal">false</span>&#125;);</div><div class="line">这样a.length = 0; 就失效了</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -592,7 +593,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于数组"><span class="nav-number">1.</span> <span class="nav-text">关于数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#稀疏数组："><span class="nav-number">1.1.</span> <span class="nav-text">稀疏数组：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于数组"><span class="nav-number">1.</span> <span class="nav-text">关于数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#稀疏数组："><span class="nav-number">1.1.</span> <span class="nav-text">稀疏数组：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#length"><span class="nav-number">1.2.</span> <span class="nav-text">length:</span></a></li></ol></li></ol></div>
             
 
           </div>
