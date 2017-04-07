@@ -1,0 +1,763 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="短信API,邮箱API," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="根据软件开发的基本流程，服务器是很重要的角色，在服务器后台开发的过程中，用户的短信验证和邮箱认证又是不可缺少的一步分本blog为用户提供短信短信验证和邮箱认证的使用，下面我们来基于java实现这两个基本功能。 短信验证API采用的短信验证平台是阿里的API 首先要要到阿里大于的网站那个申请，获得API key和API Secrct：同时下载所需要的jar包：taobao-sdk-java-auto">
+<meta name="keywords" content="短信API,邮箱API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="API">
+<meta property="og:url" content="https://wangxufeng8023.github.io/2017/04/07/API/index.html">
+<meta property="og:site_name" content="爱演说的程序员">
+<meta property="og:description" content="根据软件开发的基本流程，服务器是很重要的角色，在服务器后台开发的过程中，用户的短信验证和邮箱认证又是不可缺少的一步分本blog为用户提供短信短信验证和邮箱认证的使用，下面我们来基于java实现这两个基本功能。 短信验证API采用的短信验证平台是阿里的API 首先要要到阿里大于的网站那个申请，获得API key和API Secrct：同时下载所需要的jar包：taobao-sdk-java-auto">
+<meta property="og:updated_time" content="2017-04-07T07:41:55.728Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="API">
+<meta name="twitter:description" content="根据软件开发的基本流程，服务器是很重要的角色，在服务器后台开发的过程中，用户的短信验证和邮箱认证又是不可缺少的一步分本blog为用户提供短信短信验证和邮箱认证的使用，下面我们来基于java实现这两个基本功能。 短信验证API采用的短信验证平台是阿里的API 首先要要到阿里大于的网站那个申请，获得API key和API Secrct：同时下载所需要的jar包：taobao-sdk-java-auto">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'WQFFGI6W0O',
+      apiKey: 'a80ed9e5ab6804c6e5e6726f0804362e',
+      indexName: 'feng',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"输入关键字进行搜索","hits_empty":"找不到关于${query} 的文章","hits_stats":"共找到 ${hits} 篇文章花了${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wangxufeng8023.github.io/2017/04/07/API/"/>
+
+
+
+
+
+  <title> API | 爱演说的程序员 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">爱演说的程序员</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">白帽子的开源精神</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://wangxufeng8023.github.io/2017/04/07/API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王旭枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="爱演说的程序员">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                API
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-07T15:21:54+08:00">
+                2017-04-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/后端那点事/" itemprop="url" rel="index">
+                    <span itemprop="name">后端那点事</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>根据软件开发的基本流程，服务器是很重要的角色，在服务器后台开发的过程中，用户的短信验证和邮箱认证又是不可缺少的一步分本blog为用户提供短信短信验证和邮箱认证的使用，下面我们来基于java实现这两个基本功能。</p>
+<h2 id="短信验证API"><a href="#短信验证API" class="headerlink" title="短信验证API"></a>短信验证API</h2><p>采用的短信验证平台是阿里的API</p>
+<h3 id="首先要要到阿里大于的网站那个申请，获得API-key和API-Secrct：同时下载所需要的jar包：taobao-sdk-java-auto-1455552377940-20160607-jar"><a href="#首先要要到阿里大于的网站那个申请，获得API-key和API-Secrct：同时下载所需要的jar包：taobao-sdk-java-auto-1455552377940-20160607-jar" class="headerlink" title="首先要要到阿里大于的网站那个申请，获得API key和API Secrct：同时下载所需要的jar包：taobao-sdk-java-auto_1455552377940-20160607.jar"></a>首先要要到阿里大于的网站那个申请，获得API key和API Secrct：同时下载所需要的jar包：taobao-sdk-java-auto_1455552377940-20160607.jar</h3><h3 id="在官网注册用户，并设置一些基本信息-，包括短信的内容形式，和sendMessage等基本信息"><a href="#在官网注册用户，并设置一些基本信息-，包括短信的内容形式，和sendMessage等基本信息" class="headerlink" title="在官网注册用户，并设置一些基本信息 ，包括短信的内容形式，和sendMessage等基本信息"></a>在官网注册用户，并设置一些基本信息 ，包括短信的内容形式，和sendMessage等基本信息</h3><h3 id="java代码的实现："><a href="#java代码的实现：" class="headerlink" title="java代码的实现："></a>java代码的实现：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">public static void send(String tel,int nums) throws Exception&#123;</div><div class="line">		String url = <span class="string">"http://gw.api.taobao.com/router/rest"</span>;</div><div class="line">		TaobaoClient client = new DefaultTaobaoClient(url, API KEY，API Secrct);</div><div class="line">      </div><div class="line">		AlibabaAliqinFcSmsNumSendRequest req = new AlibabaAliqinFcSmsNumSendRequest();</div><div class="line">		req.setExtend( <span class="string">""</span> );</div><div class="line">		</div><div class="line">		req.setSmsType( <span class="string">"normal"</span> );</div><div class="line">		req.setSmsFreeSignName( <span class="string">"XD梦想工厂"</span> );</div><div class="line"></div><div class="line">        req.setSmsParamString(<span class="string">"&#123;\"data\":\""</span>+nums+<span class="string">"\"&#125;"</span>);</div><div class="line">	</div><div class="line">		req.setRecNum(tel);</div><div class="line">		req.setSmsTemplateCode( <span class="string">"SMS_60075389"</span> );</div><div class="line">		AlibabaAliqinFcSmsNumSendResponse rsp = client.execute(req);</div><div class="line"></div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<h2 id="邮箱验证API"><a href="#邮箱验证API" class="headerlink" title="邮箱验证API"></a>邮箱验证API</h2><p>  使用邮箱的代理来为我们实现邮箱的发送功能。</p>
+<h3 id="我们选择的是腾讯的QQ邮箱-在邮箱中要先开启stmp服务，并生成授权码-否则不能实现邮箱的发送功能。"><a href="#我们选择的是腾讯的QQ邮箱-在邮箱中要先开启stmp服务，并生成授权码-否则不能实现邮箱的发送功能。" class="headerlink" title="我们选择的是腾讯的QQ邮箱,在邮箱中要先开启stmp服务，并生成授权码 否则不能实现邮箱的发送功能。"></a>我们选择的是腾讯的QQ邮箱,在邮箱中要先开启stmp服务，并生成授权码 否则不能实现邮箱的发送功能。</h3><h3 id="我们利用的Spring框架的mail的功能，首先导入所需的jar包在lib文件下面："><a href="#我们利用的Spring框架的mail的功能，首先导入所需的jar包在lib文件下面：" class="headerlink" title="我们利用的Spring框架的mail的功能，首先导入所需的jar包在lib文件下面："></a>我们利用的Spring框架的mail的功能，首先导入所需的jar包在lib文件下面：</h3><h4 id="spring-jar"><a href="#spring-jar" class="headerlink" title="spring.jar"></a>spring.jar</h4><h4 id="mail-jar"><a href="#mail-jar" class="headerlink" title="mail.jar"></a>mail.jar</h4><h4 id="commons-logging-1-1-jar"><a href="#commons-logging-1-1-jar" class="headerlink" title="commons-logging-1.1.jar"></a>commons-logging-1.1.jar</h4><h3 id="接下来是具体的代码："><a href="#接下来是具体的代码：" class="headerlink" title="接下来是具体的代码："></a>接下来是具体的代码：</h3>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">   public static void sendEmail(String email)&#123;</div><div class="line">		 JavaMailSenderImpl 	 email1 = new JavaMailSenderImpl();  </div><div class="line">	        email1.setHost(<span class="string">"smtp.qq.com"</span>);  </div><div class="line">	        email1.setUsername(发件箱);   </div><div class="line">	        email1.setPassword(授权码);//授权码  </div><div class="line">	        email1.setPort(465);  </div><div class="line">	        Properties properties = new Properties();  </div><div class="line">	        properties.put(<span class="string">"mail.smtp.auth"</span>, <span class="literal">true</span>);  </div><div class="line">	        properties.put(<span class="string">"mail.smtp.ssl.enable"</span>, <span class="literal">true</span>);  </div><div class="line">	        properties.put(<span class="string">"mail.smtp.socketFactory.class"</span>,<span class="string">"javax.net.ssl.SSLSocketFactory"</span>);  </div><div class="line">	        properties.put(<span class="string">"mail.smtp.timeout"</span>, 25000);  </div><div class="line">	        email1.setJavaMailProperties(properties);  </div><div class="line">	        SimpleMailMessage message = new SimpleMailMessage();  </div><div class="line">	        message.setFrom(发件箱);  </div><div class="line">	        message.setTo(收件箱);  </div><div class="line">	        message.setSubject(<span class="string">"SIT学习规划系统"</span>);  </div><div class="line">	        message.setText(<span class="string">"要发送的内容"</span>);  </div><div class="line">	        email1.send(message);  </div><div class="line">  </div><div class="line">&#125;</div><div class="line">  `</div></pre></td></tr></table></figure>
+<h2 id="到此短信验证和邮箱认证功能就实现了，欢迎指导批评"><a href="#到此短信验证和邮箱认证功能就实现了，欢迎指导批评" class="headerlink" title="到此短信验证和邮箱认证功能就实现了，欢迎指导批评"></a>到此短信验证和邮箱认证功能就实现了，欢迎指导批评</h2>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/短信API/" rel="tag"># 短信API</a>
+          
+            <a href="/tags/邮箱API/" rel="tag"># 邮箱API</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/07/jvm/" rel="prev" title="jvm">
+                jvm <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="王旭枫" />
+          <p class="site-author-name" itemprop="name">王旭枫</p>
+           
+              <p class="site-description motion-element" itemprop="description">梦想还是要有的，万一实现了呢！</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#短信验证API"><span class="nav-number">1.</span> <span class="nav-text">短信验证API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先要要到阿里大于的网站那个申请，获得API-key和API-Secrct：同时下载所需要的jar包：taobao-sdk-java-auto-1455552377940-20160607-jar"><span class="nav-number">1.1.</span> <span class="nav-text">首先要要到阿里大于的网站那个申请，获得API key和API Secrct：同时下载所需要的jar包：taobao-sdk-java-auto_1455552377940-20160607.jar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在官网注册用户，并设置一些基本信息-，包括短信的内容形式，和sendMessage等基本信息"><span class="nav-number">1.2.</span> <span class="nav-text">在官网注册用户，并设置一些基本信息 ，包括短信的内容形式，和sendMessage等基本信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java代码的实现："><span class="nav-number">1.3.</span> <span class="nav-text">java代码的实现：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#邮箱验证API"><span class="nav-number">2.</span> <span class="nav-text">邮箱验证API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#我们选择的是腾讯的QQ邮箱-在邮箱中要先开启stmp服务，并生成授权码-否则不能实现邮箱的发送功能。"><span class="nav-number">2.1.</span> <span class="nav-text">我们选择的是腾讯的QQ邮箱,在邮箱中要先开启stmp服务，并生成授权码 否则不能实现邮箱的发送功能。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我们利用的Spring框架的mail的功能，首先导入所需的jar包在lib文件下面："><span class="nav-number">2.2.</span> <span class="nav-text">我们利用的Spring框架的mail的功能，首先导入所需的jar包在lib文件下面：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#spring-jar"><span class="nav-number">2.2.1.</span> <span class="nav-text">spring.jar</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mail-jar"><span class="nav-number">2.2.2.</span> <span class="nav-text">mail.jar</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#commons-logging-1-1-jar"><span class="nav-number">2.2.3.</span> <span class="nav-text">commons-logging-1.1.jar</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接下来是具体的代码："><span class="nav-number">2.3.</span> <span class="nav-text">接下来是具体的代码：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#到此短信验证和邮箱认证功能就实现了，欢迎指导批评"><span class="nav-number">3.</span> <span class="nav-text">到此短信验证和邮箱认证功能就实现了，欢迎指导批评</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王旭枫</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
