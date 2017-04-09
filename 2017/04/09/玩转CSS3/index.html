@@ -1,0 +1,1250 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端,层叠样式表,css," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="背景边框条纹背景123456789background:linera-gradient(red,green)     //渐变到红到绿background:linera-gradient(red 20%,green %80)  // 0-20%red 20-80由red渐变到green 80-1纯greenbackground:linera-gradient(red 20%,green 0)	 /">
+<meta name="keywords" content="前端,层叠样式表,css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="玩转CSS3">
+<meta property="og:url" content="https://wangxufeng8023.github.io/2017/04/09/玩转CSS3/index.html">
+<meta property="og:site_name" content="爱演说的程序员">
+<meta property="og:description" content="背景边框条纹背景123456789background:linera-gradient(red,green)     //渐变到红到绿background:linera-gradient(red 20%,green %80)  // 0-20%red 20-80由red渐变到green 80-1纯greenbackground:linera-gradient(red 20%,green 0)	 /">
+<meta property="og:updated_time" content="2017-04-09T12:12:48.563Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="玩转CSS3">
+<meta name="twitter:description" content="背景边框条纹背景123456789background:linera-gradient(red,green)     //渐变到红到绿background:linera-gradient(red 20%,green %80)  // 0-20%red 20-80由red渐变到green 80-1纯greenbackground:linera-gradient(red 20%,green 0)	 /">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'WQFFGI6W0O',
+      apiKey: 'a80ed9e5ab6804c6e5e6726f0804362e',
+      indexName: 'feng',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"输入关键字进行搜索","hits_empty":"找不到关于${query} 的文章","hits_stats":"共找到 ${hits} 篇文章花了${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wangxufeng8023.github.io/2017/04/09/玩转CSS3/"/>
+
+
+
+
+
+  <title> 玩转CSS3 | 爱演说的程序员 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">爱演说的程序员</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">白帽子的开源精神</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+
+    </header>
+
+    <main id="main" class="main">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=0 height=0 src="//music.163.com/outchain/player?type=2&id=417250673&auto=1&height=40"></iframe>
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://wangxufeng8023.github.io/2017/04/09/玩转CSS3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王旭枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="爱演说的程序员">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                玩转CSS3
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-09T20:05:27+08:00">
+                2017-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/posts-programming-深入浅出ES6-html/" itemprop="url" rel="index">
+                    <span itemprop="name">你不懂的前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="背景边框"><a href="#背景边框" class="headerlink" title="背景边框"></a>背景边框</h1><h2 id="条纹背景"><a href="#条纹背景" class="headerlink" title="条纹背景"></a>条纹背景</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">background:linera-gradient(red,green)     //渐变到红到绿</div><div class="line">background:linera-gradient(red 20%,green %80)</div><div class="line">  // 0-20%red 20-80由red渐变到green 80-1纯green</div><div class="line">background:linera-gradient(red 20%,green 0)</div><div class="line">	 // 0-20ren 20-为green</div><div class="line">background:linear-gradient(red 30%,green 0 ,green 66.6%,blue 0);</div><div class="line"> //  0-30red ,30-30为red和green的渐变，那就不渐变了，30-66.6为green的渐变，那就是green，同理66.6-66.6为green到blue的渐变，那就没有了，那么66-100blue；牛逼</div><div class="line">background-size:100% 30px //如何不加这个属性，那么会沾满这个组件的width和height，加上后30px *x=height 那么x为重复的次数</div><div class="line">background:linera-gradient(to right ,red 20%,green 80%)//会数值排列</div></pre></td></tr></table></figure>
+<h2 id="复杂的背景图案"><a href="#复杂的背景图案" class="headerlink" title="复杂的背景图案"></a>复杂的背景图案</h2><p>使用重复的渐变，我们可以完成很复杂的背景图案<br>transpart 0 代表什么也没有，就是背景颜色#58a；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">background: <span class="comment">#58a;</span></div><div class="line">background-image: linear-gradient(white 2px, transparent 0),</div><div class="line">                  linear-gradient(90deg, white 2px, transparent 0),</div><div class="line">                  linear-gradient(hsla(0,0%,100%,.3) 1px, transparent 0),</div><div class="line">                  linear-gradient(90deg, hsla(0,0%,100%,.3) 1px, transparent 0);</div><div class="line">background-size: 50px 50px, 50px 50px,</div><div class="line">                 10px 10px, 10px 10px;</div><div class="line">backbround-size:cover覆盖的意思</div></pre></td></tr></table></figure></p>
+<h2 id="伪随机背景"><a href="#伪随机背景" class="headerlink" title="伪随机背景"></a>伪随机背景</h2><h2 id="连续的图像边框"><a href="#连续的图像边框" class="headerlink" title="连续的图像边框"></a>连续的图像边框</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">border-image</div><div class="line">background-clip  //规定背景的绘制区域：border-box padding-box </div><div class="line">div</div><div class="line">&#123;</div><div class="line">background-color:yellow;</div><div class="line">background-clip:content-box;</div><div class="line">&#125;</div><div class="line">backgroud-origin</div><div class="line">//相对于（内容框）来定位背景图像：</div><div class="line">div</div><div class="line">&#123;</div><div class="line">background-image:url(<span class="string">'smiley.gif'</span>);</div><div class="line">background-repeat:no-repeat;</div><div class="line">background-position:left;</div><div class="line">background-origin:content-box;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="形状"><a href="#形状" class="headerlink" title="形状"></a>形状</h1><h2 id="椭圆"><a href="#椭圆" class="headerlink" title="椭圆"></a>椭圆</h2><pre><code>一个元素的width height 
+border-radius：50%会出现一个完美的椭圆棱角的形状  border-radius分为水平半径和垂直半径
+同时
+格式为：border-radius：水平半径/垂直半径
+同时水平半径又分为下面四个/垂直半径又分为下面四个
+ border-radius：由border-top-left-radius
+                  border-top-right-radius
+                  border-bottom-left-radius
+                  border-bottom-right-radius
+</code></pre><p>  组成，那我们可以分开赋值了</p>
+<pre><code>## 平行四边形：
+</code></pre><h1 id="CSS3-transform"><a href="#CSS3-transform" class="headerlink" title="CSS3 transform"></a>CSS3 transform</h1><p>transform的含义是：改变，使…变形；转换</p>
+<p>CSS3 transform都有哪些常用属性？</p>
+<p>transform的属性包括：rotate() / skew() / scale() / translate(,) ，分别还有x、y之分，比如：rotatex() 和 rotatey() ，以此类推。</p>
+<p>下面我们来分解各个属性的用法：</p>
+<p>transform:rotate()：</p>
+<p>含义：旋转；其中“deg”是“度”的意思，如“10deg”表示“10度”下同<br>transform:skew()：</p>
+<p>含义：倾斜；<br>transform:scale()：</p>
+<p>含义：比例；“1.5”表示以1.5的比例放大，如果要放大2倍，须写成“2.0”，缩小则为负“-”<br>transform:translate()：</p>
+<p>含义：变动，位移；如下表示向右位移120像素，如果向上位移，把后面的“0”改个值就行，向左向下位移则为负“-”。</p>
+<h1 id="伪元素："><a href="#伪元素：" class="headerlink" title="伪元素："></a>伪元素：</h1><h2 id="first-line-伪元素"><a href="#first-line-伪元素" class="headerlink" title=":first-line 伪元素"></a>:first-line 伪元素</h2><p>“first-line” 伪元素用于向文本的首行设置特殊样式。<br>在下面的例子中，浏览器会根据 “first-line” 伪元素中的样式对 p 元素的第一行文本进行格式化：<br>实例<br>p:first-line<br>  {<br>  color:#ff0000;<br>  font-variant:small-caps;<br>  }</p>
+<h2 id="first-letter-伪元素"><a href="#first-letter-伪元素" class="headerlink" title=":first-letter 伪元素"></a>:first-letter 伪元素</h2><p>“first-letter” 伪元素用于向文本的首字母设置特殊样式：<br>p:first-letter<br>  {<br>  color:#ff0000;<br>  font-size:xx-large;<br>  }</p>
+<h2 id="CSS2-before-伪元素"><a href="#CSS2-before-伪元素" class="headerlink" title="CSS2 - :before 伪元素"></a>CSS2 - :before 伪元素</h2><p>“:before” 伪元素可以在元素的内容前面插入新内容。<br>下面的例子在每个 </p><h1> 元素前面插入一幅图片：<br>h1:before<br>  {<br>  content:url(logo.gif);<br>  }<p></p>
+<h2 id="CSS2-after-伪元素"><a href="#CSS2-after-伪元素" class="headerlink" title="CSS2 - :after 伪元素"></a>CSS2 - :after 伪元素</h2><p>“:after” 伪元素可以在元素的内容之后插入新内容。<br>下面的例子在每个 </p><h1> 元素后面插入一幅图片：<br>h1:after<br>  {<br>  content:url(logo.gif);<br>  }<p></p>
+<h1 id="字体排版"><a href="#字体排版" class="headerlink" title="字体排版"></a>字体排版</h1><pre><code>## text-align-justify;改善单词孤岛的情况
+    hyphens :none manual auto 
+    hyphens：auto
+## 插入换行：
+  规定段落中的文本不进行换行：
+
+  {
+   white-space: nowrap
+  }
+  normal  :默认。空白会被浏览器忽略。
+  pre   :空白会被浏览器保留。其行为方式类似            HTML     &lt;pre&gt; 标签。
+  nowrap :  文本不会换行，文本会在在同一行继            续，直到遇到 &lt;br&gt; 标签为止。
+  pre-wrap:保留空白符序列，但是正常地进行换           行。
+  pre-line:    合并空白符序列，但是保留换行符。
+  inherit:规定应该从父元素继承white-space             属性的值。
+  &lt;style type=&quot;text/css&quot;&gt;
+    dt,dd{display: inline;}
+    dd{margin:0;font-weight:bold;}
+    /*插入换行*/
+    dd+dt::before{content: &apos;\A&apos;;white-space: pre;}
+    /*处理一个dt对应多个dd的情况*/
+    dd+dd::before{content: &apos; ，&apos;;font-weight: normal;}
+
+
+               &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;dl&gt;
+        &lt;dt&gt;username&lt;/dt&gt;
+        &lt;dd&gt;Joke&lt;/dd&gt;
+        &lt;dt&gt;Email&lt;/dt&gt;
+        &lt;dd&gt;812010670@qq.com&lt;/dd&gt;
+        &lt;dd&gt;603876963@qq.com&lt;/dd&gt;
+        &lt;dt&gt;Address&lt;/dt&gt;
+        &lt;dd&gt;北京朝阳区45号&lt;/dd&gt;
+
+    &lt;/dl&gt;
+## 文本行的斑马条纹：
+    backgroud-size
+    tr:nth-child(even){background:rgba(0,0,0,.2);}
+    pre 元素可定义预格式化的文本。被包围在 pre 元素中的文本通常会保留空格和换行符。而文本也会呈现为等宽字体。
+   &lt;pre&gt;&lt;code&gt;while (true) {
+  var d = new Date();
+  if (d.getDate()==1 &amp;amp;&amp;amp;
+    d.getMonth()==3) {
+    alert(&quot;TROLOLOL&quot;);
+   }
+   }&lt;/code&gt;&lt;/pre&gt;
+
+    pre { 
+padding: .5em;
+line-height: 1.5;
+background: hsl(20, 50%, 95%);
+background-image: linear-gradient(
+                  rgba(120,0,0,.1) 50%, transparent 0);
+background-size: auto 3em;
+background-origin: content-box;
+font-family:monospace;
+}
+</code></pre><h2 id="调整tab的宽度"><a href="#调整tab的宽度" class="headerlink" title="调整tab的宽度"></a>调整tab的宽度</h2><pre><code>新的属性tab-size：2,4,6，。。。代表一个tab代表2,4个字符
+</code></pre><h2 id="连字"><a href="#连字" class="headerlink" title="连字"></a>连字</h2><pre><code>font-variant；
+  font-variant-ligatures: common-ligatures discretionary-ligatures historical-ligatures;
+  设置练字的效果
+</code></pre><h2 id="华丽的-amp-符号"><a href="#华丽的-amp-符号" class="headerlink" title="华丽的&amp;符号"></a>华丽的&amp;符号</h2><p>   @font-face {<br>    font-family: Ampersand;<br>    src: local(‘Baskerville-Italic’), local(‘GoudyOldStyleT-Italic’), local(‘Garamond-Italic’), local(‘Palatino-Italic’);<br>    unicode-range: U+26;<br>    }</p>
+<p>   h1 {<br>    font-family: Ampersand, Helvetica, sans-serif;<br>   }</p>
+<h2 id="自定义下划线"><a href="#自定义下划线" class="headerlink" title="自定义下划线"></a>自定义下划线</h2><pre><code>   下环线的方式：text-decoration:
+                 border-bottom:1px solid gray
+                 box-shadow:0 -1px gray inset
+  使用渐变来实现下划线：
+              a {
+    background: linear-gradient(gray, gray) no-repeat;
+    background-size: 100% 1px;
+    background-position: 0 1.02em;
+    text-shadow: .05em 0 white, -.05em 0 white;
+                }
+  生成一条虚线：backgroud:inear-gradient(90deg,gray 66%,transparent 0) repeat-x
+  backgroud-size:.2em 2px;
+## 现实中的文字效果:
+    效果七：3D text effect
+</code></pre><p>.demo10 {<br>  color: #fff;<br>  text-shadow: 1px 1px rgba(197, 223, 248,0.8),2px 2px rgba(197, 223, 248,0.8),3px 3px rgba(197, 223, 248,0.8),4px 4px rgba(197, 223, 248,0.8),5px 5px rgba(197, 223, 248,0.8),6px 6px rgba(197, 223, 248,0.8);<br>}</p>
+<h2 id="空心字效果："><a href="#空心字效果：" class="headerlink" title="空心字效果："></a>空心字效果：</h2><p>.b{width: 100px;height: 100px;  background:deeppink;<br>  color:white;<br>  margin: 0 auto;<br>  text-align: center;<br>line-height: 100px;<br>font-weight: bold;<br>font-size: 20px;<br>  text-shadow:1px 1px black,-1px -1px black,<br>                  1px -1px black,-1px 1px black;}</p>
+<h2 id="文字发光效果："><a href="#文字发光效果：" class="headerlink" title="文字发光效果："></a>文字发光效果：</h2><p>   a{background: #203;color:white;transition: 1s;text-decoration: none;}<br>    a:hover{color:transparent;text-shadow: 0 0 .1em white,0 0 .3em white;}</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>将鼠标悬停在一个div元素上，逐步改变表格的宽度从100px到300px：:<br>div<br>{<br>width:100px;<br>transition: width 2s;<br>-webkit-transition: width 2s; /<em> Safari </em>/<br>}<br>div:hover {width:300px;}</p>
+<h2 id="文字凸显效果："><a href="#文字凸显效果：" class="headerlink" title="文字凸显效果："></a>文字凸显效果：</h2><p>  .b{width: 100px;height: 100px;  background:hsl(0,50%,45%);<br>  color:white;<br>  margin: 0 auto;<br>  text-align: center;<br>line-height: 100px;<br>font-weight: bold;<br>font-size: 20px;<br>  text-shadow:1px 1px black,2px 2px black,3px 3px black,4px 4px black,5px 5px black,6px 6px black,7px 7px black,8px 8px black;}<br>    a{background: #203;color:white;transition: 1s;text-decoration: none;}<br>    a:hover{color:transparent;text-shadow: 0 0 .1em white,0 0 .3em white;}</p>
+<h1 id="用户体验"><a href="#用户体验" class="headerlink" title="用户体验"></a>用户体验</h1><pre><code>## 好看的按钮：
+            button {
+            position: relative;
+            padding: .3em .5em;
+            background: #58a;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,.3);
+            box-shadow:  0 .1em .2em -.05em rgba(0,0,0,.5);
+            color: white;
+            font: bold 150%/1 sans-serif;
+            cursor: pointer;
+        }
+
+        button:before {
+            content: &apos;&apos;;
+            position: absolute;
+            top: -10px; right: -10px;
+            bottom: -10px; left: -10px;
+        }
+    ## 自定义复选框：
+                        input[type=&quot;checkbox&quot;]+label::before{content:&apos;\a0&apos;;
+                display:inline-block;
+                vertical-align: .2em;
+                width: 1em;
+                height: 1em;
+                margin-right: .2em;
+                border-radius: .2em;
+                background: silver;
+                text-indent: .15em;
+                line-height: .65em;
+
+                }
+                input[type=&quot;checkbox&quot;]:checked+label::before{content:&apos;\2713&apos;;
+                background:yellowgreen;
+                }
+                input[type=&quot;checkbox&quot;]{position: absolute;clip:rect(0,0,0,0);}
+                input[type=&quot;checkbox&quot;]:focus+label::before{box-shadow:0 0 .1em .1em #58a;}
+                input[type=&quot;checkbox&quot;]:disabled+label::before{background: gray;box-shadow: none;color: #555;}
+    ## 开关式button：
+&lt;input type=&quot;checkbox&quot; id=&quot;awesome&quot; autofocus /&gt;
+</code></pre><label for="awesome">Awesome!</label>
+
+<p><input type="checkbox" id="awesome2" checked></p>
+<label for="awesome2">Awesome!</label>
+
+
+
+<pre><code>    input[type=&quot;checkbox&quot;] {
+position: absolute;
+clip: rect(0,0,0,0);
+</code></pre><p>}</p>
+<p>input[type=”checkbox”] + label {<br>    display: inline-block;<br>    padding: .35em .5em .2em;<br>    background: #ccc;<br>    background-image: linear-gradient(#ddd, #bbb);<br>    border: 1px solid rgba(0,0,0,.2);<br>    border-radius: .3em;<br>    box-shadow: 0 1px white inset;<br>    text-align: center;<br>    text-shadow: 0 1px 1px white;<br>    cursor: pointer;<br>}</p>
+<p>input[type=”checkbox”]:checked + label,<br>input[type=”checkbox”]:active + label {<br>    box-shadow: .04em .1em .2em rgba(0,0,0,.6) inset;<br>    border-color: rgba(0,0,0,.3);<br>    background: #bbb;<br>}</p>
+<h1 id="css基础"><a href="#css基础" class="headerlink" title="css基础"></a>css基础</h1><h2 id="元素的可见性"><a href="#元素的可见性" class="headerlink" title="元素的可见性"></a>元素的可见性</h2><p>  visibility:hidden<br>  display:block , inline-block ,none(隐藏) </p>
+<h2 id="position："><a href="#position：" class="headerlink" title="position："></a>position：</h2><p>   static<br>   absolute<br>   fixed<br>   relative</p>
+<h2 id="部分可见性"><a href="#部分可见性" class="headerlink" title="部分可见性"></a>部分可见性</h2><h3 id="overflow制定内容超出元素大小时的操作"><a href="#overflow制定内容超出元素大小时的操作" class="headerlink" title="overflow制定内容超出元素大小时的操作"></a>overflow制定内容超出元素大小时的操作</h3><p>visible 默认<br>hidden 隐藏<br>scroll 添加滚动条<br>auto 滚动条在内容超出的时候才显示</p>
+<h3 id="clip-制定元素的裁剪区域"><a href="#clip-制定元素的裁剪区域" class="headerlink" title="clip 制定元素的裁剪区域"></a>clip 制定元素的裁剪区域</h3><p>style=”clip:rect(top,right,bottom,left)”</p>
+<h1 id="SVG"><a href="#SVG" class="headerlink" title="SVG"></a>SVG</h1><p>SVG:可缩放矢量图形是基于可扩展标记语言（标准通用标记语言的子集），用于描述二维矢量图形的一种图形格式。它由万维网联盟制定，是一个开放标准。&middot; 图像文件可读，易于修改和编辑</p>
+<p>· 与现有技术可以互动融合。例如， SVG 技术本身的动态部分(包括时序控制和动画(就是基于 SMIL 标准。另外， SVG 文件还可嵌入 JavaScript (严格的说应该是 ECMAScript )脚本来控制 SVG 对象</p>
+<p>· SVG图形格式可以方便的建立文字索引，从而实现基于内容的 图像搜索</p>
+<p>&middot; SVG图形格式支持多种 滤镜和特殊效果，在不改变图像内容的前提下可以实现 位图格式中类似文字阴影的效果</p>
+<p>· SVG图形格式可以用来动态生成图形。例如，可用SVG动态生成具有交互功能的地图，嵌入网页中，并显示给终端用户</p>
+<p>&middot; SVG面临的主要问题一个是如何和已经占有重要市场份额的矢量图形格式 Flash 如何竞争的问题，另一个问题就是SVG的本地运行环境的下厂家支持程度。<br>下面的例子是一个简单的 SVG 文件的例子。SVG 文件必须使用 .svg 后缀来保存：<br>&lt;?xml version=”1.0” standalone=”no”?&gt;</p>
+<p>&lt;!DOCTYPE svg PUBLIC “-//W3C//DTD SVG 1.1//EN”<br>“<a href="http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot;&gt;" target="_blank" rel="external">http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&quot;&gt;</a></p>
+<svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+<circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" fill="red"/>
+
+<p/></svg><br>查看例子（仅用于支持 SVG 的浏览器）<br>（如需查看 SVG 源代码，请打开此例，然后在窗口中右击。选择“查看源代码”。）<br>代码解释：<br>第一行包含了 XML 声明。请注意 standalone 属性！该属性规定此 SVG 文件是否是“独立的”，或含有对外部文件的引用。<br>standalone=”no” 意味着 SVG 文档会引用一个外部文件 - 在这里，是 DTD 文件。<br>第二和第三行引用了这个外部的 SVG DTD。该 DTD 位于 “<a href="http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd”。该" target="_blank" rel="external">http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd”。该</a> DTD 位于 W3C，含有所有允许的 SVG 元素。<br>SVG 代码以 <svg> 元素开始，包括开启标签 <svg> 和关闭标签 </svg> 。这是根元素。width 和 height 属性可设置此 SVG 文档的宽度和高度。version 属性可定义所使用的 SVG 版本，xmlns 属性可定义 SVG 命名空间。<br/>SVG 的 <circle/> 用来创建一个圆。cx 和 cy 属性定义圆中心的 x 和 y 坐标。如果忽略这两个属性，那么圆点会被设置为 (0, 0)。r 属性定义圆的半径。<br/>stroke 和 stroke-width 属性控制如何显示形状的轮廓。我们把圆的轮廓设置为 2px 宽，黑边框。<br/>fill 属性设置形状内的颜色。我们把填充颜色设置为红色。<br/>关闭标签的作用是关闭 SVG 元素和文档本身。<p/>
+</svg></h1></h1>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/层叠样式表/" rel="tag"># 层叠样式表</a>
+          
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/07/谁的大学不迷茫/" rel="prev" title="谁的大学不迷茫">
+                谁的大学不迷茫 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="王旭枫" />
+          <p class="site-author-name" itemprop="name">王旭枫</p>
+           
+              <p class="site-description motion-element" itemprop="description">梦想还是要有的，万一实现了呢！</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+     
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景边框"><span class="nav-number">1.</span> <span class="nav-text">背景边框</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#条纹背景"><span class="nav-number">1.1.</span> <span class="nav-text">条纹背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复杂的背景图案"><span class="nav-number">1.2.</span> <span class="nav-text">复杂的背景图案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪随机背景"><span class="nav-number">1.3.</span> <span class="nav-text">伪随机背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连续的图像边框"><span class="nav-number">1.4.</span> <span class="nav-text">连续的图像边框</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#形状"><span class="nav-number">2.</span> <span class="nav-text">形状</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#椭圆"><span class="nav-number">2.1.</span> <span class="nav-text">椭圆</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS3-transform"><span class="nav-number">3.</span> <span class="nav-text">CSS3 transform</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#伪元素："><span class="nav-number">4.</span> <span class="nav-text">伪元素：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#first-line-伪元素"><span class="nav-number">4.1.</span> <span class="nav-text">:first-line 伪元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#first-letter-伪元素"><span class="nav-number">4.2.</span> <span class="nav-text">:first-letter 伪元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS2-before-伪元素"><span class="nav-number">4.3.</span> <span class="nav-text">CSS2 - :before 伪元素</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text"> 元素前面插入一幅图片：h1:before  {  content:url(logo.gif);  }
+CSS2 - :after 伪元素“:after” 伪元素可以在元素的内容之后插入新内容。下面的例子在每个  元素后面插入一幅图片：h1:after  {  content:url(logo.gif);  }
+字体排版## text-align-justify;改善单词孤岛的情况
+    hyphens :none manual auto 
+    hyphens：auto
+## 插入换行：
+  规定段落中的文本不进行换行：
+
+  {
+   white-space: nowrap
+  }
+  normal  :默认。空白会被浏览器忽略。
+  pre   :空白会被浏览器保留。其行为方式类似            HTML     <pre> 标签。
+  nowrap :  文本不会换行，文本会在在同一行继            续，直到遇到 <br> 标签为止。
+  pre-wrap:保留空白符序列，但是正常地进行换           行。
+  pre-line:    合并空白符序列，但是保留换行符。
+  inherit:规定应该从父元素继承white-space             属性的值。
+  <style type="text/css">
+    dt,dd{display: inline;}
+    dd{margin:0;font-weight:bold;}
+    /*插入换行*/
+    dd+dt::before{content: '\A';white-space: pre;}
+    /*处理一个dt对应多个dd的情况*/
+    dd+dd::before{content: ' ，';font-weight: normal;}
+
+
+               </style>
+    </head>
+    <body>
+    <dl>
+        <dt>username</dt>
+        <dd>Joke</dd>
+        <dt>Email</dt>
+        <dd>812010670@qq.com</dd>
+        <dd>603876963@qq.com</dd>
+        <dt>Address</dt>
+        <dd>北京朝阳区45号</dd>
+
+    </dl>
+## 文本行的斑马条纹：
+    backgroud-size
+    tr:nth-child(even){background:rgba(0,0,0,.2);}
+    pre 元素可定义预格式化的文本。被包围在 pre 元素中的文本通常会保留空格和换行符。而文本也会呈现为等宽字体。
+   <pre><code>while (true) {
+  var d = new Date();
+  if (d.getDate()==1 &amp;&amp;
+    d.getMonth()==3) {
+    alert("TROLOLOL");
+   }
+   }</code></pre>
+
+    pre { 
+padding: .5em;
+line-height: 1.5;
+background: hsl(20, 50%, 95%);
+background-image: linear-gradient(
+                  rgba(120,0,0,.1) 50%, transparent 0);
+background-size: auto 3em;
+background-origin: content-box;
+font-family:monospace;
+}
+调整tab的宽度新的属性tab-size：2,4,6，。。。代表一个tab代表2,4个字符
+连字font-variant；
+  font-variant-ligatures: common-ligatures discretionary-ligatures historical-ligatures;
+  设置练字的效果
+华丽的&符号   @font-face {    font-family: Ampersand;    src: local(‘Baskerville-Italic’), local(‘GoudyOldStyleT-Italic’), local(‘Garamond-Italic’), local(‘Palatino-Italic’);    unicode-range: U+26;    }
+   h1 {    font-family: Ampersand, Helvetica, sans-serif;   }
+自定义下划线   下环线的方式：text-decoration:
+                 border-bottom:1px solid gray
+                 box-shadow:0 -1px gray inset
+  使用渐变来实现下划线：
+              a {
+    background: linear-gradient(gray, gray) no-repeat;
+    background-size: 100% 1px;
+    background-position: 0 1.02em;
+    text-shadow: .05em 0 white, -.05em 0 white;
+                }
+  生成一条虚线：backgroud:inear-gradient(90deg,gray 66%,transparent 0) repeat-x
+  backgroud-size:.2em 2px;
+## 现实中的文字效果:
+    效果七：3D text effect
+.demo10 {  color: #fff;  text-shadow: 1px 1px rgba(197, 223, 248,0.8),2px 2px rgba(197, 223, 248,0.8),3px 3px rgba(197, 223, 248,0.8),4px 4px rgba(197, 223, 248,0.8),5px 5px rgba(197, 223, 248,0.8),6px 6px rgba(197, 223, 248,0.8);}
+空心字效果：.b{width: 100px;height: 100px;  background:deeppink;  color:white;  margin: 0 auto;  text-align: center;line-height: 100px;font-weight: bold;font-size: 20px;  text-shadow:1px 1px black,-1px -1px black,                  1px -1px black,-1px 1px black;}
+文字发光效果：   a{background: #203;color:white;transition: 1s;text-decoration: none;}    a:hover{color:transparent;text-shadow: 0 0 .1em white,0 0 .3em white;}
+实例将鼠标悬停在一个div元素上，逐步改变表格的宽度从100px到300px：:div{width:100px;transition: width 2s;-webkit-transition: width 2s; / Safari /}div:hover {width:300px;}
+文字凸显效果：  .b{width: 100px;height: 100px;  background:hsl(0,50%,45%);  color:white;  margin: 0 auto;  text-align: center;line-height: 100px;font-weight: bold;font-size: 20px;  text-shadow:1px 1px black,2px 2px black,3px 3px black,4px 4px black,5px 5px black,6px 6px black,7px 7px black,8px 8px black;}    a{background: #203;color:white;transition: 1s;text-decoration: none;}    a:hover{color:transparent;text-shadow: 0 0 .1em white,0 0 .3em white;}
+用户体验## 好看的按钮：
+            button {
+            position: relative;
+            padding: .3em .5em;
+            background: #58a;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,.3);
+            box-shadow:  0 .1em .2em -.05em rgba(0,0,0,.5);
+            color: white;
+            font: bold 150%/1 sans-serif;
+            cursor: pointer;
+        }
+
+        button:before {
+            content: '';
+            position: absolute;
+            top: -10px; right: -10px;
+            bottom: -10px; left: -10px;
+        }
+    ## 自定义复选框：
+                        input[type="checkbox"]+label::before{content:'\a0';
+                display:inline-block;
+                vertical-align: .2em;
+                width: 1em;
+                height: 1em;
+                margin-right: .2em;
+                border-radius: .2em;
+                background: silver;
+                text-indent: .15em;
+                line-height: .65em;
+
+                }
+                input[type="checkbox"]:checked+label::before{content:'\2713';
+                background:yellowgreen;
+                }
+                input[type="checkbox"]{position: absolute;clip:rect(0,0,0,0);}
+                input[type="checkbox"]:focus+label::before{box-shadow:0 0 .1em .1em #58a;}
+                input[type="checkbox"]:disabled+label::before{background: gray;box-shadow: none;color: #555;}
+    ## 开关式button：
+<input type="checkbox" id="awesome" autofocus />
+Awesome!
+
+
+Awesome!
+
+
+
+    input[type="checkbox"] {
+position: absolute;
+clip: rect(0,0,0,0);
+}
+input[type=”checkbox”] + label {    display: inline-block;    padding: .35em .5em .2em;    background: #ccc;    background-image: linear-gradient(#ddd, #bbb);    border: 1px solid rgba(0,0,0,.2);    border-radius: .3em;    box-shadow: 0 1px white inset;    text-align: center;    text-shadow: 0 1px 1px white;    cursor: pointer;}
+input[type=”checkbox”]:checked + label,input[type=”checkbox”]:active + label {    box-shadow: .04em .1em .2em rgba(0,0,0,.6) inset;    border-color: rgba(0,0,0,.3);    background: #bbb;}
+css基础元素的可见性  visibility:hidden  display:block , inline-block ,none(隐藏) 
+position：   static   absolute   fixed   relative
+部分可见性overflow制定内容超出元素大小时的操作visible 默认hidden 隐藏scroll 添加滚动条auto 滚动条在内容超出的时候才显示
+clip 制定元素的裁剪区域style=”clip:rect(top,right,bottom,left)”
+SVGSVG:可缩放矢量图形是基于可扩展标记语言（标准通用标记语言的子集），用于描述二维矢量图形的一种图形格式。它由万维网联盟制定，是一个开放标准。· 图像文件可读，易于修改和编辑
+· 与现有技术可以互动融合。例如， SVG 技术本身的动态部分(包括时序控制和动画(就是基于 SMIL 标准。另外， SVG 文件还可嵌入 JavaScript (严格的说应该是 ECMAScript )脚本来控制 SVG 对象
+· SVG图形格式可以方便的建立文字索引，从而实现基于内容的 图像搜索
+· SVG图形格式支持多种 滤镜和特殊效果，在不改变图像内容的前提下可以实现 位图格式中类似文字阴影的效果
+· SVG图形格式可以用来动态生成图形。例如，可用SVG动态生成具有交互功能的地图，嵌入网页中，并显示给终端用户
+· SVG面临的主要问题一个是如何和已经占有重要市场份额的矢量图形格式 Flash 如何竞争的问题，另一个问题就是SVG的本地运行环境的下厂家支持程度。下面的例子是一个简单的 SVG 文件的例子。SVG 文件必须使用 .svg 后缀来保存：<?xml version=”1.0” standalone=”no”?>
+<!DOCTYPE svg PUBLIC “-//W3C//DTD SVG 1.1//EN”“http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+
+
+
+查看例子（仅用于支持 SVG 的浏览器）（如需查看 SVG 源代码，请打开此例，然后在窗口中右击。选择“查看源代码”。）代码解释：第一行包含了 XML 声明。请注意 standalone 属性！该属性规定此 SVG 文件是否是“独立的”，或含有对外部文件的引用。standalone=”no” 意味着 SVG 文档会引用一个外部文件 - 在这里，是 DTD 文件。第二和第三行引用了这个外部的 SVG DTD。该 DTD 位于 “http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd”。该 DTD 位于 W3C，含有所有允许的 SVG 元素。SVG 代码以  元素开始，包括开启标签  和关闭标签  。这是根元素。width 和 height 属性可设置此 SVG 文档的宽度和高度。version 属性可定义所使用的 SVG 版本，xmlns 属性可定义 SVG 命名空间。SVG 的  用来创建一个圆。cx 和 cy 属性定义圆中心的 x 和 y 坐标。如果忽略这两个属性，那么圆点会被设置为 (0, 0)。r 属性定义圆的半径。stroke 和 stroke-width 属性控制如何显示形状的轮廓。我们把圆的轮廓设置为 2px 宽，黑边框。fill 属性设置形状内的颜色。我们把填充颜色设置为红色。关闭标签的作用是关闭 SVG 元素和文档本身。
+</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS2-after-伪元素"><span class="nav-number">5.1.</span> <span class="nav-text">CSS2 - :after 伪元素</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text"> 元素后面插入一幅图片：h1:after  {  content:url(logo.gif);  }
+字体排版## text-align-justify;改善单词孤岛的情况
+    hyphens :none manual auto 
+    hyphens：auto
+## 插入换行：
+  规定段落中的文本不进行换行：
+
+  {
+   white-space: nowrap
+  }
+  normal  :默认。空白会被浏览器忽略。
+  pre   :空白会被浏览器保留。其行为方式类似            HTML     <pre> 标签。
+  nowrap :  文本不会换行，文本会在在同一行继            续，直到遇到 <br> 标签为止。
+  pre-wrap:保留空白符序列，但是正常地进行换           行。
+  pre-line:    合并空白符序列，但是保留换行符。
+  inherit:规定应该从父元素继承white-space             属性的值。
+  <style type="text/css">
+    dt,dd{display: inline;}
+    dd{margin:0;font-weight:bold;}
+    /*插入换行*/
+    dd+dt::before{content: '\A';white-space: pre;}
+    /*处理一个dt对应多个dd的情况*/
+    dd+dd::before{content: ' ，';font-weight: normal;}
+
+
+               </style>
+    </head>
+    <body>
+    <dl>
+        <dt>username</dt>
+        <dd>Joke</dd>
+        <dt>Email</dt>
+        <dd>812010670@qq.com</dd>
+        <dd>603876963@qq.com</dd>
+        <dt>Address</dt>
+        <dd>北京朝阳区45号</dd>
+
+    </dl>
+## 文本行的斑马条纹：
+    backgroud-size
+    tr:nth-child(even){background:rgba(0,0,0,.2);}
+    pre 元素可定义预格式化的文本。被包围在 pre 元素中的文本通常会保留空格和换行符。而文本也会呈现为等宽字体。
+   <pre><code>while (true) {
+  var d = new Date();
+  if (d.getDate()==1 &amp;&amp;
+    d.getMonth()==3) {
+    alert("TROLOLOL");
+   }
+   }</code></pre>
+
+    pre { 
+padding: .5em;
+line-height: 1.5;
+background: hsl(20, 50%, 95%);
+background-image: linear-gradient(
+                  rgba(120,0,0,.1) 50%, transparent 0);
+background-size: auto 3em;
+background-origin: content-box;
+font-family:monospace;
+}
+调整tab的宽度新的属性tab-size：2,4,6，。。。代表一个tab代表2,4个字符
+连字font-variant；
+  font-variant-ligatures: common-ligatures discretionary-ligatures historical-ligatures;
+  设置练字的效果
+华丽的&符号   @font-face {    font-family: Ampersand;    src: local(‘Baskerville-Italic’), local(‘GoudyOldStyleT-Italic’), local(‘Garamond-Italic’), local(‘Palatino-Italic’);    unicode-range: U+26;    }
+   h1 {    font-family: Ampersand, Helvetica, sans-serif;   }
+自定义下划线   下环线的方式：text-decoration:
+                 border-bottom:1px solid gray
+                 box-shadow:0 -1px gray inset
+  使用渐变来实现下划线：
+              a {
+    background: linear-gradient(gray, gray) no-repeat;
+    background-size: 100% 1px;
+    background-position: 0 1.02em;
+    text-shadow: .05em 0 white, -.05em 0 white;
+                }
+  生成一条虚线：backgroud:inear-gradient(90deg,gray 66%,transparent 0) repeat-x
+  backgroud-size:.2em 2px;
+## 现实中的文字效果:
+    效果七：3D text effect
+.demo10 {  color: #fff;  text-shadow: 1px 1px rgba(197, 223, 248,0.8),2px 2px rgba(197, 223, 248,0.8),3px 3px rgba(197, 223, 248,0.8),4px 4px rgba(197, 223, 248,0.8),5px 5px rgba(197, 223, 248,0.8),6px 6px rgba(197, 223, 248,0.8);}
+空心字效果：.b{width: 100px;height: 100px;  background:deeppink;  color:white;  margin: 0 auto;  text-align: center;line-height: 100px;font-weight: bold;font-size: 20px;  text-shadow:1px 1px black,-1px -1px black,                  1px -1px black,-1px 1px black;}
+文字发光效果：   a{background: #203;color:white;transition: 1s;text-decoration: none;}    a:hover{color:transparent;text-shadow: 0 0 .1em white,0 0 .3em white;}
+实例将鼠标悬停在一个div元素上，逐步改变表格的宽度从100px到300px：:div{width:100px;transition: width 2s;-webkit-transition: width 2s; / Safari /}div:hover {width:300px;}
+文字凸显效果：  .b{width: 100px;height: 100px;  background:hsl(0,50%,45%);  color:white;  margin: 0 auto;  text-align: center;line-height: 100px;font-weight: bold;font-size: 20px;  text-shadow:1px 1px black,2px 2px black,3px 3px black,4px 4px black,5px 5px black,6px 6px black,7px 7px black,8px 8px black;}    a{background: #203;color:white;transition: 1s;text-decoration: none;}    a:hover{color:transparent;text-shadow: 0 0 .1em white,0 0 .3em white;}
+用户体验## 好看的按钮：
+            button {
+            position: relative;
+            padding: .3em .5em;
+            background: #58a;
+            border-radius: 50%;
+            border: 1px solid rgba(0,0,0,.3);
+            box-shadow:  0 .1em .2em -.05em rgba(0,0,0,.5);
+            color: white;
+            font: bold 150%/1 sans-serif;
+            cursor: pointer;
+        }
+
+        button:before {
+            content: '';
+            position: absolute;
+            top: -10px; right: -10px;
+            bottom: -10px; left: -10px;
+        }
+    ## 自定义复选框：
+                        input[type="checkbox"]+label::before{content:'\a0';
+                display:inline-block;
+                vertical-align: .2em;
+                width: 1em;
+                height: 1em;
+                margin-right: .2em;
+                border-radius: .2em;
+                background: silver;
+                text-indent: .15em;
+                line-height: .65em;
+
+                }
+                input[type="checkbox"]:checked+label::before{content:'\2713';
+                background:yellowgreen;
+                }
+                input[type="checkbox"]{position: absolute;clip:rect(0,0,0,0);}
+                input[type="checkbox"]:focus+label::before{box-shadow:0 0 .1em .1em #58a;}
+                input[type="checkbox"]:disabled+label::before{background: gray;box-shadow: none;color: #555;}
+    ## 开关式button：
+<input type="checkbox" id="awesome" autofocus />
+Awesome!
+
+
+Awesome!
+
+
+
+    input[type="checkbox"] {
+position: absolute;
+clip: rect(0,0,0,0);
+}
+input[type=”checkbox”] + label {    display: inline-block;    padding: .35em .5em .2em;    background: #ccc;    background-image: linear-gradient(#ddd, #bbb);    border: 1px solid rgba(0,0,0,.2);    border-radius: .3em;    box-shadow: 0 1px white inset;    text-align: center;    text-shadow: 0 1px 1px white;    cursor: pointer;}
+input[type=”checkbox”]:checked + label,input[type=”checkbox”]:active + label {    box-shadow: .04em .1em .2em rgba(0,0,0,.6) inset;    border-color: rgba(0,0,0,.3);    background: #bbb;}
+css基础元素的可见性  visibility:hidden  display:block , inline-block ,none(隐藏) 
+position：   static   absolute   fixed   relative
+部分可见性overflow制定内容超出元素大小时的操作visible 默认hidden 隐藏scroll 添加滚动条auto 滚动条在内容超出的时候才显示
+clip 制定元素的裁剪区域style=”clip:rect(top,right,bottom,left)”
+SVGSVG:可缩放矢量图形是基于可扩展标记语言（标准通用标记语言的子集），用于描述二维矢量图形的一种图形格式。它由万维网联盟制定，是一个开放标准。· 图像文件可读，易于修改和编辑
+· 与现有技术可以互动融合。例如， SVG 技术本身的动态部分(包括时序控制和动画(就是基于 SMIL 标准。另外， SVG 文件还可嵌入 JavaScript (严格的说应该是 ECMAScript )脚本来控制 SVG 对象
+· SVG图形格式可以方便的建立文字索引，从而实现基于内容的 图像搜索
+· SVG图形格式支持多种 滤镜和特殊效果，在不改变图像内容的前提下可以实现 位图格式中类似文字阴影的效果
+· SVG图形格式可以用来动态生成图形。例如，可用SVG动态生成具有交互功能的地图，嵌入网页中，并显示给终端用户
+· SVG面临的主要问题一个是如何和已经占有重要市场份额的矢量图形格式 Flash 如何竞争的问题，另一个问题就是SVG的本地运行环境的下厂家支持程度。下面的例子是一个简单的 SVG 文件的例子。SVG 文件必须使用 .svg 后缀来保存：<?xml version=”1.0” standalone=”no”?>
+<!DOCTYPE svg PUBLIC “-//W3C//DTD SVG 1.1//EN”“http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+
+
+
+查看例子（仅用于支持 SVG 的浏览器）（如需查看 SVG 源代码，请打开此例，然后在窗口中右击。选择“查看源代码”。）代码解释：第一行包含了 XML 声明。请注意 standalone 属性！该属性规定此 SVG 文件是否是“独立的”，或含有对外部文件的引用。standalone=”no” 意味着 SVG 文档会引用一个外部文件 - 在这里，是 DTD 文件。第二和第三行引用了这个外部的 SVG DTD。该 DTD 位于 “http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd”。该 DTD 位于 W3C，含有所有允许的 SVG 元素。SVG 代码以  元素开始，包括开启标签  和关闭标签  。这是根元素。width 和 height 属性可设置此 SVG 文档的宽度和高度。version 属性可定义所使用的 SVG 版本，xmlns 属性可定义 SVG 命名空间。SVG 的  用来创建一个圆。cx 和 cy 属性定义圆中心的 x 和 y 坐标。如果忽略这两个属性，那么圆点会被设置为 (0, 0)。r 属性定义圆的半径。stroke 和 stroke-width 属性控制如何显示形状的轮廓。我们把圆的轮廓设置为 2px 宽，黑边框。fill 属性设置形状内的颜色。我们把填充颜色设置为红色。关闭标签的作用是关闭 SVG 元素和文档本身。
+</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字体排版"><span class="nav-number">7.</span> <span class="nav-text">字体排版</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#调整tab的宽度"><span class="nav-number">7.1.</span> <span class="nav-text">调整tab的宽度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连字"><span class="nav-number">7.2.</span> <span class="nav-text">连字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#华丽的-amp-符号"><span class="nav-number">7.3.</span> <span class="nav-text">华丽的&符号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义下划线"><span class="nav-number">7.4.</span> <span class="nav-text">自定义下划线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空心字效果："><span class="nav-number">7.5.</span> <span class="nav-text">空心字效果：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文字发光效果："><span class="nav-number">7.6.</span> <span class="nav-text">文字发光效果：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">7.7.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文字凸显效果："><span class="nav-number">7.8.</span> <span class="nav-text">文字凸显效果：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用户体验"><span class="nav-number">8.</span> <span class="nav-text">用户体验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#css基础"><span class="nav-number">9.</span> <span class="nav-text">css基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#元素的可见性"><span class="nav-number">9.1.</span> <span class="nav-text">元素的可见性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#position："><span class="nav-number">9.2.</span> <span class="nav-text">position：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部分可见性"><span class="nav-number">9.3.</span> <span class="nav-text">部分可见性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#overflow制定内容超出元素大小时的操作"><span class="nav-number">9.3.1.</span> <span class="nav-text">overflow制定内容超出元素大小时的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clip-制定元素的裁剪区域"><span class="nav-number">9.3.2.</span> <span class="nav-text">clip 制定元素的裁剪区域</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SVG"><span class="nav-number">10.</span> <span class="nav-text">SVG</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王旭枫</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
