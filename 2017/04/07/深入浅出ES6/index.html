@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ES6,javascript," />
+  <meta name="keywords" content="javascript,ES6," />
 
 
 
@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="欢迎来深入浅出ES6的blog,接下里我们会给出ES6的基本语法和简单的联系 let命令    1 解决了闭包的问题，for循环的问题     2 不会变量提升，就是要先声明，在使用     3 暂时性死区，就是在块级作用域有效，在没有       let temp；之前，所有对temp的操作都是不可以的。javascript是没有块级作用域这个说法的     4 不允许重复声明     5 es">
-<meta name="keywords" content="ES6,javascript">
+<meta name="description" content="欢迎来深入浅出ES6的blog,接下里我们会给出ES6的基本语法和简单的demo let命令    1 解决了闭包的问题，for循环的问题     2 不会变量提升，就是要先声明，在使用     3 暂时性死区，就是在块级作用域有效，在没有       let temp；之前，所有对temp的操作都是不可以的。javascript是没有块级作用域这个说法的     4 不允许重复声明     5">
+<meta name="keywords" content="javascript,ES6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入浅出ES6">
 <meta property="og:url" content="https://wangxufeng8023.github.io/2017/04/07/深入浅出ES6/index.html">
 <meta property="og:site_name" content="爱演说的程序员">
-<meta property="og:description" content="欢迎来深入浅出ES6的blog,接下里我们会给出ES6的基本语法和简单的联系 let命令    1 解决了闭包的问题，for循环的问题     2 不会变量提升，就是要先声明，在使用     3 暂时性死区，就是在块级作用域有效，在没有       let temp；之前，所有对temp的操作都是不可以的。javascript是没有块级作用域这个说法的     4 不允许重复声明     5 es">
-<meta property="og:updated_time" content="2017-04-06T21:34:28.116Z">
+<meta property="og:description" content="欢迎来深入浅出ES6的blog,接下里我们会给出ES6的基本语法和简单的demo let命令    1 解决了闭包的问题，for循环的问题     2 不会变量提升，就是要先声明，在使用     3 暂时性死区，就是在块级作用域有效，在没有       let temp；之前，所有对temp的操作都是不可以的。javascript是没有块级作用域这个说法的     4 不允许重复声明     5">
+<meta property="og:updated_time" content="2017-04-09T14:05:01.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入浅出ES6">
-<meta name="twitter:description" content="欢迎来深入浅出ES6的blog,接下里我们会给出ES6的基本语法和简单的联系 let命令    1 解决了闭包的问题，for循环的问题     2 不会变量提升，就是要先声明，在使用     3 暂时性死区，就是在块级作用域有效，在没有       let temp；之前，所有对temp的操作都是不可以的。javascript是没有块级作用域这个说法的     4 不允许重复声明     5 es">
+<meta name="twitter:description" content="欢迎来深入浅出ES6的blog,接下里我们会给出ES6的基本语法和简单的demo let命令    1 解决了闭包的问题，for循环的问题     2 不会变量提升，就是要先声明，在使用     3 暂时性死区，就是在块级作用域有效，在没有       let temp；之前，所有对temp的操作都是不可以的。javascript是没有块级作用域这个说法的     4 不允许重复声明     5">
 
 
 
@@ -404,7 +404,7 @@
       
 
       
-        <p>欢迎来深入浅出ES6的blog,接下里我们会给出ES6的基本语法和简单的联系</p>
+        <p>欢迎来深入浅出ES6的blog,接下里我们会给出ES6的基本语法和简单的demo</p>
 <h2 id="let命令"><a href="#let命令" class="headerlink" title="let命令"></a>let命令</h2><pre><code>    1 解决了闭包的问题，for循环的问题
     2 不会变量提升，就是要先声明，在使用
     3 暂时性死区，就是在块级作用域有效，在没有
@@ -421,10 +421,64 @@
     3也不能提升，存在暂时性死区。
     4不可重复声明
     5.const声明一个只读的常量，一旦声明，敞亮的值就不能改变。const pi = 3014.
-    6.const 本质就是，当基本数值类型字符创，boolean ，数值，const  a=，a是不可以改变的，但是数组和对象是可以变得。
+    6.const 本质就是，当基本数值类型字符创，boolean ，数值，
+    const  a=2，a是不可以改变的，但是数组和对象是可以变得。
 
 总结let const clas生命的全局变量不属于顶层对象的的属性，而es5中顶层对象和全局属性是一个概念。
+## 变量的解构赋值
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span>[a，b，c]=[1,2,3];</div><div class="line"><span class="built_in">let</span> [x,...tail] = [1,2,3,4]  tail=[2,3,4];</div><div class="line"><span class="built_in">let</span>[a,[b],c] = [1,[1,3],4]</div><div class="line"><span class="built_in">let</span> [foo = <span class="literal">true</span>] = [];默认值为<span class="literal">true</span></div><div class="line"><span class="built_in">let</span> &#123;br,foo&#125; = &#123;foo:<span class="string">"aaa"</span>,br:<span class="string">"bbbb"</span>&#125;;对象的解构赋值</div><div class="line"><span class="built_in">let</span> &#123;first：f,last:1&#125; = &#123;first:<span class="string">"hello"</span>,last:<span class="string">"world"</span>&#125;//f为hello，l为wor	ld，带有“：”这中形式，后面的是变量，前面是要被赋值的参数；</div><div class="line"><span class="built_in">let</span> [a,b,c,d,e] = <span class="string">"hello"</span>;</div><div class="line"><span class="built_in">let</span> &#123;length:len&#125; = <span class="string">"hello"</span>  len输出为5 lenght为属性hello的长度</div><div class="line"><span class="keyword">function</span> move(&#123;x=0,y=0&#125; = &#123;&#125;)&#123; <span class="built_in">return</span> [x ,y]&#125;</div><div class="line">move(&#123;x:3,y:8&#125;)</div><div class="line">   [1,2,3,4,5].filter(x=&gt;x%2!=0); filter 是过滤的</div><div class="line">   [[1, 2], [3, 4]].map(([a, b]) =&gt; a + b); </div><div class="line">   [].concat(...array) //数组扁平化</div></pre></td></tr></table></figure>
+</code></pre><p>//map是改变数组中的每个元素按照一定的规则</p>
+<pre><code>用途总结：let x = 1;let y = 2; [x,y] = [y,x];
+从函数返回多个值；函数参数的定义，包括函数的默认值；
+for (let [key,value] of map)
+for (let [key] of map)
+for（let [x,y] of map);提取json格式的数据；
+</code></pre><p>function move({x = 0, y = 0} = {}) {<br>  return [x, y];<br>}</p>
+<p>move({x: 3, y: 8}); // [3, 8]<br>move({x: 3}); // [3, 0]<br>move({}); // [0, 0]<br>move(); // [0, 0]<br>上面代码中，函数move的参数是一个对象，通过对这个对象进行解构，得到变量x和y的值。如果解构失败，x和y等于默认值。</p>
+<p>注意，下面的写法会得到不一样的结果。</p>
+<p>function move({x, y} = { x: 0, y: 0 }) {<br>  return [x, y];<br>}</p>
+<p>move({x: 3, y: 8}); // [3, 8]<br>move({x: 3}); // [3, undefined]<br>move({}); // [undefined, undefined]<br>move(); // [0, 0]</p>
+<h2 id="字符串的扩展"><a href="#字符串的扩展" class="headerlink" title="字符串的扩展"></a>字符串的扩展</h2><pre><code>ES5只能解析\u0000-\uffff,超过后就不能解析 ES6\u{41}{42}{43}就可解析了
+提供了codepointat（）解析汉字的功能。一个字符有两个字节还是四个字节组成String.fromCodePonit（）解析超过\uffff的字符。
+for（let codeponi of “fooos”）字符串的遍历。
+includes（‘a’）是否找到了a，返回布尔值，startswith（）endswith（）；
+‘x’.repeat(3) xxx;
+x.padstart(5,&apos;ab&apos;) ababx,x.padend(5,&apos;ab&apos;)xabab;
+新增加的模板方法：
+ $(&apos;#result&apos;).append(`
+</code></pre><p>  There are <b>${basket.count}</b> items<br>   in your basket, <em>${basket.onSale}</em><br>  are on sale!<br>`);</p>
+<h2 id="正则-RegExp"><a href="#正则-RegExp" class="headerlink" title="正则(RegExp)"></a>正则(RegExp)</h2><pre><code> /u unicod
+ /y 和/g差不多，但是/y是从第一次匹配后的第一个，如何有就是有，没有就是没有，
+ /g是第一匹配的后面开始。
+sticky属性用来判断是否设置了/y修饰符
+ flag属性会返回正则表达试的所有修饰符。
+ let pattern =/^\d$/====let pattern=new RegExp(&quot;^\d$&quot;);
+ 1. &quot;javascript&quot;.search(/script/i);返回第一个与之匹配的子串的起始位置
+ 2.text.replace(/javascript/gi,&quot;JAVASCRIPT&quot;);替换
+ 3.&quot;1 pu 2 equsl 3&quot;.math(/\d/g);返回匹配的一个数组[1,2,3]
+ 4.&quot;1, 2,    3, 4&quot;.split(/\s*,\s*/);允许有空格
+</code></pre><h2 id="数值的改进"><a href="#数值的改进" class="headerlink" title="数值的改进"></a>数值的改进</h2><p> 数值的改进：<br>二进制0b 把机制0o来表示，Number（’0b1111’）转为十进制<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">Number.isFinite() Number.isNaN()两个方法，</div><div class="line">Number.parseInt(),Number.parseFloat()</div><div class="line">Number.isInteger()判断来是否为整数</div><div class="line">Math对象的扩展</div><div class="line">math.trunc()返回一个小数的整数</div><div class="line">math.sign()判断是整数（+1）负数（-1） 零（0）</div><div class="line">math.cbrt()一个数的立方根</div><div class="line">math.imul()//方法返回两个数以32位带符号整数形式相乘的结果，返回的也是一个32位的带符号整数。</div><div class="line"></div><div class="line">Math.imul(2, 4)   // 8</div><div class="line">Math.imul(-1, 8)  // -8</div><div class="line">Math.imul(-2, -2) // 4</div><div class="line">math.fround()</div><div class="line">math.hypot()//返回参数的平方和的平方跟</div><div class="line"></div><div class="line"></div><div class="line">Math.hypot(3, 4);        // 5</div><div class="line">Math.hypot(3, 4, 5);    // 7.0710678118654755 </div><div class="line">math.expm1()</div><div class="line">math.log10()</div><div class="line">math.log2()</div><div class="line">指数运算，2**4=16</div><div class="line">math.pow（99,99）99**99</div></pre></td></tr></table></figure></p>
+<h2 id="数组的扩展"><a href="#数组的扩展" class="headerlink" title="数组的扩展"></a>数组的扩展</h2><h3 id="Array-from-将对象转化为数组"><a href="#Array-from-将对象转化为数组" class="headerlink" title="Array.from()将对象转化为数组"></a>Array.from()将对象转化为数组</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> array=&#123;‘0’：‘a’，‘1’：‘b’，‘2’：‘c’&#125;</div><div class="line"><span class="built_in">let</span> arr2=Array.from(array);[a,b,c]</div><div class="line"><span class="built_in">let</span> ps=document.querySelectorAll(<span class="string">'p'</span>)</div><div class="line">Array.from(ps).forEach(<span class="keyword">function</span>(p)&#123;console.lop(p)&#125;)</div><div class="line">...运算符也可以做到[...document.querySelectorAll(<span class="string">'div'</span>)]</div></pre></td></tr></table></figure>
+<h3 id="箭头函数的定义"><a href="#箭头函数的定义" class="headerlink" title="箭头函数的定义"></a>箭头函数的定义</h3><pre><code class="bash">（x,y）=&gt;{x+y} 比如（2,3）//5
+var f=v=&gt;v;var f=<span class="keyword">function</span>(v){<span class="built_in">return</span> v;}
+var f=()=&gt;5;没有参数
+Array.from(arraylist,x=&gt;x*x)//第二个参数，先对数组进行处理平方
+array.map(<span class="function"><span class="title">function</span></span>(){})//对array中的元素进行map里面的函数进行转化。
+Array.from({length:2},()=&gt;<span class="string">'jack'</span>)[jack,jack]
+Array.from(<span class="string">'wangxufeng'</span>).length;返回wangxufeng字符串的长度；
+Array.of//经一组值，转换为数组
+Array.of(3,5,7,9,8)//[3,5,7,9,8]
+[1,2,5,8].find((n)=&gt;n&lt;0)//找出符合条件的数组
+[].find(<span class="keyword">function</span>(value,index,arr){<span class="built_in">return</span> value&gt;9})//三个参数value index arr
+[].findindex(<span class="keyword">function</span>(value,index,arr)(<span class="built_in">return</span> value&gt;9))//位置的index
+fill（）
+entries(),keys(),values()//用于遍历数组，他们都返回了一个iterator
+<span class="keyword">for</span>(<span class="built_in">let</span> index of [<span class="string">'a'</span>,<span class="string">'b'</span>].keys()){console.log(index)}
+<span class="keyword">for</span>(<span class="built_in">let</span> elem of [<span class="string">'a'</span>,<span class="string">'b'</span>].values()){console.log(value)}
+<span class="keyword">for</span>(<span class="built_in">let</span> [index,elem] of [<span class="string">'a'</span>,<span class="string">'b'</span>].entries()){}
+<span class="keyword">in</span> 操作符 a <span class="keyword">in</span> obeject（或是数组）判断a是否在后面
 </code></pre>
+
       
     </div>
 
@@ -453,9 +507,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ES6/" rel="tag"># ES6</a>
-          
             <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/ES6/" rel="tag"># ES6</a>
           
         </div>
       
@@ -477,10 +531,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/05/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -554,7 +604,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -610,7 +660,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#let命令"><span class="nav-number">1.</span> <span class="nav-text">let命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const"><span class="nav-number">2.</span> <span class="nav-text">const</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#let命令"><span class="nav-number">1.</span> <span class="nav-text">let命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const"><span class="nav-number">2.</span> <span class="nav-text">const</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串的扩展"><span class="nav-number">3.</span> <span class="nav-text">字符串的扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则-RegExp"><span class="nav-number">4.</span> <span class="nav-text">正则(RegExp)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值的改进"><span class="nav-number">5.</span> <span class="nav-text">数值的改进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组的扩展"><span class="nav-number">6.</span> <span class="nav-text">数组的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-from-将对象转化为数组"><span class="nav-number">6.1.</span> <span class="nav-text">Array.from()将对象转化为数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#箭头函数的定义"><span class="nav-number">6.2.</span> <span class="nav-text">箭头函数的定义</span></a></li></ol></li></ol></div>
             
 
           </div>
