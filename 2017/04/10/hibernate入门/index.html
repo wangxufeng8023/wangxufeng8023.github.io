@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="Hibernate 是一个面向java环境的对象/关系数（orm）据库映射工具mysql数据库&amp;lt;—–&amp;gt;hibernate&amp;lt;—&amp;gt;javaBean（等模型）  现在我们不需使用jdbc的语句操作数据库，直接使用javaBean来间接的操作数据库 工作流程导入包d:hibernate-package下面了### 建立hibernate.cfg.xml 在src下面">
+<meta name="description" content="Hibernate 是一个面向java环境的对象/关系数（orm）据库映射工具mysql数据库&amp;lt;—–&amp;gt;hibernate&amp;lt;—&amp;gt;javaBean（等模型）  现在我们不需使用jdbc的语句操作数据库，直接使用javaBean来间接的操作数据库 工作流程导入包d:hibernate-package下面了### 建立hibernate.cfg.xml 在src下面 1234567">
 <meta name="keywords" content="javaWeb">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hibernate入门">
 <meta property="og:url" content="https://wangxufeng8023.github.io/2017/04/10/hibernate入门/index.html">
 <meta property="og:site_name" content="爱演说的程序员">
-<meta property="og:description" content="Hibernate 是一个面向java环境的对象/关系数（orm）据库映射工具mysql数据库&amp;lt;—–&amp;gt;hibernate&amp;lt;—&amp;gt;javaBean（等模型）  现在我们不需使用jdbc的语句操作数据库，直接使用javaBean来间接的操作数据库 工作流程导入包d:hibernate-package下面了### 建立hibernate.cfg.xml 在src下面">
-<meta property="og:updated_time" content="2017-04-10T06:48:13.693Z">
+<meta property="og:description" content="Hibernate 是一个面向java环境的对象/关系数（orm）据库映射工具mysql数据库&amp;lt;—–&amp;gt;hibernate&amp;lt;—&amp;gt;javaBean（等模型）  现在我们不需使用jdbc的语句操作数据库，直接使用javaBean来间接的操作数据库 工作流程导入包d:hibernate-package下面了### 建立hibernate.cfg.xml 在src下面 1234567">
+<meta property="og:updated_time" content="2017-04-10T06:53:32.125Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hibernate入门">
-<meta name="twitter:description" content="Hibernate 是一个面向java环境的对象/关系数（orm）据库映射工具mysql数据库&amp;lt;—–&amp;gt;hibernate&amp;lt;—&amp;gt;javaBean（等模型）  现在我们不需使用jdbc的语句操作数据库，直接使用javaBean来间接的操作数据库 工作流程导入包d:hibernate-package下面了### 建立hibernate.cfg.xml 在src下面">
+<meta name="twitter:description" content="Hibernate 是一个面向java环境的对象/关系数（orm）据库映射工具mysql数据库&amp;lt;—–&amp;gt;hibernate&amp;lt;—&amp;gt;javaBean（等模型）  现在我们不需使用jdbc的语句操作数据库，直接使用javaBean来间接的操作数据库 工作流程导入包d:hibernate-package下面了### 建立hibernate.cfg.xml 在src下面 1234567">
 
 
 
@@ -406,190 +406,9 @@
       
         <p>Hibernate 是一个面向java环境的对象/关系数（orm）据库映射工具<br>mysql数据库&lt;—–&gt;hibernate&lt;—&gt;javaBean（等模型）<br>  现在我们不需使用jdbc的语句操作数据库，直接使用javaBean来间接的操作数据库</p>
 <h2 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h2><h3 id="导入包d-hibernate-package下面了"><a href="#导入包d-hibernate-package下面了" class="headerlink" title="导入包d:hibernate-package下面了"></a>导入包d:hibernate-package下面了</h3><pre><code>### 建立hibernate.cfg.xml 在src下面
-                          &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-                    &lt;!DOCTYPE hibernate-configuration PUBLIC
-                        &quot;-//Hibernate/Hibernate Configuration DTD 3.0//EN&quot;
-                        &quot;http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd&quot;&gt;
-
-                    &lt;hibernate-configuration&gt;
-                    &lt;session-factory&gt;
-                        &lt;!-- 必须去配置的属性 --&gt;
-                        &lt;!-- 配置数据库连接的基本信息: --&gt;
-                        &lt;property name=&quot;hibernate.connection.driver_class&quot;&gt;
-                            com.mysql.jdbc.Driver
-                        &lt;/property&gt;
-                        &lt;property name=&quot;hibernate.connection.url&quot;&gt;
-                            jdbc:mysql:///hibernates
-                        &lt;/property&gt;
-                        &lt;property name=&quot;hibernate.connection.username&quot;&gt;root&lt;/property&gt;
-                        &lt;property name=&quot;hibernate.connection.password&quot;&gt;wangxufeng&lt;/property&gt;
-                        &lt;!-- Hibernate的方言 --&gt;
-                        &lt;!-- 生成底层SQL不同的 --&gt;
-                        &lt;property name=&quot;hibernate.dialect&quot;&gt;
-                            org.hibernate.dialect.MySQLDialect
-                        &lt;/property&gt;
-
-                        &lt;!-- 可选的属性 --&gt;
-                        &lt;!-- 显示SQL --&gt;
-                        &lt;property name=&quot;hibernate.show_sql&quot;&gt;true&lt;/property&gt;
-                        &lt;!-- 格式化SQL --&gt;
-                        &lt;property name=&quot;hibernate.format_sql&quot;&gt;true&lt;/property&gt;
-
-                        &lt;property name=&quot;hibernate.connection.autocommit&quot;&gt;false&lt;/property&gt;
-                        &lt;!-- hbm:映射 to DDL: create drop alter --&gt;
-                        &lt;property name=&quot;hibernate.hbm2ddl.auto&quot;&gt;update&lt;/property&gt;
-
-                        &lt;!-- C3P0连接池设定--&gt;
-                        &lt;!-- 使用c3po连接池  配置连接池提供的供应商--&gt;
-                        &lt;property name=&quot;connection.provider_class&quot;&gt;
-                            org.hibernate.connection.C3P0ConnectionProvider
-                        &lt;/property&gt;
-
-                        &lt;!--在连接池中可用的数据库连接的最少数目 --&gt;
-                        &lt;property name=&quot;c3p0.min_size&quot;&gt;5&lt;/property&gt;
-                        &lt;!--在连接池中所有数据库连接的最大数目  --&gt;
-                        &lt;property name=&quot;c3p0.max_size&quot;&gt;20&lt;/property&gt;
-                        &lt;!--设定数据库连接的过期时间,以秒为单位,
-                            如果连接池中的某个数据库连接处于空闲状态的时间超过了timeout时间,就会从连接池中清除 --&gt;
-                        &lt;property name=&quot;c3p0.timeout&quot;&gt;120&lt;/property&gt;
-                        &lt;!--每3000秒检查所有连接池中的空闲连接 以秒为单位--&gt;
-                        &lt;property name=&quot;c3p0.idle_test_period&quot;&gt;3000&lt;/property&gt;
-
-                        &lt;!-- 通知Hibernate加载那些映射文件 --&gt;
-                    &lt;!--     &lt;mapping resource=&quot;cn/itcast/hibernate3/demo1/Book.hbm.xml&quot; /&gt;
-                        &lt;mapping resource=&quot;cn/itcast/hibernate3/demo2/Customer.hbm.xml&quot; /&gt;
-                        &lt;mapping resource=&quot;cn/itcast/hibernate3/demo2/Order.hbm.xml&quot; /&gt; --&gt;
-
-                        &lt;mapping resource=&quot;cn/test/hibernate/Customer.hbm.xml&quot; /&gt;
-
-
-                        &lt;mapping resource=&quot;cn/test/hibernate/Order.hbm.xml&quot; /&gt;
-                     &lt;mapping resource=&quot;cn/test/hibernates/Course.hbm.xml&quot; /&gt;
-                     &lt;mapping resource=&quot;cn/test/hibernates/Student.hbm.xml&quot; /&gt;
-                     &lt;/session-factory&gt;
-                     &lt;/hibernate-configuration&gt;
-### javaBean.hbm.xml在src下面
-
-  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-</code></pre><p>&lt;!DOCTYPE hibernate-mapping PUBLIC<br>    “-//Hibernate/Hibernate Mapping DTD 3.0//EN”<br>    “<a href="http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd&quot;&gt;" target="_blank" rel="external">http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd&quot;&gt;</a></p>
-<p><hibernate-mapping><br>    <class name="cn.itcast.hibernate3.demo3.Student" table="student"><br>        <!-- 配置唯一标识 --><br>        <id name="sid" column="sid"><br>            <generator class="native"><br>        </generator></id><br>        <!-- 配置普通属性 --><br>        <property name="sname" column="sname" length="20"></property></class></hibernate-mapping></p>
-<pre><code>    &lt;!-- 配置关联映射 --&gt;
-    &lt;!-- &lt;set&gt;标签 name:对应学生中的课程集合的名称   table:中间表名称. --&gt;
-    &lt;set name=&quot;courses&quot; table=&quot;stu_cour&quot; cascade=&quot;save-update,delete&quot;&gt;
-        &lt;!-- &lt;key&gt;中column写 当前类在中间表的外键.--&gt;
-        &lt;key column=&quot;sno&quot;&gt;&lt;/key&gt;
-        &lt;!-- &lt;many-to-many&gt;中class:另一方类的全路径. column:另一方在中间表中外键名称--&gt;
-        &lt;many-to-many class=&quot;cn.itcast.hibernate3.demo3.Course&quot; column=&quot;cno&quot;/&gt;
-    &lt;/set&gt;
-&lt;/class&gt;
-</code></pre><p></p>
-<pre><code>## 建立javaBean
-## 建立处理hibernate的类：
-  Configuration cfg = new Configuration().configure();
-    // 读取hibernate.cfg.xml中的配置
-
-    // 获取SessionFactory
-    SessionFactory sf = cfg.buildSessionFactory();
-    // 获取Session
-    Session session = sf.openSession();
-    // 开启事务
-   Transaction tx=  session.beginTransaction();
-    /*保存
-              根据主键id进行查询，
-   Teacher t = (Teacher) session.get(Teacher.class, 1);
-   System.out.println(t);
-
-
-          使用session.load()查询
-  Teacher t1 = (Teacher) session.load(Teacher.class,1);
-   System.out.println(t1);
-   Teacher t = new Teacher();
-  t.setAge(26);
-   t.setName(&quot;黎明&quot;);
-  session.save(t);*/
-   //修改，方式1，不好
-   /*Teacher t = new     Teacher();
-   t.setId(2);
-   t.setName(&quot;詹姆斯&quot;);
-   session.update(t);//和查询的seeion.save()不一样了
-
-   方式2修改，我们采用这种方式
-   Teacher t = (Teacher) session.get(Teacher.class, 1);
-   t.setName(&quot;科比&quot;);
-   session.update(t);
-
-           查询所有的方式(hql--hibernate query language)
-              科比30
-   2詹姆斯0
-   3黎明26
-   Query query = session.createQuery(&quot;from Teacher&quot;);
-   List&lt;Teacher&gt; list = query.list();
-   for (Teacher t:list)
-   {
-       System.out.println(t);
-
-   }
-   安位置查询比30
-   Query query = session.createQuery(&quot;from Teacher where name = ?&quot;);
-   query.setParameter(0, &quot;科比&quot;);
-   List&lt;Teacher&gt; list = query.list();
-   for (Teacher t:list)
-   {
-       System.out.println(t);
-
-   }
-  带参数的查询 2詹姆斯0
-   Query query = session.createQuery(&quot;from Teacher where name = :a&quot;);
-   query.setParameter(&quot;a&quot;, &quot;詹姆斯&quot;);
-   List&lt;Teacher&gt; list = query.list();
-   for (Teacher t:list)
-   {
-       System.out.println(t);
-
-   }
-   条件查询：(    QBC)
-Criteria criteria = session.createCriteria(Teacher.class);
-List&lt;Teacher&gt; list = criteria.list();
-方式2     
-Criteria criteria = session.createCriteria(Teacher.class);
-criteria.add(Restrictions.eq(&quot;name&quot;,&quot;詹姆斯&quot;));       
-
-List&lt;Teacher&gt; list = criteria.list();
-for (Teacher t:list)
-{
-    System.out.println(t);
-
-}
-
-
-   删除操作
-   方式1
-    Teacher t = (Teacher) session.get(Teacher.class,1);
-    session.delete(t);
-方式2
-Teacher t = new Teacher();
-t.setId(1);
-session.delete(t);
- */  
-</code></pre><p>   SQLQuery query = session.createSQLQuery(“select * from user “);<br>       List<object[]> list = query.list();<br>       for (Object[] obj:list){<br>           System.out.println(Arrays.toString(obj));</object[]></p>
-<pre><code>   }
-
-
-
-
-
-
-
-
-
-
-   //tx.
-   //tx.rollback()
-   tx.commit();
-   session.close();
-
-}
-</code></pre><p>}</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">      &lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</div><div class="line">&lt;!DOCTYPE hibernate-configuration PUBLIC</div><div class="line">	<span class="string">"-//Hibernate/Hibernate Configuration DTD 3.0//EN"</span></div><div class="line">	<span class="string">"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd"</span>&gt;</div><div class="line"></div><div class="line">&lt;hibernate-configuration&gt;</div><div class="line">&lt;session-factory&gt;</div><div class="line">	&lt;!-- 必须去配置的属性 --&gt;</div><div class="line">	&lt;!-- 配置数据库连接的基本信息: --&gt;</div><div class="line">	&lt;property name=<span class="string">"hibernate.connection.driver_class"</span>&gt;</div><div class="line">		com.mysql.jdbc.Driver</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property name=<span class="string">"hibernate.connection.url"</span>&gt;</div><div class="line">		jdbc:mysql:///hibernates</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property name=<span class="string">"hibernate.connection.username"</span>&gt;root&lt;/property&gt;</div><div class="line">	&lt;property name=<span class="string">"hibernate.connection.password"</span>&gt;wangxufeng&lt;/property&gt;</div><div class="line">	&lt;!-- Hibernate的方言 --&gt;</div><div class="line">	&lt;!-- 生成底层SQL不同的 --&gt;</div><div class="line">	&lt;property name=<span class="string">"hibernate.dialect"</span>&gt;</div><div class="line">		org.hibernate.dialect.MySQLDialect</div><div class="line">	&lt;/property&gt;</div><div class="line"></div><div class="line">	&lt;!-- 可选的属性 --&gt;</div><div class="line">	&lt;!-- 显示SQL --&gt;</div><div class="line">	&lt;property name=<span class="string">"hibernate.show_sql"</span>&gt;<span class="literal">true</span>&lt;/property&gt;</div><div class="line">	&lt;!-- 格式化SQL --&gt;</div><div class="line">	&lt;property name=<span class="string">"hibernate.format_sql"</span>&gt;<span class="literal">true</span>&lt;/property&gt;</div><div class="line"></div><div class="line">	&lt;property name=<span class="string">"hibernate.connection.autocommit"</span>&gt;<span class="literal">false</span>&lt;/property&gt;</div><div class="line">	&lt;!-- hbm:映射 to DDL: create drop alter --&gt;</div><div class="line">	&lt;property name=<span class="string">"hibernate.hbm2ddl.auto"</span>&gt;update&lt;/property&gt;</div><div class="line"></div><div class="line">	&lt;!-- C3P0连接池设定--&gt;</div><div class="line">	&lt;!-- 使用c3po连接池  配置连接池提供的供应商--&gt;</div><div class="line">	&lt;property name=<span class="string">"connection.provider_class"</span>&gt;</div><div class="line">		org.hibernate.connection.C3P0ConnectionProvider</div><div class="line">	&lt;/property&gt;</div><div class="line"></div><div class="line">	&lt;!--在连接池中可用的数据库连接的最少数目 --&gt;</div><div class="line">	&lt;property name=<span class="string">"c3p0.min_size"</span>&gt;5&lt;/property&gt;</div><div class="line">	&lt;!--在连接池中所有数据库连接的最大数目  --&gt;</div><div class="line">	&lt;property name=<span class="string">"c3p0.max_size"</span>&gt;20&lt;/property&gt;</div><div class="line">	&lt;!--设定数据库连接的过期时间,以秒为单位,</div><div class="line">		如果连接池中的某个数据库连接处于空闲状态的时间超过了timeout时间,就会从连接池中清除 --&gt;</div><div class="line">	&lt;property name=<span class="string">"c3p0.timeout"</span>&gt;120&lt;/property&gt;</div><div class="line">	&lt;!--每3000秒检查所有连接池中的空闲连接 以秒为单位--&gt;</div><div class="line">	&lt;property name=<span class="string">"c3p0.idle_test_period"</span>&gt;3000&lt;/property&gt;</div><div class="line"></div><div class="line">	&lt;!-- 通知Hibernate加载那些映射文件 --&gt;</div><div class="line">&lt;!-- 	&lt;mapping resource=<span class="string">"cn/itcast/hibernate3/demo1/Book.hbm.xml"</span> /&gt;</div><div class="line">	&lt;mapping resource=<span class="string">"cn/itcast/hibernate3/demo2/Customer.hbm.xml"</span> /&gt;</div><div class="line">	&lt;mapping resource=<span class="string">"cn/itcast/hibernate3/demo2/Order.hbm.xml"</span> /&gt; --&gt;</div><div class="line">	</div><div class="line">	&lt;mapping resource=<span class="string">"cn/test/hibernate/Customer.hbm.xml"</span> /&gt;</div><div class="line">	</div><div class="line">	</div><div class="line">	&lt;mapping resource=<span class="string">"cn/test/hibernate/Order.hbm.xml"</span> /&gt;</div><div class="line"> &lt;mapping resource=<span class="string">"cn/test/hibernates/Course.hbm.xml"</span> /&gt;</div><div class="line"> &lt;mapping resource=<span class="string">"cn/test/hibernates/Student.hbm.xml"</span> /&gt;</div><div class="line"> &lt;/session-factory&gt;</div><div class="line"> &lt;/hibernate-configuration&gt;</div></pre></td></tr></table></figure>
+</code></pre><h3 id="建立文件"><a href="#建立文件" class="headerlink" title="建立文件"></a>建立文件</h3><p>javaBean.hbm.xml在src下面<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">	  &lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</div><div class="line">&lt;!DOCTYPE hibernate-mapping PUBLIC </div><div class="line">    <span class="string">"-//Hibernate/Hibernate Mapping DTD 3.0//EN"</span></div><div class="line">    <span class="string">"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"</span>&gt;</div><div class="line">&lt;hibernate-mapping&gt;</div><div class="line">	&lt;class name=<span class="string">"cn.itcast.hibernate3.demo3.Student"</span> table=<span class="string">"student"</span>&gt;</div><div class="line">		&lt;!-- 配置唯一标识 --&gt;</div><div class="line">		&lt;id name=<span class="string">"sid"</span> column=<span class="string">"sid"</span>&gt;</div><div class="line">			&lt;generator class=<span class="string">"native"</span>/&gt;</div><div class="line">		&lt;/id&gt;</div><div class="line">		&lt;!-- 配置普通属性 --&gt;</div><div class="line">		&lt;property name=<span class="string">"sname"</span> column=<span class="string">"sname"</span> length=<span class="string">"20"</span>/&gt;</div><div class="line">		</div><div class="line">		&lt;!-- 配置关联映射 --&gt;</div><div class="line">		&lt;!-- &lt;<span class="built_in">set</span>&gt;标签 name:对应学生中的课程集合的名称   table:中间表名称. --&gt;</div><div class="line">		&lt;<span class="built_in">set</span> name=<span class="string">"courses"</span> table=<span class="string">"stu_cour"</span> cascade=<span class="string">"save-update,delete"</span>&gt;</div><div class="line">			&lt;!-- &lt;key&gt;中column写 当前类在中间表的外键.--&gt;</div><div class="line">			&lt;key column=<span class="string">"sno"</span>&gt;&lt;/key&gt;</div><div class="line">			&lt;!-- &lt;many-to-many&gt;中class:另一方类的全路径. column:另一方在中间表中外键名称--&gt;</div><div class="line">			&lt;many-to-many class=<span class="string">"cn.itcast.hibernate3.demo3.Course"</span> column=<span class="string">"cno"</span>/&gt;</div><div class="line">		&lt;/<span class="built_in">set</span>&gt;</div><div class="line">	&lt;/class&gt;</div><div class="line">&lt;/hibernate-mapping&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="建立javaBean"><a href="#建立javaBean" class="headerlink" title="建立javaBean"></a>建立javaBean</h2><h2 id="建立处理hibernate的类："><a href="#建立处理hibernate的类：" class="headerlink" title="建立处理hibernate的类："></a>建立处理hibernate的类：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div></pre></td><td class="code"><pre><div class="line">	  Configuration cfg = new Configuration().configure();</div><div class="line">        // 读取hibernate.cfg.xml中的配置</div><div class="line">        </div><div class="line">        // 获取SessionFactory</div><div class="line">        SessionFactory sf = cfg.buildSessionFactory();</div><div class="line">        // 获取Session</div><div class="line">        Session session = sf.openSession();</div><div class="line">        // 开启事务</div><div class="line">       Transaction tx=  session.beginTransaction();</div><div class="line">        /*保存</div><div class="line">                  根据主键id进行查询，</div><div class="line">       Teacher t = (Teacher) session.get(Teacher.class, 1);</div><div class="line">       System.out.println(t);</div><div class="line">       </div><div class="line">       </div><div class="line">              使用session.load()查询</div><div class="line">      Teacher t1 = (Teacher) session.load(Teacher.class,1);</div><div class="line">       System.out.println(t1);</div><div class="line">       Teacher t = new Teacher();</div><div class="line">      t.setAge(26);</div><div class="line">       t.setName(<span class="string">"黎明"</span>);</div><div class="line">      session.save(t);*/</div><div class="line">       //修改，方式1，不好</div><div class="line">       /*Teacher t = new 	Teacher();</div><div class="line">       t.setId(2);</div><div class="line">       t.setName(<span class="string">"詹姆斯"</span>);</div><div class="line">       session.update(t);//和查询的seeion.save()不一样了</div><div class="line">       </div><div class="line">       方式2修改，我们采用这种方式</div><div class="line">       Teacher t = (Teacher) session.get(Teacher.class, 1);</div><div class="line">       t.setName(<span class="string">"科比"</span>);</div><div class="line">       session.update(t);</div><div class="line">       </div><div class="line">               查询所有的方式(hql--hibernate query language)</div><div class="line">                  科比30</div><div class="line">       2詹姆斯0</div><div class="line">       3黎明26</div><div class="line">       Query query = session.createQuery(<span class="string">"from Teacher"</span>);</div><div class="line">       List&lt;Teacher&gt; list = query.list();</div><div class="line">       <span class="keyword">for</span> (Teacher t:list)</div><div class="line">       &#123;</div><div class="line">    	   System.out.println(t);</div><div class="line">    	   </div><div class="line">       &#125;</div><div class="line">       安位置查询比30</div><div class="line">       Query query = session.createQuery(<span class="string">"from Teacher where name = ?"</span>);</div><div class="line">       query.setParameter(0, <span class="string">"科比"</span>);</div><div class="line">       List&lt;Teacher&gt; list = query.list();</div><div class="line">       <span class="keyword">for</span> (Teacher t:list)</div><div class="line">       &#123;</div><div class="line">    	   System.out.println(t);</div><div class="line">    	   </div><div class="line">       &#125;</div><div class="line">      带参数的查询 2詹姆斯0</div><div class="line">       Query query = session.createQuery(<span class="string">"from Teacher where name = :a"</span>);</div><div class="line">       query.setParameter(<span class="string">"a"</span>, <span class="string">"詹姆斯"</span>);</div><div class="line">       List&lt;Teacher&gt; list = query.list();</div><div class="line">       <span class="keyword">for</span> (Teacher t:list)</div><div class="line">       &#123;</div><div class="line">    	   System.out.println(t);</div><div class="line">    	   </div><div class="line">       &#125;</div><div class="line">       条件查询：(	QBC)</div><div class="line">    Criteria criteria = session.createCriteria(Teacher.class);</div><div class="line">    List&lt;Teacher&gt; list = criteria.list();</div><div class="line">    方式2     </div><div class="line">    Criteria criteria = session.createCriteria(Teacher.class);</div><div class="line">    criteria.add(Restrictions.eq(<span class="string">"name"</span>,<span class="string">"詹姆斯"</span>));       </div><div class="line">       </div><div class="line">    List&lt;Teacher&gt; list = criteria.list();</div><div class="line">    <span class="keyword">for</span> (Teacher t:list)</div><div class="line">    &#123;</div><div class="line"> 	   System.out.println(t);</div><div class="line"> 	   </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">       删除操作</div><div class="line">       方式1</div><div class="line">        Teacher t = (Teacher) session.get(Teacher.class,1);</div><div class="line">        session.delete(t);</div><div class="line">    方式2</div><div class="line">    Teacher t = new Teacher();</div><div class="line">    t.setId(1);</div><div class="line">    session.delete(t);</div><div class="line">     */  </div><div class="line">   SQLQuery query = session.createSQLQuery(<span class="string">"select * from user "</span>);    </div><div class="line">       List&lt;Object[]&gt; list = query.list();</div><div class="line">       <span class="keyword">for</span> (Object[] obj:list)&#123;</div><div class="line">    	   System.out.println(Arrays.toString(obj));</div><div class="line">    	   </div><div class="line">       &#125;</div><div class="line">       </div><div class="line">       //tx.</div><div class="line">       //tx.rollback()</div><div class="line">       tx.commit();</div><div class="line">       session.close();</div><div class="line">      </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="实体之间的关系："><a href="#实体之间的关系：" class="headerlink" title="实体之间的关系："></a>实体之间的关系：</h2><h3 id="一对多："><a href="#一对多：" class="headerlink" title="一对多："></a>一对多：</h3><pre><code>在多的javabean中声明一个一的哪一方的对象
 用来代替外键
 
@@ -598,61 +417,17 @@ private Student student
 在1的哪一方，我们要配置一个集合，代表包含那些个多，学生包含那些课程
 </code></pre><h4 id="第一步"><a href="#第一步" class="headerlink" title="第一步:"></a>第一步:</h4><ul>
 <li>创建两个实体:</li>
-<li>客户实体:<br>public class Customer {<br>  private Integer cid;<br>  private String cname;<br>  // 一个客户有多个订单.<br>  private Set<order> orders = new HashSet<order>();<br>  public Integer getCid() {<pre><code>return cid;
-</code></pre>  }<br>  public void setCid(Integer cid) {<pre><code>this.cid = cid;
-</code></pre>  }<br>  public String getCname() {<pre><code>return cname;
-</code></pre>  }<br>  public void setCname(String cname) {<pre><code>this.cname = cname;
-</code></pre>  }<br>  public Set<order> getOrders() {<pre><code>return orders;
-</code></pre>  }<br>  public void setOrders(Set<order> orders) {<pre><code>this.orders = orders;
-</code></pre>  }</order></order></order></order></li>
+<li><p>客户实体:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class Customer &#123;</div><div class="line">	private Integer cid;</div><div class="line">	private String cname;</div><div class="line">	// 一个客户有多个订单.</div><div class="line">	private Set&lt;Order&gt; orders = new HashSet&lt;Order&gt;();</div><div class="line">	public Integer <span class="function"><span class="title">getCid</span></span>() &#123;</div><div class="line">		<span class="built_in">return</span> cid;</div><div class="line">	&#125;</div><div class="line">	public void <span class="built_in">set</span>Cid(Integer cid) &#123;</div><div class="line">		this.cid = cid;</div><div class="line">	&#125;</div><div class="line">	public String <span class="function"><span class="title">getCname</span></span>() &#123;</div><div class="line">		<span class="built_in">return</span> cname;</div><div class="line">	&#125;</div><div class="line">	public void <span class="built_in">set</span>Cname(String cname) &#123;</div><div class="line">		this.cname = cname;</div><div class="line">	&#125;</div><div class="line">	public Set&lt;Order&gt; <span class="function"><span class="title">getOrders</span></span>() &#123;</div><div class="line">		<span class="built_in">return</span> orders;</div><div class="line">	&#125;</div><div class="line">	public void <span class="built_in">set</span>Orders(Set&lt;Order&gt; orders) &#123;</div><div class="line">		this.orders = orders;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>订单实体:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class Order &#123;</div><div class="line">	private Integer oid;</div><div class="line">	private String addr;</div><div class="line">	// 订单属于某一个客户.放置一个客户的对象.</div><div class="line">	private Customer customer;</div><div class="line">	public Integer <span class="function"><span class="title">getOid</span></span>() &#123;</div><div class="line">		<span class="built_in">return</span> oid;</div><div class="line">	&#125;</div><div class="line">	public void <span class="built_in">set</span>Oid(Integer oid) &#123;</div><div class="line">		this.oid = oid;</div><div class="line">	&#125;</div><div class="line">	public String <span class="function"><span class="title">getAddr</span></span>() &#123;</div><div class="line">		<span class="built_in">return</span> addr;</div><div class="line">	&#125;</div><div class="line">	public void <span class="built_in">set</span>Addr(String addr) &#123;</div><div class="line">		this.addr = addr;</div><div class="line">	&#125;</div><div class="line">	public Customer <span class="function"><span class="title">getCustomer</span></span>() &#123;</div><div class="line">		<span class="built_in">return</span> customer;</div><div class="line">	&#125;</div><div class="line">	public void <span class="built_in">set</span>Customer(Customer customer) &#123;</div><div class="line">		this.customer = customer;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>}</p>
-<ul>
-<li>订单实体:<br>public class Order {<br>  private Integer oid;<br>  private String addr;<br>  // 订单属于某一个客户.放置一个客户的对象.<br>  private Customer customer;<br>  public Integer getOid() {<pre><code>return oid;
-</code></pre>  }<br>  public void setOid(Integer oid) {<pre><code>this.oid = oid;
-</code></pre>  }<br>  public String getAddr() {<pre><code>return addr;
-</code></pre>  }<br>  public void setAddr(String addr) {<pre><code>this.addr = addr;
-</code></pre>  }<br>  public Customer getCustomer() {<pre><code>return customer;
-</code></pre>  }<br>  public void setCustomer(Customer customer) {<pre><code>this.customer = customer;
-</code></pre>  }</li>
-</ul>
-<p>}</p>
-<h4 id="第二步-建立映射"><a href="#第二步-建立映射" class="headerlink" title="第二步:建立映射:"></a>第二步:建立映射:</h4><p>Customer.hbm.xml</p>
-<p><hibernate-mapping><br>    <class name="cn.itcast.hibernate3.demo2.Customer" table="customer"><br>        <!-- 配置唯一标识 --><br>        <id name="cid" column="cid"><br>            <generator class="native"><br>        </generator></id><br>        <!-- 配置普通属性 --><br>        <property name="cname" column="cname" length="20"></property></class></hibernate-mapping></p>
-<pre><code>    &lt;!-- 建立映射 --&gt;
-    &lt;!-- 配置一个集合 &lt;set&gt;的name Customer对象中的关联对象的属性名称. --&gt;
-    &lt;set name=&quot;orders&quot;&gt;
-        &lt;!-- &lt;key&gt;标签中column:用来描述一对多多的一方的外键的名称. --&gt;
-        &lt;key column=&quot;cno&quot;&gt;&lt;/key&gt;
-        &lt;!-- 配置一个&lt;one-to-many&gt;标签中class属性:订单的类的全路径 --&gt;
-        &lt;one-to-many class=&quot;cn.itcast.hibernate3.demo2.Order&quot;/&gt;
-    &lt;/set&gt;
-&lt;/class&gt;
-</code></pre><p></p>
-<p>Order.hbm.xml</p>
-<p><hibernate-mapping><br>    <class name="cn.itcast.hibernate3.demo2.Order" table="orders"><br>        <!-- 配置唯一标识  --><br>        <id name="oid" column="oid"><br>            <generator class="native"><br>        </generator></id><br>        <!-- 配置普通属性 --><br>        <property name="addr" column="addr" length="50"><br>        <!-- 配置映射 --><br>        <!-- 
-        <many-to-one>标签
-            name     :关联对象的属性的名称.
-            column    :表中的外键名称.
-            class    :关联对象类的全路径
-        --><br>        <many-to-one name="customer" column="cno" class="cn.itcast.hibernate3.demo2.Customer"><br>    </many-to-one></property></class><br></hibernate-mapping></p>
-<h4 id="第三步-将映射放到核心配置文件中"><a href="#第三步-将映射放到核心配置文件中" class="headerlink" title="第三步:将映射放到核心配置文件中."></a>第三步:将映射放到核心配置文件中.</h4><h3 id="多对多"><a href="#多对多" class="headerlink" title="多对多"></a>多对多</h3><h4 id="第一步-创建实体类"><a href="#第一步-创建实体类" class="headerlink" title="第一步:创建实体类:"></a>第一步:创建实体类:</h4><p>学生的实体:<br>public class Student {<br>    private Integer sid;<br>    private String sname;<br>    // 一个学生选择多门课程:<br>    private Set<course> courses = new HashSet<course>();<br>    public Integer getSid() {<br>        return sid;<br>    }<br>    public void setSid(Integer sid) {<br>        this.sid = sid;<br>    }<br>    public String getSname() {<br>        return sname;<br>    }<br>    public void setSname(String sname) {<br>        this.sname = sname;<br>    }<br>    public Set<course> getCourses() {<br>        return courses;<br>    }<br>    public void setCourses(Set<course> courses) {<br>        this.courses = courses;<br>    }</course></course></course></course></p>
-<p>}<br>课程的实体:<br>public class Course {<br>    private Integer cid;<br>    private String cname;<br>    // 一个课程被多个学生选择:<br>    private Set<student> students = new HashSet<student>();<br>    public Integer getCid() {<br>        return cid;<br>    }<br>    public void setCid(Integer cid) {<br>        this.cid = cid;<br>    }<br>    public String getCname() {<br>        return cname;<br>    }<br>    public void setCname(String cname) {<br>        this.cname = cname;<br>    }<br>    public Set<student> getStudents() {<br>        return students;<br>    }<br>    public void setStudents(Set<student> students) {<br>        this.students = students;<br>    }</student></student></student></student></p>
-<p>}</p>
-<h4 id="第二步建立映射"><a href="#第二步建立映射" class="headerlink" title="第二步建立映射:"></a>第二步建立映射:</h4><p>Student.hbm.xml</p>
-<p><hibernate-mapping><br>    <class name="cn.itcast.hibernate3.demo3.Student" table="student"><br>        <!-- 配置唯一标识 --><br>        <id name="sid" column="sid"><br>            <generator class="native"><br>        </generator></id><br>        <!-- 配置普通属性 --><br>        <property name="sname" column="sname" length="20"></property></class></hibernate-mapping></p>
-<pre><code>    &lt;!-- 配置关联映射 --&gt;
-    &lt;!-- &lt;set&gt;标签 name:对应学生中的课程集合的名称   table:中间表名称. --&gt;
-    &lt;set name=&quot;courses&quot; table=&quot;stu_cour&quot;&gt;
-        &lt;!-- &lt;key&gt;中column写 当前类在中间表的外键.--&gt;
-        &lt;key column=&quot;sno&quot;&gt;&lt;/key&gt;
-        &lt;!-- &lt;many-to-many&gt;中class:另一方类的全路径. column:另一方在中间表中外键名称--&gt;
-        &lt;many-to-many class=&quot;cn.itcast.hibernate3.demo3.Course&quot; column=&quot;cno&quot;/&gt;
-    &lt;/set&gt;
-&lt;/class&gt;
-</code></pre><p></p>
-<p>Course.hbm.xml</p>
-<p><hibernate-mapping><br>    <class name="cn.itcast.hibernate3.demo3.Course" table="course"><br>        <!-- 配置唯一标识 --><br>        <id name="cid" column="cid"><br>            <generator class="native"><br>        </generator></id><br>        <!-- 配置普通属性 --><br>        <property name="cname" column="cname" length="20"><br>        <!-- 配置与学生关联映射 --><br>        <!-- <set>中name:对应当前类中的学生的集合的名称  table:中间表的名称--><br>        <set name="students" table="stu_cour"><br>            <!-- <key>中column:当前类在中间表中外键 --><br>            <key column="cno"></key><br>            <!-- <many-to-many>中class:另一方的类全路径. column:另一方在中间表中外键名称 --><br>            <many-to-many class="cn.itcast.hibernate3.demo3.Student" column="sno"><br>        </many-to-many></set><br>    </property></class><br></hibernate-mapping></p>
+<h4 id="第二步建立映射"><a href="#第二步建立映射" class="headerlink" title="第二步建立映射:"></a>第二步建立映射:</h4><p>Customer.hbm.xml<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">&lt;hibernate-mapping&gt;</div><div class="line">	&lt;class name=<span class="string">"cn.itcast.hibernate3.demo2.Customer"</span> table=<span class="string">"customer"</span>&gt;</div><div class="line">		&lt;!-- 配置唯一标识 --&gt;</div><div class="line">		&lt;id name=<span class="string">"cid"</span> column=<span class="string">"cid"</span>&gt;</div><div class="line">			&lt;generator class=<span class="string">"native"</span>/&gt;</div><div class="line">		&lt;/id&gt;</div><div class="line">		&lt;!-- 配置普通属性 --&gt;</div><div class="line">		&lt;property name=<span class="string">"cname"</span> column=<span class="string">"cname"</span> length=<span class="string">"20"</span>/&gt;</div><div class="line">		</div><div class="line">		&lt;!-- 建立映射 --&gt;</div><div class="line">		&lt;!-- 配置一个集合 &lt;<span class="built_in">set</span>&gt;的name Customer对象中的关联对象的属性名称. --&gt;</div><div class="line">		&lt;<span class="built_in">set</span> name=<span class="string">"orders"</span>&gt;</div><div class="line">			&lt;!-- &lt;key&gt;标签中column:用来描述一对多多的一方的外键的名称. --&gt;</div><div class="line">			&lt;key column=<span class="string">"cno"</span>&gt;&lt;/key&gt;</div><div class="line">			&lt;!-- 配置一个&lt;one-to-many&gt;标签中class属性:订单的类的全路径 --&gt;</div><div class="line">			&lt;one-to-many class=<span class="string">"cn.itcast.hibernate3.demo2.Order"</span>/&gt;</div><div class="line">		&lt;/<span class="built_in">set</span>&gt;</div><div class="line">	&lt;/class&gt;</div><div class="line">&lt;/hibernate-mapping&gt;</div><div class="line"></div><div class="line">Order.hbm.xml</div><div class="line">&lt;hibernate-mapping&gt;</div><div class="line">	&lt;class name=<span class="string">"cn.itcast.hibernate3.demo2.Order"</span> table=<span class="string">"orders"</span>&gt;</div><div class="line">		&lt;!-- 配置唯一标识  --&gt;</div><div class="line">		&lt;id name=<span class="string">"oid"</span> column=<span class="string">"oid"</span>&gt;</div><div class="line">			&lt;generator class=<span class="string">"native"</span>/&gt;</div><div class="line">		&lt;/id&gt;</div><div class="line">		&lt;!-- 配置普通属性 --&gt;</div><div class="line">		&lt;property name=<span class="string">"addr"</span> column=<span class="string">"addr"</span> length=<span class="string">"50"</span>/&gt;</div><div class="line">		&lt;!-- 配置映射 --&gt;</div><div class="line">		&lt;!-- </div><div class="line">		&lt;many-to-one&gt;标签</div><div class="line">			name 	:关联对象的属性的名称.</div><div class="line">			column	:表中的外键名称.</div><div class="line">			class	:关联对象类的全路径</div><div class="line">		--&gt;</div><div class="line">		&lt;many-to-one name=<span class="string">"customer"</span> column=<span class="string">"cno"</span> class=<span class="string">"cn.itcast.hibernate3.demo2.Customer"</span>/&gt;</div><div class="line">	&lt;/class&gt;</div><div class="line">&lt;/hibernate-mapping&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="第三步-将映射放到核心配置文件中"><a href="#第三步-将映射放到核心配置文件中" class="headerlink" title="第三步:将映射放到核心配置文件中."></a>第三步:将映射放到核心配置文件中.</h4><h3 id="多对多"><a href="#多对多" class="headerlink" title="多对多"></a>多对多</h3><h4 id="第一步-创建实体类"><a href="#第一步-创建实体类" class="headerlink" title="第一步:创建实体类:"></a>第一步:创建实体类:</h4><p>学生的实体:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class Student &#123;</div><div class="line">	private Integer sid;</div><div class="line">	private String sname;</div><div class="line">	// 一个学生选择多门课程:</div><div class="line">	private Set&lt;Course&gt; courses = new HashSet&lt;Course&gt;();</div><div class="line">	public Integer <span class="function"><span class="title">getSid</span></span>() &#123;</div><div class="line">		<span class="built_in">return</span> sid;</div><div class="line">	&#125;</div><div class="line">	public void <span class="built_in">set</span>Sid(Integer sid) &#123;</div><div class="line">		this.sid = sid;</div><div class="line">	&#125;</div><div class="line">	public String <span class="function"><span class="title">getSname</span></span>() &#123;</div><div class="line">		<span class="built_in">return</span> sname;</div><div class="line">	&#125;</div><div class="line">	public void <span class="built_in">set</span>Sname(String sname) &#123;</div><div class="line">		this.sname = sname;</div><div class="line">	&#125;</div><div class="line">	public Set&lt;Course&gt; <span class="function"><span class="title">getCourses</span></span>() &#123;</div><div class="line">		<span class="built_in">return</span> courses;</div><div class="line">	&#125;</div><div class="line">	public void <span class="built_in">set</span>Courses(Set&lt;Course&gt; courses) &#123;</div><div class="line">		this.courses = courses;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>课程的实体:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public class Course &#123;</div><div class="line">	private Integer cid;</div><div class="line">	private String cname;</div><div class="line">	// 一个课程被多个学生选择:</div><div class="line">	private Set&lt;Student&gt; students = new HashSet&lt;Student&gt;();</div><div class="line">	public Integer <span class="function"><span class="title">getCid</span></span>() &#123;</div><div class="line">		<span class="built_in">return</span> cid;</div><div class="line">	&#125;</div><div class="line">	public void <span class="built_in">set</span>Cid(Integer cid) &#123;</div><div class="line">		this.cid = cid;</div><div class="line">	&#125;</div><div class="line">	public String <span class="function"><span class="title">getCname</span></span>() &#123;</div><div class="line">		<span class="built_in">return</span> cname;</div><div class="line">	&#125;</div><div class="line">	public void <span class="built_in">set</span>Cname(String cname) &#123;</div><div class="line">		this.cname = cname;</div><div class="line">	&#125;</div><div class="line">	public Set&lt;Student&gt; <span class="function"><span class="title">getStudents</span></span>() &#123;</div><div class="line">		<span class="built_in">return</span> students;</div><div class="line">	&#125;</div><div class="line">	public void <span class="built_in">set</span>Students(Set&lt;Student&gt; students) &#123;</div><div class="line">		this.students = students;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="第二步建立映射-1"><a href="#第二步建立映射-1" class="headerlink" title="第二步建立映射:"></a>第二步建立映射:</h4><p>Student.hbm.xml<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">&lt;hibernate-mapping&gt;</div><div class="line">	&lt;class name=<span class="string">"cn.itcast.hibernate3.demo3.Student"</span> table=<span class="string">"student"</span>&gt;</div><div class="line">		&lt;!-- 配置唯一标识 --&gt;</div><div class="line">		&lt;id name=<span class="string">"sid"</span> column=<span class="string">"sid"</span>&gt;</div><div class="line">			&lt;generator class=<span class="string">"native"</span>/&gt;</div><div class="line">		&lt;/id&gt;</div><div class="line">		&lt;!-- 配置普通属性 --&gt;</div><div class="line">		&lt;property name=<span class="string">"sname"</span> column=<span class="string">"sname"</span> length=<span class="string">"20"</span>/&gt;</div><div class="line">		</div><div class="line">		&lt;!-- 配置关联映射 --&gt;</div><div class="line">		&lt;!-- &lt;<span class="built_in">set</span>&gt;标签 name:对应学生中的课程集合的名称   table:中间表名称. --&gt;</div><div class="line">		&lt;<span class="built_in">set</span> name=<span class="string">"courses"</span> table=<span class="string">"stu_cour"</span>&gt;</div><div class="line">			&lt;!-- &lt;key&gt;中column写 当前类在中间表的外键.--&gt;</div><div class="line">			&lt;key column=<span class="string">"sno"</span>&gt;&lt;/key&gt;</div><div class="line">			&lt;!-- &lt;many-to-many&gt;中class:另一方类的全路径. column:另一方在中间表中外键名称--&gt;</div><div class="line">			&lt;many-to-many class=<span class="string">"cn.itcast.hibernate3.demo3.Course"</span> column=<span class="string">"cno"</span>/&gt;</div><div class="line">		&lt;/<span class="built_in">set</span>&gt;</div><div class="line">	&lt;/class&gt;</div><div class="line">&lt;/hibernate-mapping&gt;</div><div class="line"></div><div class="line">Course.hbm.xml</div><div class="line">&lt;hibernate-mapping&gt;</div><div class="line">	&lt;class name=<span class="string">"cn.itcast.hibernate3.demo3.Course"</span> table=<span class="string">"course"</span>&gt;</div><div class="line">		&lt;!-- 配置唯一标识 --&gt;</div><div class="line">		&lt;id name=<span class="string">"cid"</span> column=<span class="string">"cid"</span>&gt;</div><div class="line">			&lt;generator class=<span class="string">"native"</span>/&gt;</div><div class="line">		&lt;/id&gt;</div><div class="line">		&lt;!-- 配置普通属性 --&gt;</div><div class="line">		&lt;property name=<span class="string">"cname"</span> column=<span class="string">"cname"</span> length=<span class="string">"20"</span>/&gt;</div><div class="line">		&lt;!-- 配置与学生关联映射 --&gt;</div><div class="line">		&lt;!-- &lt;<span class="built_in">set</span>&gt;中name:对应当前类中的学生的集合的名称  table:中间表的名称--&gt;</div><div class="line">		&lt;<span class="built_in">set</span> name=<span class="string">"students"</span> table=<span class="string">"stu_cour"</span>&gt;</div><div class="line">			&lt;!-- &lt;key&gt;中column:当前类在中间表中外键 --&gt;</div><div class="line">			&lt;key column=<span class="string">"cno"</span>&gt;&lt;/key&gt;</div><div class="line">			&lt;!-- &lt;many-to-many&gt;中class:另一方的类全路径. column:另一方在中间表中外键名称 --&gt;</div><div class="line">			&lt;many-to-many class=<span class="string">"cn.itcast.hibernate3.demo3.Student"</span> column=<span class="string">"sno"</span>/&gt;</div><div class="line">		&lt;/<span class="built_in">set</span>&gt;</div><div class="line">	&lt;/class&gt;</div><div class="line">&lt;/hibernate-mapping&gt;</div></pre></td></tr></table></figure></p>
 <h4 id="第三步-将映射文件加入到核心配置文件中"><a href="#第三步-将映射文件加入到核心配置文件中" class="headerlink" title="第三步:将映射文件加入到核心配置文件中:"></a>第三步:将映射文件加入到核心配置文件中:</h4><p>数据库事物的特性：<br>   原子性<br>   一致性<br>   隔离性<br>   持久性</p>
 
       
@@ -834,7 +609,7 @@ private Student student
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#工作流程"><span class="nav-number">1.</span> <span class="nav-text">工作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#导入包d-hibernate-package下面了"><span class="nav-number">1.1.</span> <span class="nav-text">导入包d:hibernate-package下面了</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实体之间的关系："><span class="nav-number">2.</span> <span class="nav-text">实体之间的关系：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一对多："><span class="nav-number">2.1.</span> <span class="nav-text">一对多：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步"><span class="nav-number">2.1.1.</span> <span class="nav-text">第一步:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二步-建立映射"><span class="nav-number">2.1.2.</span> <span class="nav-text">第二步:建立映射:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三步-将映射放到核心配置文件中"><span class="nav-number">2.1.3.</span> <span class="nav-text">第三步:将映射放到核心配置文件中.</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多对多"><span class="nav-number">2.2.</span> <span class="nav-text">多对多</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步-创建实体类"><span class="nav-number">2.2.1.</span> <span class="nav-text">第一步:创建实体类:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二步建立映射"><span class="nav-number">2.2.2.</span> <span class="nav-text">第二步建立映射:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三步-将映射文件加入到核心配置文件中"><span class="nav-number">2.2.3.</span> <span class="nav-text">第三步:将映射文件加入到核心配置文件中:</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#工作流程"><span class="nav-number">1.</span> <span class="nav-text">工作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#导入包d-hibernate-package下面了"><span class="nav-number">1.1.</span> <span class="nav-text">导入包d:hibernate-package下面了</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立文件"><span class="nav-number">1.2.</span> <span class="nav-text">建立文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立javaBean"><span class="nav-number">2.</span> <span class="nav-text">建立javaBean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立处理hibernate的类："><span class="nav-number">3.</span> <span class="nav-text">建立处理hibernate的类：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实体之间的关系："><span class="nav-number">4.</span> <span class="nav-text">实体之间的关系：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一对多："><span class="nav-number">4.1.</span> <span class="nav-text">一对多：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步"><span class="nav-number">4.1.1.</span> <span class="nav-text">第一步:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二步建立映射"><span class="nav-number">4.1.2.</span> <span class="nav-text">第二步建立映射:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三步-将映射放到核心配置文件中"><span class="nav-number">4.1.3.</span> <span class="nav-text">第三步:将映射放到核心配置文件中.</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多对多"><span class="nav-number">4.2.</span> <span class="nav-text">多对多</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步-创建实体类"><span class="nav-number">4.2.1.</span> <span class="nav-text">第一步:创建实体类:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二步建立映射-1"><span class="nav-number">4.2.2.</span> <span class="nav-text">第二步建立映射:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三步-将映射文件加入到核心配置文件中"><span class="nav-number">4.2.3.</span> <span class="nav-text">第三步:将映射文件加入到核心配置文件中:</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
