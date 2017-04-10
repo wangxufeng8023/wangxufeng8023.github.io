@@ -90,7 +90,7 @@
 <meta name="description" content="梦想还是要有的，万一实现了呢！">
 <meta property="og:type" content="website">
 <meta property="og:title" content="爱演说的程序员">
-<meta property="og:url" content="https://wangxufeng8023.github.io/tags/JavaScript/index.html">
+<meta property="og:url" content="https://wangxufeng8023.github.io/tags/javascript/index.html">
 <meta property="og:site_name" content="爱演说的程序员">
 <meta property="og:description" content="梦想还是要有的，万一实现了呢！">
 <meta name="twitter:card" content="summary">
@@ -123,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="https://wangxufeng8023.github.io/tags/JavaScript/"/>
+  <link rel="canonical" href="https://wangxufeng8023.github.io/tags/javascript/"/>
 
 
 
 
 
-  <title> 标签: JavaScript | 爱演说的程序员 </title>
+  <title> 标签: javascript | 爱演说的程序员 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -301,7 +301,7 @@
   <div id="posts" class="posts-collapse">
     <div class="collection-title">
       <h2 >
-        JavaScript
+        javascript
         <small>标签</small>
       </h2>
     </div>
@@ -314,9 +314,9 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/2017/04/10/vue-js-的记录分页/" itemprop="url">
+            <a class="post-title-link" href="/2017/04/10/canvas实现钟表/" itemprop="url">
               
-                <span itemprop="name">vue.js 的记录分页</span>
+                <span itemprop="name">canvas实现钟表</span>
               
             </a>
         
@@ -324,9 +324,93 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-10T08:53:42+08:00"
+              datetime="2017-04-10T22:59:15+08:00"
               content="2017-04-10" >
           04-10
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2017/04/10/轻量级Vue-Js/" itemprop="url">
+              
+                <span itemprop="name">轻量级Vue.Js</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-04-10T11:55:31+08:00"
+              content="2017-04-10" >
+          04-10
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2017/04/07/javascript/" itemprop="url">
+              
+                <span itemprop="name">javascript</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-04-07T05:23:22+08:00"
+              content="2017-04-07" >
+          04-07
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/2017/04/07/深入浅出ES6/" itemprop="url">
+              
+                <span itemprop="name">深入浅出ES6</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-04-07T02:37:46+08:00"
+              content="2017-04-07" >
+          04-07
         </time>
       </div>
 
@@ -380,7 +464,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -391,7 +475,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -402,7 +486,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -644,57 +728,6 @@
               },
               error: function(counter, error) {
                 console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
-
-  
-
-  
-
-  
-
-</body>
-</html>
-r.message);
               }
             });
           } else {
