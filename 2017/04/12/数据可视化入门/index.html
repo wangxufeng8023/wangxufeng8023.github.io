@@ -1,0 +1,898 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="D3（有时候也叫D3或d3.js）是一个JavaScript 库，用于创建数据可视化图形。但事实上，D3 是一个缩写，它的全称叫Data-DrivenDocuments（数据驱动的文档）。数据来源于你，而文档就是基于Web 的文档（或者网页），代表可以在浏览器中展现的一切，比如HTML、SVG。D3 扮演的是一个驱动程序的角色，因为它联系着数据和文档 DataWrapper•一个非常漂亮的在线服务">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据可视化入门">
+<meta property="og:url" content="https://wangxufeng8023.github.io/2017/04/12/数据可视化入门/index.html">
+<meta property="og:site_name" content="爱演说的程序员">
+<meta property="og:description" content="D3（有时候也叫D3或d3.js）是一个JavaScript 库，用于创建数据可视化图形。但事实上，D3 是一个缩写，它的全称叫Data-DrivenDocuments（数据驱动的文档）。数据来源于你，而文档就是基于Web 的文档（或者网页），代表可以在浏览器中展现的一切，比如HTML、SVG。D3 扮演的是一个驱动程序的角色，因为它联系着数据和文档 DataWrapper•一个非常漂亮的在线服务">
+<meta property="og:updated_time" content="2017-04-12T04:51:21.098Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据可视化入门">
+<meta name="twitter:description" content="D3（有时候也叫D3或d3.js）是一个JavaScript 库，用于创建数据可视化图形。但事实上，D3 是一个缩写，它的全称叫Data-DrivenDocuments（数据驱动的文档）。数据来源于你，而文档就是基于Web 的文档（或者网页），代表可以在浏览器中展现的一切，比如HTML、SVG。D3 扮演的是一个驱动程序的角色，因为它联系着数据和文档 DataWrapper•一个非常漂亮的在线服务">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'WQFFGI6W0O',
+      apiKey: 'a80ed9e5ab6804c6e5e6726f0804362e',
+      indexName: 'feng',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"输入关键字进行搜索","hits_empty":"找不到关于${query} 的文章","hits_stats":"共找到 ${hits} 篇文章花了${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wangxufeng8023.github.io/2017/04/12/数据可视化入门/"/>
+
+
+
+
+
+  <title> 数据可视化入门 | 爱演说的程序员 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">爱演说的程序员</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">白帽子的开源精神</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+
+    </header>
+
+    <main id="main" class="main">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=0 height=0 src="//music.163.com/outchain/player?type=2&id=417250673&auto=1&height=40"></iframe>
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://wangxufeng8023.github.io/2017/04/12/数据可视化入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王旭枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="爱演说的程序员">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                数据可视化入门
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-12T00:04:01+08:00">
+                2017-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/04/12/数据可视化入门/" class="leancloud_visitors" data-flag-title="数据可视化入门">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="D3"><a href="#D3" class="headerlink" title="D3"></a>D3</h2><p>（有时候也叫D3或d3.js）是一个JavaScript 库，用于创建数据可视化图形。但<br>事实上，D3 是一个缩写，它的全称叫Data-DrivenDocuments（数据驱动的文档）。<br>数据来源于你，而文档就是基于Web 的文档（或者网页），代表可以在浏览器中展<br>现的一切，比如HTML、SVG。D3 扮演的是一个驱动程序的角色，因为它联系着<br>数据和文档</p>
+<h2 id="DataWrapper•"><a href="#DataWrapper•" class="headerlink" title="DataWrapper•"></a>DataWrapper•</h2><p>一个非常漂亮的在线服务，上传数据并快速生成图表后，就可以到处使用或将其<br>嵌入在自己的站点中。这个服务最初定位于专栏记者，而实际上任何人都可以使<br>用。DataWrapper 在新版本浏览器中可以显示动态图表，而在旧版本浏览器中则<br><a href="http://datawrapper.de/。" target="_blank" rel="external">http://datawrapper.de/。</a></p>
+<h2 id="SVG"><a href="#SVG" class="headerlink" title="SVG"></a>SVG</h2><p><rect x="0" y="0" width="500" height="50"></rect>      //画矩形<br>  <circle cx="25" cy="25" r="22" ﬁll="blue" stroke="gray" stroke-width="2"></circle> //画圆<br>  <ellipse cx="250" cy="25" rx="100" ry="25"></ellipse> //椭圆<br>  <line x1="0" y1="0" x2="500" y2="50" stroke="black"></line> //划线<br>  <text x="250" y="25">Easy-peasy</text> //文本<br>  <text x="250" y="25" font-family="serif" font-size="25" ﬁll="gray">Easy-peasy</text> //定义样式</p>
+<p>ﬁll•<br>   颜色值。与使用CSS 一样，可以使用颜色名、十六进制值，或RGB、RGBA 值。<br>stroke<br>   颜色值。</p>
+<p>stroke-width<br>   带单位的数值（通常单位是像素）。<br>opacity•<br>    0.0（完全透明）到1.0（完全不透明）之间的数值。<br>    对于文本，也可以使用下面这些属性，使用方式与CSS 中类似。<br>font-family<br>font-size</p>
+<p>好厉害的样子</p>
+<circle cx="25" cy="25" r="22" class="pumpkin"></circle>
+
+<p>.pumpkin {<br>    ﬁll: yellow;<br>    stroke: orange;<br>    stroke-width: 5;<br> }<br> 可以在为ﬁll 或stroke 属性指定颜色的时候使用rgba()。rgba() 接受<br>（包含及）之间的三个值，分别代表红、绿、蓝，还接受第四个0.0 到1.0（<br>之间的透明度值。</p>
+<p><circle cx="25" cy="25" r="20" ﬁll="rgba(128, 0, 128, 1.0)"></circle></p>
+<p><circle cx="50" cy="25" r="20" ﬁll="rgba(0, 0, 255, 0.75)"></circle></p>
+<p><circle cx="75" cy="25" r="20" ﬁll="rgba(0, 255, 0, 0.5)"></circle></p>
+<p><circle cx="100" cy="25" r="20" ﬁll="rgba(255, 255, 0, 0.25)"></circle></p>
+<circle cx="125" cy="25" r="20" ﬁll="rgba(255, 0, 0, 0.1)"></circle>
+
+
+<p>使用rgba() 可以分别为填充（ﬁll）和描边（stroke）颜色应用透明度。下面几<br>个圆形填充都是75% 不透明，而它们的描边都只有25% 不透明：</p>
+<p><circle cx="25" cy="25" r="20" ﬁll="rgba(128, 0, 128, 0.75)" stroke="rgba(0, 255, 0, 0.25)" stroke-width="10"></circle></p>
+<p><circle cx="75" cy="25" r="20" ﬁll="rgba(0, 255, 0, 0.75)" stroke="rgba(0, 0, 255, 0.25)" stroke-width="10"></circle></p>
+<p>&lt;circle cx=”125” cy=”25” r=”20” ﬁll=”rgba(255, 255, 0, 0.75)”<br>        stroke=”rgba(255, 0, 0, 0.25)” stroke-width=”10”</p>
+<pre><code>展示了同样的圆形但设置了opacity 值的效果：
+</code></pre><p><circle cx="25" cy="25" r="20" ﬁll="purple" stroke="green" stroke-width="10" opacity="0.9"></circle></p>
+<p><circle cx="65" cy="25" r="20" ﬁll="green" stroke="blue" stroke-width="10" opacity="0.5"></circle></p>
+<p>&lt;circle cx=”105” cy=”25” r=”20” ﬁll=”yellow” stroke=”red” stroke-width=”10”<br>        opacity=”0.1”/</p>
+<pre><code>也可以对已经使用rgba() 设置了颜色的元素应用opacity 属性。这时候，透明度
+</code></pre><p>值会相乘。图3-27 所示的三个圆形的ﬁll 和stroke 分别使用了相同的RGBA 值。<br>而且除第一个圆形外，另外两个都设置了opacity 值：</p>
+<p><circle cx="25" cy="25" r="20" ﬁll="rgba(128, 0, 128, 0.75)" stroke="rgba(0, 255, 0, 0.25)" stroke-width="10"></circle></p>
+<p><circle cx="65" cy="25" r="20" ﬁll="rgba(128, 0, 128, 0.75)" stroke="rgba(0, 255, 0, 0.25)" stroke-width="10" opacity="0.5"></circle></p>
+<p><circle cx="105" cy="25" r="20" ﬁll="rgba(128, 0, 128, 0.75)" stroke="rgba(0, 255, 0, 0.25)" stroke-width="10" opacity="0.2"></circle></p>
+<h2 id="连缀语法"><a href="#连缀语法" class="headerlink" title="连缀语法"></a>连缀语法</h2><p>d3.select(“body”).append(“p”).text(“New paragraph!”);//jquery 也是这样用的</p>
+<h3 id="select-“body”"><a href="#select-“body”" class="headerlink" title="select(“body”)"></a>select(“body”)</h3><p>向select() 方法传入一个CSS 选择符作为输入，它就会返回一个对DOM 中匹配<br>的第一个元素的引用。（如果你想取得多个元素，可以使用selectAll() 方法。）<br>这里只是取得文档的body 元素，然后把对它的引用交给调用链中的下一个方法。</p>
+<h3 id="append-“p”"><a href="#append-“p”" class="headerlink" title="append(“p”)"></a>append(“p”)</h3><p>append() 会创建一个你指定的新DOM 元素，然后将它追加到调用它的元素<br>末尾（作为最后一个子元素）。这里创建了一个p 元素，因为调用该方法的是<br>body，所以结果就是在body 元素内部追加一个p 元素。最后，append() 把刚<br>刚创建的新元素的引用交给下一个方法。</p>
+<h3 id="text-“New-paragraph-”"><a href="#text-“New-paragraph-”" class="headerlink" title="text(“New paragraph!”)"></a>text(“New paragraph!”)</h3><p>text() 接受一个字符串，把它插入到当前元素的开始和结束标签之间。因为上<br>一个方法传递过来一个p 元素，因此这里就会把文本插入到</p><p> 和</p> 之间。（如果标签间原来有内容，原来的内容会被覆盖。<p></p>
+<h2 id="绑定数据"><a href="#绑定数据" class="headerlink" title="绑定数据"></a>绑定数据</h2><p>数据可视化说到底就是把数据映射到图形，数据入而图形出。也许是数值越大条形<br>越长，也许特殊类别会显示为更亮的颜色。总之，映射规则你说了算。<br>在D3 中，为了实现映射规则，需要把数据输入的值绑定到DOM 中的元素上。绑<br>定的意思类似于把数据“附加”或关联到特定的元素，以便将来引用数据的值和应<br>用映射规则。<br>通过D3 的selection.data() 方法把数据绑定到DOM 元素。但必须具备两个<br>条件：<br>数据；<br>选中的DOM 元素。</p>
+<h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><h4 id="CSV-的意思就是逗号分隔的值（Comma-Separated-Value）。一行为单位"><a href="#CSV-的意思就是逗号分隔的值（Comma-Separated-Value）。一行为单位" class="headerlink" title="CSV 的意思就是逗号分隔的值（Comma-Separated  Value）。一行为单位"></a>CSV 的意思就是逗号分隔的值（Comma-Separated  Value）。一行为单位</h4><p>Food,Deliciousness //属性<br>Apples,9<br>Green Beans,5<br>Egg Salad Sandwich,4<br>Cookies,10<br>Vegemite,0.2<br>Burrito,7<br>用d3.csv()加载csv文件<br>d3.csv(“food.csv”, function(data) {<br>    console.log(data);<br>});<br>//下面是打印结果<br>[Object, Object, Object, Object, Object, Object]<br>0<br>:<br>Object<br>“Deliciousness “<br>:<br>“2”<br>Food<br>:<br>“Apples”<br><strong>proto</strong><br>:<br>Object<br>1<br>:<br>Object<br>“Deliciousness “<br>:<br>“3”<br>Food<br>:<br>“Green Bean”<br><strong>proto</strong><br>:<br>Object<br>2<br>:<br>Object<br>“Deliciousness “<br>:<br>“3”<br>Food<br>:<br>“Egg Salad Sandwich”<br><strong>proto</strong><br>:<br>Object<br>3<br>:<br>Object<br>var dataset;<br>d3.csv(“food.csv”, function(error, data) {<br>      if (error) {  // 如果error 不是null，肯定出错了<br>          console.log(error);  // 输出错误消息<br>      } else {      // 如果没出错，说明加载文件成功了<br>          console.log(data);   // 输出数据<br>          // 包含成功加载数据后要执行的代码<br>          dataset = data;<br>          // 调用生成可视化图表的<br>       // 其他函数，比如：<br>          generateVisualization();<br>           makeAwesomeCharts();<br>  makeEvenAwesomerCharts()<br>  thankAwardsCommittee();<br>      }<br>   如果你的数据是TSV 文件，可以试试d3.tsv()方法。这个方法的其他方面与d3.csv()都一样。</p>
+<h4 id="json"><a href="#json" class="headerlink" title="json"></a>json</h4><p>   d3.json(“waterfallVelocities.json”, function(json) {<br>    console.log(json);  // 输出到控制台<br>});</p>
+<h4 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h4><p>const dataset=[1,40,56,78,12];<br>d3.select(“body”).selectAll(“p”)<br>    .data(dataset)<br>    .enter()<br>    .append(“p”)<br>    .text(“New paragraph!”);<br>    console.log(d3.selectAll(“p”));</p>
+<h5 id="selectAll-“p”"><a href="#selectAll-“p”" class="headerlink" title="selectAll(“p”)"></a>selectAll(“p”)</h5><p>选择DOM 中的所有段落。因为还没有段落，所以返回空元素。可以认为这个空<br>元素代表马上就会创建的段落。</p>
+<h5 id="data-dataset"><a href="#data-dataset" class="headerlink" title="data(dataset)"></a>data(dataset)</h5><p>解析并数出数据值。dataset 数组中有5 个值，因而此后的所有方法都将执行五<br>遍，每次针对一个值。</p>
+<h4 id="enter"><a href="#enter" class="headerlink" title="enter()"></a>enter()</h4><p>要创建新的绑定数据的元素，必须使用enter()。这个方法会分析当前选择的<br>DOM 元素和传给它的数据，如果数据值比对应的DOM 元素多，就创建一个新<br>的占位元素。然后把这个新占位元素的引用交给链中的下一个方法。 </p>
+<h5 id="append-“p”-1"><a href="#append-“p”-1" class="headerlink" title="append(“p”)"></a>append(“p”)</h5><p>取得由enter() 创建的空占位元素，并把一个p 元素追加到相应的DOM 中。太<br>棒了！然后它再把自己刚创建的元素交给链中的下一个方法<br>得到渲染<br>New paragraph!</p>
+<p>New paragraph!</p>
+<p>New paragraph!</p>
+<p>New paragraph!</p>
+<p>New paragraph!<br>控制台的输出<br>[Array[5]]</p>
+<p>Array[5]<br>0</p>
+<p>p<br><strong>data</strong><br>:<br>1  //这就是我们赋值，在<strong>data</strong>属性中<br>accessKey<br>:<br>“”<br>align<br>:<br>“”<br>attributes<br>:<br>NamedNodeMap<br>baseURI<br>:<br>“<a href="http://localhost:8080/Vue/html/index.html" target="_blank" rel="external">http://localhost:8080/Vue/html/index.html</a>“<br>childElementCount<br>:<br>0<br>将最后一行改掉：<br>.text(function(d) { return d; });<br>浏览器渲染的是：<br>1</p>
+<p>40</p>
+<p>56</p>
+<p>78</p>
+<p>12</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/11/jsonp的来龙去脉/" rel="prev" title="jsonp的来龙去脉">
+                jsonp的来龙去脉 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="王旭枫" />
+          <p class="site-author-name" itemprop="name">王旭枫</p>
+           
+              <p class="site-description motion-element" itemprop="description">梦想还是要有的，万一实现了呢！</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+     
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#D3"><span class="nav-number">1.</span> <span class="nav-text">D3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DataWrapper•"><span class="nav-number">2.</span> <span class="nav-text">DataWrapper•</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SVG"><span class="nav-number">3.</span> <span class="nav-text">SVG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连缀语法"><span class="nav-number">4.</span> <span class="nav-text">连缀语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#select-“body”"><span class="nav-number">4.1.</span> <span class="nav-text">select(“body”)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#append-“p”"><span class="nav-number">4.2.</span> <span class="nav-text">append(“p”)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#text-“New-paragraph-”"><span class="nav-number">4.3.</span> <span class="nav-text">text(“New paragraph!”)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定数据"><span class="nav-number">5.</span> <span class="nav-text">绑定数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据"><span class="nav-number">5.1.</span> <span class="nav-text">数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CSV-的意思就是逗号分隔的值（Comma-Separated-Value）。一行为单位"><span class="nav-number">5.1.1.</span> <span class="nav-text">CSV 的意思就是逗号分隔的值（Comma-Separated  Value）。一行为单位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#json"><span class="nav-number">5.1.2.</span> <span class="nav-text">json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实战"><span class="nav-number">5.1.3.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#selectAll-“p”"><span class="nav-number">5.1.3.1.</span> <span class="nav-text">selectAll(“p”)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#data-dataset"><span class="nav-number">5.1.3.2.</span> <span class="nav-text">data(dataset)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#enter"><span class="nav-number">5.1.4.</span> <span class="nav-text">enter()</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#append-“p”-1"><span class="nav-number">5.1.4.1.</span> <span class="nav-text">append(“p”)</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王旭枫</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("OPn2VKrgyeA1RcALt0bhFQEb-gzGzoHsz", "XuV6lgDToscB3PQ2Hx4hzp9r");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
