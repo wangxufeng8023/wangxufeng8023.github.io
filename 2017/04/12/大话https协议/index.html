@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="提出背景由于http协议是明文传输的，hack可以很容易的抓包获得发送的数据，所以增加的https协议，简单的来说https协议就是在http的基础上面增加了ssl (tls 是ssl的升级版本)层，在发生数据前先利用ssl和tls和服务器进行一次链接，判断服务器的安全性，当然这个过程由浏览器完成的。 流程  浏览器发送自己信息和加密规则—&amp;gt;服务器选择套加密规则(公钥)">
+<meta name="description" content="提出背景由于http协议是明文传输的，hack可以很容易的抓包获得发送的数据，所以增加的https协议，简单的来说https协议就是在http的基础上面增加了ssl (tls 是ssl的升级版本)层，在发生数据前先利用ssl和tls和服务器进行一次链接，判断服务器的安全性，当然这个过程由浏览器完成的。 流程  浏览器发送自己信息和加密规则                 |">
 <meta name="keywords" content="https">
 <meta property="og:type" content="article">
 <meta property="og:title" content="大话https协议">
 <meta property="og:url" content="https://wangxufeng8023.github.io/2017/04/12/大话https协议/index.html">
 <meta property="og:site_name" content="爱演说的程序员">
-<meta property="og:description" content="提出背景由于http协议是明文传输的，hack可以很容易的抓包获得发送的数据，所以增加的https协议，简单的来说https协议就是在http的基础上面增加了ssl (tls 是ssl的升级版本)层，在发生数据前先利用ssl和tls和服务器进行一次链接，判断服务器的安全性，当然这个过程由浏览器完成的。 流程  浏览器发送自己信息和加密规则—&amp;gt;服务器选择套加密规则(公钥)">
-<meta property="og:updated_time" content="2017-04-12T12:08:58.451Z">
+<meta property="og:description" content="提出背景由于http协议是明文传输的，hack可以很容易的抓包获得发送的数据，所以增加的https协议，简单的来说https协议就是在http的基础上面增加了ssl (tls 是ssl的升级版本)层，在发生数据前先利用ssl和tls和服务器进行一次链接，判断服务器的安全性，当然这个过程由浏览器完成的。 流程  浏览器发送自己信息和加密规则                 |">
+<meta property="og:updated_time" content="2017-04-12T12:18:48.275Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="大话https协议">
-<meta name="twitter:description" content="提出背景由于http协议是明文传输的，hack可以很容易的抓包获得发送的数据，所以增加的https协议，简单的来说https协议就是在http的基础上面增加了ssl (tls 是ssl的升级版本)层，在发生数据前先利用ssl和tls和服务器进行一次链接，判断服务器的安全性，当然这个过程由浏览器完成的。 流程  浏览器发送自己信息和加密规则—&amp;gt;服务器选择套加密规则(公钥)">
+<meta name="twitter:description" content="提出背景由于http协议是明文传输的，hack可以很容易的抓包获得发送的数据，所以增加的https协议，简单的来说https协议就是在http的基础上面增加了ssl (tls 是ssl的升级版本)层，在发生数据前先利用ssl和tls和服务器进行一次链接，判断服务器的安全性，当然这个过程由浏览器完成的。 流程  浏览器发送自己信息和加密规则                 |">
 
 
 
@@ -416,11 +416,10 @@
 
       
         <h2 id="提出背景"><a href="#提出背景" class="headerlink" title="提出背景"></a>提出背景</h2><p>由于http协议是明文传输的，hack可以很容易的抓包获得发送的数据，所以增加的https协议，简单的来说https协议就是在http的基础上面增加了ssl (tls 是ssl的升级版本<br>)层，在发生数据前先利用ssl和tls和服务器进行一次链接，判断服务器的安全性，当然这个过程由浏览器完成的。</p>
-<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p>  浏览器发送自己信息和加密规则—&gt;服务器选择套加密规则(公钥)<br>                                                          |<br>                                                          |<br>                                         服务器发送公钥，和证书HASH</p>
-<pre><code> ----&gt;数据发送给服务器                                                                                           |
-|                                                 |
-|                                                 |
-</code></pre><p> 利用服务器的公钥,和hash对数数据加密&lt;-ok– 浏览器验证证书的有效性</p>
+<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p>  浏览器发送自己信息和加密规则<br>                 |<br>                 |<br>  服务器选择套加密规则(公钥)<br>                 |<br>                 |<br>       服务器发送公钥，和证书HASH<br>                 |<br>                 |</p>
+<pre><code>浏览器验证证书的有效性                                                       |
+           | &lt;-ok--        
+</code></pre><p> 利用服务器的公钥,和hash对数数据加密<br>                 |<br>                 |<br>             发送个服务器</p>
 
       
     </div>
@@ -549,7 +548,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

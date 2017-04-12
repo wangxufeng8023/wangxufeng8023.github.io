@@ -1,0 +1,882 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="canvas,ES6,javascript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="用ES6和html5的canvas实现一个android手机九宫格解锁的功能。 html文件12345678910111213141516171819202122232425&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html lang=&quot;en&quot;&amp;gt;&amp;lt;head&amp;gt;    &amp;lt;meta charset=&quot;UTF-8&quot;&amp;gt;    &amp;lt;meta name=&quot;viewpor">
+<meta name="keywords" content="canvas,ES6,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="canvas+js实现android解锁功能">
+<meta property="og:url" content="https://wangxufeng8023.github.io/2017/04/12/canvas-js实现android解锁功能/index.html">
+<meta property="og:site_name" content="爱演说的程序员">
+<meta property="og:description" content="用ES6和html5的canvas实现一个android手机九宫格解锁的功能。 html文件12345678910111213141516171819202122232425&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html lang=&quot;en&quot;&amp;gt;&amp;lt;head&amp;gt;    &amp;lt;meta charset=&quot;UTF-8&quot;&amp;gt;    &amp;lt;meta name=&quot;viewpor">
+<meta property="og:updated_time" content="2017-04-12T12:23:37.804Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="canvas+js实现android解锁功能">
+<meta name="twitter:description" content="用ES6和html5的canvas实现一个android手机九宫格解锁的功能。 html文件12345678910111213141516171819202122232425&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html lang=&quot;en&quot;&amp;gt;&amp;lt;head&amp;gt;    &amp;lt;meta charset=&quot;UTF-8&quot;&amp;gt;    &amp;lt;meta name=&quot;viewpor">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'WQFFGI6W0O',
+      apiKey: 'a80ed9e5ab6804c6e5e6726f0804362e',
+      indexName: 'feng',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"输入关键字进行搜索","hits_empty":"找不到关于${query} 的文章","hits_stats":"共找到 ${hits} 篇文章花了${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://wangxufeng8023.github.io/2017/04/12/canvas-js实现android解锁功能/"/>
+
+
+
+
+
+  <title> canvas+js实现android解锁功能 | 爱演说的程序员 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">爱演说的程序员</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">白帽子的开源精神</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+
+    </header>
+
+    <main id="main" class="main">
+    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=0 height=0 src="//music.163.com/outchain/player?type=2&id=417250673&auto=1&height=40"></iframe>
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://wangxufeng8023.github.io/2017/04/12/canvas-js实现android解锁功能/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王旭枫">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="爱演说的程序员">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                canvas+js实现android解锁功能
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-12T20:19:51+08:00">
+                2017-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/html5/" itemprop="url" rel="index">
+                    <span itemprop="name">html5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/04/12/canvas-js实现android解锁功能/" class="leancloud_visitors" data-flag-title="canvas+js实现android解锁功能">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>用ES6和html5的canvas实现一个android手机九宫格解锁的功能。</p>
+<h2 id="html文件"><a href="#html文件" class="headerlink" title="html文件"></a>html文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">    &lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1.0, user-scalable=no"</span>&gt;</div><div class="line">    &lt;title&gt;手机解锁&lt;/title&gt;</div><div class="line">    &lt;link rel=<span class="string">"stylesheet"</span> <span class="built_in">type</span>=<span class="string">"text/css"</span> href=<span class="string">"lock.css"</span>&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"lock.js"</span>&gt;&lt;/script&gt;</div><div class="line">    &lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line"></div><div class="line">      window.onload = <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">      var lock = new Lock(<span class="string">"手势密码"</span>,<span class="string">'#CFE6FF'</span>);</div><div class="line"></div><div class="line">     &#125;</div><div class="line"></div><div class="line">    &lt;/script&gt;</div><div class="line">    </div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h3 id="ES6代码"><a href="#ES6代码" class="headerlink" title="ES6代码"></a>ES6代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div></pre></td><td class="code"><pre><div class="line">class Lock&#123;</div><div class="line">        constructor(title,pencilcolor)&#123; </div><div class="line"></div><div class="line">           this.pencilcolor = pencilcolor</div><div class="line">           this.title = title</div><div class="line">          this.rendering(this.title);</div><div class="line">    </div><div class="line">            &#125;</div><div class="line"> </div><div class="line">                  // 初始化解锁密码面板</div><div class="line">        drawCircle (x, y) &#123; </div><div class="line">            <span class="built_in">let</span> self = this;</div><div class="line">            //strokeStyle 设置画笔的颜色。</div><div class="line">            self.sender.strokeStyle = self.pencilcolor;</div><div class="line">            //设置线条的宽度</div><div class="line">            self.sender.lineWidth = 2;</div><div class="line">            //起始一条新路径</div><div class="line">            self.sender.beginPath();</div><div class="line">            //画出点</div><div class="line">            self.sender.arc(x, y, self.r, 0, Math.PI * 2, <span class="literal">false</span>);</div><div class="line">            self.sender.closePath();</div><div class="line">            //绘制解锁图案</div><div class="line">            self.sender.stroke();</div><div class="line">          &#125;</div><div class="line">          //画点，就是在我们选中一个点的时候执行这个函数</div><div class="line">        <span class="function"><span class="title">drawPoint</span></span> () &#123; </div><div class="line">            <span class="built_in">let</span> self = this;</div><div class="line">            <span class="keyword">for</span> (<span class="built_in">let</span> i = 0 ; i &lt; self.reactPoint.length ; i++) &#123;</div><div class="line">               //填充色，fillstyle</div><div class="line">                self.sender.fillStyle = <span class="string">'#CFE6FF'</span>;</div><div class="line">                self.sender.beginPath();</div><div class="line">                self.sender.arc(self.reactPoint[i].x, self.reactPoint[i].y, self.r / 2, 0, Math.PI * 2, <span class="literal">true</span>);</div><div class="line">                self.sender.closePath();</div><div class="line">                //填充</div><div class="line">                self.sender.fill();</div><div class="line">              &#125;</div><div class="line">          &#125;</div><div class="line">        // 初始化状态线条</div><div class="line">        createPoint (<span class="built_in">type</span>) &#123; </div><div class="line">            <span class="built_in">let</span> self = this;</div><div class="line">            <span class="keyword">for</span> (<span class="built_in">let</span> i = 0 ; i &lt; self.reactPoint.length ; i++) &#123;</div><div class="line">                self.sender.strokeStyle = <span class="built_in">type</span>;</div><div class="line">                self.sender.beginPath();</div><div class="line">                self.sender.arc(self.reactPoint[i].x, self.reactPoint[i].y, self.r, 0, Math.PI * 2, <span class="literal">true</span>);</div><div class="line">                self.sender.closePath();</div><div class="line">                self.sender.stroke();</div><div class="line">            &#125;</div><div class="line">        &#125;//画出解锁的轨迹线。</div><div class="line">        drawLine (po, reactPoint) &#123;</div><div class="line">            <span class="built_in">let</span> self = this;</div><div class="line">            self.sender.beginPath();</div><div class="line">            //线的粗细，</div><div class="line">            self.sender.lineWidth = 3;</div><div class="line">            self.sender.moveTo(self.reactPoint[0].x, self.reactPoint[0].y);</div><div class="line">            </div><div class="line">            <span class="keyword">for</span> (<span class="built_in">let</span> i = 1 ; i &lt; self.reactPoint.length ; i++) &#123;</div><div class="line">                self.sender.lineTo(self.reactPoint[i].x, self.reactPoint[i].y);</div><div class="line">            &#125;</div><div class="line">            self.sender.lineTo(po.x, po.y);</div><div class="line">            self.sender.stroke();</div><div class="line">            self.sender.closePath();</div><div class="line"> </div><div class="line">          &#125;</div><div class="line">           // 创建解锁点的坐标，根据canvas的大小来平均分配半径</div><div class="line">        <span class="function"><span class="title">createCircle</span></span> () &#123;</div><div class="line">            <span class="built_in">let</span> self = this;</div><div class="line">            <span class="built_in">let</span> [n,count] = [3,0];</div><div class="line">          </div><div class="line">            self.r = self.sender.canvas.width / 14;// 公式计算</div><div class="line">            self.reactPoint = [];</div><div class="line">            self.array = [];</div><div class="line">            self.modPoint = [];</div><div class="line">            <span class="built_in">let</span> r = self.r;</div><div class="line">            <span class="keyword">for</span> (<span class="built_in">let</span> i = 0 ; i &lt; n ; i++) &#123;</div><div class="line">                <span class="keyword">for</span> (<span class="built_in">let</span> j = 0 ; j &lt; n ; j++) &#123;</div><div class="line">                    count++;</div><div class="line">                    <span class="built_in">let</span> obj = &#123;</div><div class="line">                        x: (j * 4 + 3 )* r,</div><div class="line">                        y: (i * 4 + 3 ) *r,</div><div class="line">                        index: count</div><div class="line">                    &#125;;</div><div class="line">                    self.array.push(obj);</div><div class="line">                    self.modPoint.push(obj);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            self.sender.clearRect(0, 0, self.sender.canvas.width, self.sender.canvas.height);</div><div class="line">            <span class="keyword">for</span> (<span class="built_in">let</span> i = 0 ; i &lt; self.array.length ; i++) &#123;</div><div class="line">                self.drawCircle(self.array[i].x, self.array[i].y);</div><div class="line">            &#125;</div><div class="line">            //<span class="built_in">return</span> array;</div><div class="line">         &#125;</div><div class="line">         // 获取touch点相对于canvas的坐标</div><div class="line">        getPosition (event) &#123;</div><div class="line"></div><div class="line">            //Target和currentTarget(),getBoundingClientRect()获的钙元素的left，top，属性；</div><div class="line">            <span class="built_in">let</span> events =event||window.event;</div><div class="line">            <span class="built_in">let</span> rect = events.currentTarget.getBoundingClientRect();</div><div class="line">            <span class="built_in">let</span> point = &#123;</div><div class="line">                x: events.touches[0].clientX - rect.left,</div><div class="line">                y: events.touches[0].clientY - rect.top</div><div class="line">              &#125;;</div><div class="line">            <span class="built_in">return</span> point;</div><div class="line">        &#125;</div><div class="line">         // 核心变换方法在touchmove时候调用</div><div class="line">        process (point) &#123;</div><div class="line">            <span class="built_in">let</span> self = this;</div><div class="line">            self.sender.clearRect(0, 0, self.sender.canvas.width, self.sender.canvas.height);</div><div class="line"> </div><div class="line">            <span class="keyword">for</span> (<span class="built_in">let</span> i = 0 ; i &lt; self.array.length ; i++) &#123; // 每帧先把面板画出来</div><div class="line">                self.drawCircle(self.array[i].x, self.array[i].y);</div><div class="line">            &#125;</div><div class="line"> </div><div class="line">            self.drawPoint(self.reactPoint);// 每帧花轨迹</div><div class="line">            self.drawLine(point , self.reactPoint);// 每帧画圆心</div><div class="line"> </div><div class="line">            <span class="keyword">for</span> (<span class="built_in">let</span> i = 0 ; i &lt; self.modPoint.length ; i++) &#123;</div><div class="line">                <span class="keyword">if</span> (Math.abs(point.x - self.modPoint[i].x) &lt; self.r &amp;&amp; Math.abs(point.y - self.modPoint[i].y) &lt; self.r) &#123;</div><div class="line">                    self.drawPoint(self.modPoint[i].x, self.modPoint[i].y);</div><div class="line">                    self.reactPoint.push(self.modPoint[i]);</div><div class="line">                    self.modPoint.splice(i, 1);</div><div class="line">                    <span class="built_in">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"> </div><div class="line">         &#125;</div><div class="line">        // 检查两次输入的密码是否一致</div><div class="line">        <span class="built_in">test</span>Pass(pw1,pw2)&#123;</div><div class="line">            </div><div class="line">            <span class="built_in">let</span> c = Array.from(pw1,x=&gt;<span class="string">''</span>+x[0]+x[1]);</div><div class="line">            <span class="built_in">let</span> d = Array.from(pw2,x=&gt;<span class="string">''</span>+x[0]+x[1]);</div><div class="line">            <span class="built_in">return</span> c.join()===d.join();</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">        &#125;</div><div class="line">        // touchend结束之后对密码和状态的处理</div><div class="line">        keppPass (pasw) &#123;</div><div class="line">            <span class="built_in">let</span> self = this;</div><div class="line">            <span class="keyword">if</span> (Lock.flag==<span class="literal">false</span>) &#123;</div><div class="line">            </div><div class="line">                <span class="keyword">if</span>(Lock.start==undefined || self.statu.mark!=2)&#123;</div><div class="line">                    document.getElementById(<span class="string">'title'</span>).innerHTML = <span class="string">'请您先设置密码'</span>;</div><div class="line">                    delete self.statu.mark; </div><div class="line"></div><div class="line">                   &#125;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (self.testPass(self.statu.spassword, pasw)) &#123;</div><div class="line">                    document.getElementById(<span class="string">'title'</span>).innerHTML = <span class="string">'密码正确'</span>;</div><div class="line">                    self.createPoint(<span class="string">'#00FFFF'</span>);</div><div class="line">                     &#125; </div><div class="line">                <span class="keyword">else</span> &#123;</div><div class="line">                    self.createPoint(<span class="string">'red'</span>);</div><div class="line">                    document.getElementById(<span class="string">'title'</span>).innerHTML = <span class="string">'输入的密码不正确'</span>;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                 &#125;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(Lock.flag==<span class="literal">true</span>&amp;&amp;self.statu.mark==1)&#123;</div><div class="line">     </div><div class="line">                <span class="keyword">if</span> (self.testPass(self.statu.fpassword, pasw)) &#123;</div><div class="line">                    self.statu.mark = 2;</div><div class="line">                    self.statu.spassword = pasw;</div><div class="line">                    document.getElementById(<span class="string">'title'</span>).innerHTML = <span class="string">'密码设置成功'</span>;</div><div class="line">                    self.createPoint(<span class="string">'#00FFFF'</span>);</div><div class="line">                    window.localStorage.setItem(<span class="string">'passwordxx'</span>, JSON.stringify(self.statu.spassword));</div><div class="line">                    </div><div class="line">                &#125; </div><div class="line">                <span class="keyword">else</span> &#123;</div><div class="line">                    document.getElementById(<span class="string">'title'</span>).innerHTML = <span class="string">'两次输入的不一致'</span>;</div><div class="line">                    self.createPoint(<span class="string">'red'</span>);</div><div class="line">                    delete self.statu.mark;</div><div class="line">                &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">              &#125;</div><div class="line"></div><div class="line">            <span class="keyword">else</span> &#123;</div><div class="line">                self.statu.mark = 1;</div><div class="line">                <span class="keyword">if</span>(pasw.length&lt;4)&#123;</div><div class="line">                    document.getElementById(<span class="string">'title'</span>).innerHTML = <span class="string">'密码太短，至少需要4个点'</span>;</div><div class="line">                    self.createPoint(<span class="string">'red'</span>);</div><div class="line">                    delete self.statu.mark;</div><div class="line">                  &#125;</div><div class="line">                <span class="keyword">else</span>&#123;</div><div class="line">                        self.statu.fpassword = pasw;</div><div class="line">                        document.getElementById(<span class="string">'title'</span>).innerHTML = <span class="string">'请再次输入手势密码'</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">              &#125;</div><div class="line">            </div><div class="line">      </div><div class="line">       //渲染模板和初始化    </div><div class="line">        </div><div class="line">        rendering (title) &#123;</div><div class="line">            <span class="built_in">let</span> self = this;</div><div class="line">            <span class="built_in">let</span> content = document.createElement(<span class="string">'div'</span>);</div><div class="line">            <span class="built_in">let</span> subs = <span class="string">'&lt;h4 style="color:white;margin: 35px auto;"&gt;'</span>+title+<span class="string">'&lt;/h4&gt;'</span>+</div><div class="line">                      </div><div class="line">                    <span class="string">'&lt;canvas id="canvas" width="300" height="300" style="position:absolute;top:120px;left:40px;display: inline-block;margin-top: 15px;"&gt;&lt;/canvas&gt;'</span>+<span class="string">'&lt;p id="title" class="title" style="margin:385px auto;width:200px;align:center;"&gt;&lt;/p&gt;'</span>+<span class="string">'&lt;div style="position:absolute; left:25px;top:480px;"&gt;'</span>+<span class="string">'&lt;input type="radio" id="setPassword" onclick="Lock.set(this);" value="设置密码" name="choose" /&gt;'</span>+</div><div class="line">                    <span class="string">'&lt;label for="setPassword"&gt;设置密码&lt;/label&gt;'</span>+<span class="string">'&lt;br/&gt;'</span>+</div><div class="line">                    <span class="string">'&lt;input type="radio" value="验证密码" id="testPassword" name="choose" onclick="Lock.set(this);" /&gt;'</span>+</div><div class="line">                    <span class="string">'&lt;label for="testPassword"&gt;验证密码&lt;/label&gt;'</span>+<span class="string">'&lt;/div&gt;'</span>;</div><div class="line">            content.setAttribute(<span class="string">'style'</span>,<span class="string">'position: absolute;top:0;left:0;right:0;bottom:0;'</span>);</div><div class="line">            content.innerHTML = subs;</div><div class="line">            document.body.appendChild(content);</div><div class="line"></div><div class="line">            </div><div class="line">            </div><div class="line">            self.statu =&#123;&#125;;</div><div class="line">            self.reactPoint = [];</div><div class="line">           </div><div class="line">            self.touchPress = <span class="literal">false</span>;</div><div class="line">            self.canvas = document.getElementById(<span class="string">'canvas'</span>);</div><div class="line">            self.sender = self.canvas.getContext(<span class="string">'2d'</span>);</div><div class="line">            self.createCircle();</div><div class="line">            self.eventHandler();</div><div class="line"></div><div class="line">        </div><div class="line">          &#125;</div><div class="line">        //获取用户的状态 1设置密码 2.验证密码   </div><div class="line">     </div><div class="line">        static <span class="built_in">set</span>(e) &#123;</div><div class="line"></div><div class="line">            <span class="keyword">if</span>(e.value==<span class="string">"设置密码"</span>)&#123;</div><div class="line">                <span class="built_in">let</span> <span class="built_in">test</span>=document.getElementById(<span class="string">"testPassword"</span>);</div><div class="line">                test.removeAttribute(<span class="string">"checked"</span>);</div><div class="line">                Lock.start = <span class="literal">true</span>;</div><div class="line">                Lock.flag=<span class="literal">true</span>;</div><div class="line">                </div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span>&#123;</div><div class="line">                <span class="built_in">let</span> <span class="built_in">set</span>=document.getElementById(<span class="string">"setPassword"</span>);</div><div class="line">                set.removeAttribute(<span class="string">"checked"</span>);</div><div class="line">                </div><div class="line">                Lock.flag=<span class="literal">false</span>;</div><div class="line"></div><div class="line">                </div><div class="line">               </div><div class="line">                 &#125;</div><div class="line"></div><div class="line">           &#125;  </div><div class="line">        <span class="function"><span class="title">eventHandler</span></span> () &#123;</div><div class="line">            <span class="built_in">let</span> self = this;</div><div class="line">            self.addHandler(self.canvas,<span class="string">"touchstart"</span>, <span class="keyword">function</span> (e) &#123;</div><div class="line">            e.preventDefault();// 某些android 的 touchmove不宜触发 所以增加此行代码</div><div class="line">            <span class="built_in">let</span> point = self.getPosition(e);</div><div class="line">            <span class="keyword">for</span> (<span class="built_in">let</span> i = 0 ; i &lt; self.array.length ; i++) &#123;</div><div class="line">                <span class="keyword">if</span> (Math.abs(point.x - self.array[i].x) &lt; self.r &amp;&amp; Math.abs(point.y - self.array[i].y) &lt; self.r) &#123;</div><div class="line"> </div><div class="line">                    self.touchPress = <span class="literal">true</span>;</div><div class="line">                    self.drawPoint(self.array[i].x,self.array[i].y);</div><div class="line">                    self.reactPoint.push(self.array[i]);</div><div class="line">                    //将modPoint()中的第i个点删除;</div><div class="line">                    self.modPoint.splice(i,1);</div><div class="line">                        <span class="built_in">break</span>;</div><div class="line">                    &#125;</div><div class="line">                 &#125;</div><div class="line">             &#125;);</div><div class="line">             self.addHandler(self.canvas,<span class="string">"touchmove"</span>, <span class="keyword">function</span> (e) &#123;</div><div class="line">                <span class="keyword">if</span> (self.touchPress) &#123;</div><div class="line">                    self.process(self.getPosition(e));</div><div class="line">                &#125;</div><div class="line">             &#125;);</div><div class="line">            self.addHandler( self.canvas,<span class="string">"touchend"</span>, <span class="keyword">function</span> (e) &#123;</div><div class="line">                 <span class="keyword">if</span> (self.touchPress) &#123;</div><div class="line">                     self.touchPress = <span class="literal">false</span>;</div><div class="line">                     self.keppPass(self.reactPoint);</div><div class="line">                     <span class="built_in">set</span>Timeout(<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line"> </div><div class="line">                        self.createCircle();</div><div class="line">                    &#125;, 200);</div><div class="line">                 &#125;</div><div class="line"> </div><div class="line"> </div><div class="line">             &#125;);</div><div class="line">           self.addHandler( document,<span class="string">'touchmove'</span>, <span class="keyword">function</span>(e)&#123;</div><div class="line">                e.preventDefault();</div><div class="line">             &#125;);</div><div class="line">             </div><div class="line">            &#125;</div><div class="line">        //屏蔽浏览器的差异化</div><div class="line">        addHandler(element,<span class="built_in">type</span>,handler)&#123;</div><div class="line">                <span class="keyword">if</span>(element.addEventListener)&#123;</div><div class="line">                  element.addEventListener(<span class="built_in">type</span>,handler,<span class="literal">false</span>);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(element.attachEvent)&#123;</div><div class="line">                    element.attachEvent(<span class="string">"on"</span>+<span class="built_in">type</span>,handler);</div><div class="line">                    &#125;</div><div class="line">                <span class="keyword">else</span> &#123;</div><div class="line">                    element[<span class="string">"on"</span>+<span class="built_in">type</span>] = handler;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="css部分"><a href="#css部分" class="headerlink" title="css部分"></a>css部分</h3>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">   /*定义宽度和背景*/</div><div class="line"> body &#123;     margin:0;</div><div class="line">            padding:0;</div><div class="line">            background:url(bg.jpg) no-repeat;</div><div class="line">            text-align: center;</div><div class="line">             width:375px;</div><div class="line">            height:667px;</div><div class="line">        &#125;</div><div class="line">/*提示栏的样式*/</div><div class="line">.title &#123;</div><div class="line">            </div><div class="line">            color:<span class="comment">#00FFFF;</span></div><div class="line">            text-align: center;</div><div class="line">        &#125;</div><div class="line">/*定义单选按钮的样式*/</div><div class="line">input[<span class="built_in">type</span>=<span class="string">"radio"</span>]+label::before&#123;content:<span class="string">'\a0'</span>;</div><div class="line">            display:inline-block;</div><div class="line">            vertical-align: .2em;</div><div class="line">            width: 1em;</div><div class="line">            height: 1em;</div><div class="line">            margin-right: .2em;</div><div class="line">            border-radius: .5em;</div><div class="line">            background: black;</div><div class="line">            text-indent: .15em;</div><div class="line">            line-height: .65em;</div><div class="line">       </div><div class="line">&#125;</div><div class="line">input[<span class="built_in">type</span>=<span class="string">"radio"</span>]:checked+label::before</div><div class="line">&#123;</div><div class="line">            content:<span class="string">'\2713'</span>;</div><div class="line">            background:<span class="comment">#00FFFF;</span></div><div class="line"></div><div class="line">&#125;</div><div class="line">input[<span class="built_in">type</span>=<span class="string">"radio"</span>]&#123;position: absolute;clip:rect(0,0,0,0);&#125;</div><div class="line">input[<span class="built_in">type</span>=<span class="string">"radio"</span>]:focus+label::before&#123;box-shadow:0 0 .1em .1em <span class="comment">#58a;&#125;</span></div><div class="line">input[<span class="built_in">type</span>=<span class="string">"radio"</span>]:disabled+label::before&#123;background: gray;box-shadow: none;color: <span class="comment">#555;&#125;</span></div><div class="line">label&#123;color:white;&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/canvas/" rel="tag"># canvas</a>
+          
+            <a href="/tags/ES6/" rel="tag"># ES6</a>
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/12/websocket入门/" rel="prev" title="websocket入门">
+                websocket入门 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="王旭枫" />
+          <p class="site-author-name" itemprop="name">王旭枫</p>
+           
+              <p class="site-description motion-element" itemprop="description">梦想还是要有的，万一实现了呢！</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+     
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#html文件"><span class="nav-number">1.</span> <span class="nav-text">html文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6代码"><span class="nav-number">1.1.</span> <span class="nav-text">ES6代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css部分"><span class="nav-number">1.2.</span> <span class="nav-text">css部分</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王旭枫</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("OPn2VKrgyeA1RcALt0bhFQEb-gzGzoHsz", "XuV6lgDToscB3PQ2Hx4hzp9r");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
