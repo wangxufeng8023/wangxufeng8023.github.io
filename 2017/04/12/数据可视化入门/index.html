@@ -94,10 +94,12 @@
 <meta property="og:url" content="https://wangxufeng8023.github.io/2017/04/12/数据可视化入门/index.html">
 <meta property="og:site_name" content="爱演说的程序员">
 <meta property="og:description" content="D3（有时候也叫D3或d3.js）是一个JavaScript 库，用于创建数据可视化图形。但事实上，D3 是一个缩写，它的全称叫Data-DrivenDocuments（数据驱动的文档）。数据来源于你，而文档就是基于Web 的文档（或者网页），代表可以在浏览器中展现的一切，比如HTML、SVG。D3 扮演的是一个驱动程序的角色，因为它联系着数据和文档 DataWrapper•一个非常漂亮的在线服务">
-<meta property="og:updated_time" content="2017-04-12T04:51:21.098Z">
+<meta property="og:image" content="https://wangxufeng8023.github.io/2017/04/12/数据可视化入门/logo.png">
+<meta property="og:updated_time" content="2017-04-12T07:07:17.098Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据可视化入门">
 <meta name="twitter:description" content="D3（有时候也叫D3或d3.js）是一个JavaScript 库，用于创建数据可视化图形。但事实上，D3 是一个缩写，它的全称叫Data-DrivenDocuments（数据驱动的文档）。数据来源于你，而文档就是基于Web 的文档（或者网页），代表可以在浏览器中展现的一切，比如HTML、SVG。D3 扮演的是一个驱动程序的角色，因为它联系着数据和文档 DataWrapper•一个非常漂亮的在线服务">
+<meta name="twitter:image" content="https://wangxufeng8023.github.io/2017/04/12/数据可视化入门/logo.png">
 
 
 
@@ -443,8 +445,72 @@
 <p>40</p>
 <p>56</p>
 <p>78</p>
-<p>12</p>
+<p>12<br>机关都在data() 方法里。在连缀方法中，只<br>要调用data() 了，就可以随时创建一个接收d 为输入的匿名函数。与当前元素对<br>应，方法data() 确保了每个d 都会被赋予原始数据集中的一个值。</p>
+<h4 id="自定义函数"><a href="#自定义函数" class="headerlink" title="自定义函数"></a>自定义函数</h4><p>function(d) {<br>    return d;<br>}匿名函数<br>匿名函数写在了D3 的text() 函数中，因此它会先执行，然后把执<br>行结果交给text()。而text() 完成最后的工作（将接收到的参数值作为文本插入<br>到选中的DOM 元素中）：<br>.text(function(d) {<br>    return d;<br>});<br>不过，我们可以多做<br>如果text (f()) 里面是一个函数，text回去计算，燃油得到返回值</p>
+<h4 id="添加样式"><a href="#添加样式" class="headerlink" title="添加样式"></a>添加样式</h4><p>attr() 和style() 可以分<br>别用来设置取得的元素的HTML 属性和CSS 属性。<br>.style(“color”,”red”);<br>.style(“color”, function(d) {<br>    if (d &gt; 15) {   // 阈值是15<br>        return “red”;<br>    } else {<br>        return “black”;<br>    }<br>});</p>
+<h2 id="基于数据绘图"><a href="#基于数据绘图" class="headerlink" title="基于数据绘图　"></a>基于数据绘图　</h2><p>###　设置属性　attr()<br>attr() 用于设定HTML 元素的属性和值。而HTML 属性就是包含在尖括号&lt;&gt; 中<br>的任意属性/ 值对。比如，下面的标签</p>
+<p></p><p class="caption"></p>
+<p><select id="country"><br><img src="logo.png" width="100px" alt="Logo"><br>出了使用attr(“class”,”aa”);这只属性外，还可以使用<br>这里还要简单介绍D3 的另一个方法classed()，用于快速地添加或删除元素的类。<br>比如，前面那行代码可以重写成下面这样：<br>.classed(“bar”, true)<br>div.bar {<br>    display: inline-block;<br>    width: 20px;<br>    height: 75px;   /<em> 后面会覆盖这个高度 </em>/<br>    background-color: teal;<br>}<br>每个条的高度必须是对应数据值的函数。下面我们就把这个映射关<br>系添加到前面的D3 代码中（注意每个方法连缀结束后都有一个分号）：<br>.style(“height”, function(d) {<br>     var barHeight = d * 5;  // 放大5 倍<br>    return barHeight + “px”;<br>});</select></p>
+<h3 id="data-的魔力"><a href="#data-的魔力" class="headerlink" title="data()的魔力"></a>data()的魔力</h3><p>###　绘制SVG</p>
+<h4 id="创建SVG"><a href="#创建SVG" class="headerlink" title="创建SVG"></a>创建SVG</h4><p>首先要创建一个SVG 元素，以便在其中保存所有图形：<br>//创建SVG首先要创建一个SVG 元素，以便在其中保存所有图形：<br> var dataset=[7,5,11,8,14,14];<br>dataset.sort((x,y)=&gt;x&gt;y?1:-1);<br>let svg = d3.select(“body”).append(“svg”)<br>svg.attr(“width”, 500)<br>   .attr(“height”, 50);<br>var circles = svg.selectAll(“circle”)<br>.data(dataset)<br>.enter()<br>.append(“circle”);<br>circles.attr(“cx”, function(d, i) {<br>    return (i <em> 50) + 25;/</em>另一个值i 也是D3 替我们自动生成的。（谢谢D3 ！）跟d 一样，变量i 也是随便<br>    想的一个名字，你也可以改，比如改成counter 或elementID。我喜欢i，因为简<br>    单，而且它还跟for 循环中的计数器变量i 的命名一致，几乎所有在线示例中都使<br>    用i 作计数器。*/<br>})<br>.attr(“cy”, 50/2)<br>.attr(“r”, function(d) {<br>    return d;<br>});</p>
+<h4 id="加入色彩"><a href="#加入色彩" class="headerlink" title="加入色彩"></a>加入色彩</h4><p>.attr(“fill”, “yellow”)<br>.attr(“stroke”, “orange”)<br>.attr(“stroke-width”, function(d) {<br>    return d/2;<br>});</p>
+<h3 id="绘制条形图"><a href="#绘制条形图" class="headerlink" title="绘制条形图"></a>绘制条形图</h3><script type="text/javascript">
 
+<pre><code>        //Width and height
+        var w = 500;
+        var h = 100;
+        var barPadding = 1;
+
+        var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
+                        11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
+
+        //Create SVG element
+        var svg = d3.select(&quot;body&quot;)
+                    .append(&quot;svg&quot;)
+                    .attr(&quot;width&quot;, w)
+                    .attr(&quot;height&quot;, h);
+
+        svg.selectAll(&quot;rect&quot;)
+           .data(dataset)
+           .enter()
+           .append(&quot;rect&quot;)
+           .attr(&quot;x&quot;, function(d, i) {
+                   return i * (w / dataset.length);
+           })
+           .attr(&quot;y&quot;, function(d) {
+                   return h - (d * 4);
+           })
+           .attr(&quot;width&quot;, w / dataset.length - barPadding)
+           .attr(&quot;height&quot;, function(d) {
+                   return d * 4;
+           })
+           .attr(&quot;fill&quot;, function(d) {
+                return &quot;rgb(0, 0, &quot; + (d * 10) + &quot;)&quot;;
+           });
+
+        svg.selectAll(&quot;text&quot;)
+           .data(dataset)
+           .enter()
+           .append(&quot;text&quot;)
+           .text(function(d) {
+                   return d;
+           })
+//再改一下计算x值的方法，让它等于每个条形的左边位置值加上条形宽度的一半：
+            .attr(&quot;x&quot;, function(d, i) {
+                   return i * (w / dataset.length) + (w / dataset.length - barPadding) / 2;
+           })
+           .attr(&quot;y&quot;, function(d) {
+                   return h - (d * 4) + 14;  //15 变成了14
+           })
+           //另外，为了让间距也合适，我还要把标签向上提一个像素
+           .attr(&quot;font-family&quot;, &quot;sans-serif&quot;)
+           .attr(&quot;font-size&quot;, &quot;11px&quot;)
+           .attr(&quot;fill&quot;, &quot;white&quot;);
+
+
+
+    &lt;/script&gt;
+</code></pre><h3 id="绘制散点图"><a href="#绘制散点图" class="headerlink" title="绘制散点图"></a>绘制散点图</h3></script>
       
     </div>
 
@@ -618,7 +684,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#D3"><span class="nav-number">1.</span> <span class="nav-text">D3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DataWrapper•"><span class="nav-number">2.</span> <span class="nav-text">DataWrapper•</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SVG"><span class="nav-number">3.</span> <span class="nav-text">SVG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连缀语法"><span class="nav-number">4.</span> <span class="nav-text">连缀语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#select-“body”"><span class="nav-number">4.1.</span> <span class="nav-text">select(“body”)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#append-“p”"><span class="nav-number">4.2.</span> <span class="nav-text">append(“p”)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#text-“New-paragraph-”"><span class="nav-number">4.3.</span> <span class="nav-text">text(“New paragraph!”)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定数据"><span class="nav-number">5.</span> <span class="nav-text">绑定数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据"><span class="nav-number">5.1.</span> <span class="nav-text">数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CSV-的意思就是逗号分隔的值（Comma-Separated-Value）。一行为单位"><span class="nav-number">5.1.1.</span> <span class="nav-text">CSV 的意思就是逗号分隔的值（Comma-Separated  Value）。一行为单位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#json"><span class="nav-number">5.1.2.</span> <span class="nav-text">json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实战"><span class="nav-number">5.1.3.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#selectAll-“p”"><span class="nav-number">5.1.3.1.</span> <span class="nav-text">selectAll(“p”)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#data-dataset"><span class="nav-number">5.1.3.2.</span> <span class="nav-text">data(dataset)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#enter"><span class="nav-number">5.1.4.</span> <span class="nav-text">enter()</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#append-“p”-1"><span class="nav-number">5.1.4.1.</span> <span class="nav-text">append(“p”)</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#D3"><span class="nav-number">1.</span> <span class="nav-text">D3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DataWrapper•"><span class="nav-number">2.</span> <span class="nav-text">DataWrapper•</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SVG"><span class="nav-number">3.</span> <span class="nav-text">SVG</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连缀语法"><span class="nav-number">4.</span> <span class="nav-text">连缀语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#select-“body”"><span class="nav-number">4.1.</span> <span class="nav-text">select(“body”)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#append-“p”"><span class="nav-number">4.2.</span> <span class="nav-text">append(“p”)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#text-“New-paragraph-”"><span class="nav-number">4.3.</span> <span class="nav-text">text(“New paragraph!”)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定数据"><span class="nav-number">5.</span> <span class="nav-text">绑定数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据"><span class="nav-number">5.1.</span> <span class="nav-text">数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CSV-的意思就是逗号分隔的值（Comma-Separated-Value）。一行为单位"><span class="nav-number">5.1.1.</span> <span class="nav-text">CSV 的意思就是逗号分隔的值（Comma-Separated  Value）。一行为单位</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#json"><span class="nav-number">5.1.2.</span> <span class="nav-text">json</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实战"><span class="nav-number">5.1.3.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#selectAll-“p”"><span class="nav-number">5.1.3.1.</span> <span class="nav-text">selectAll(“p”)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#data-dataset"><span class="nav-number">5.1.3.2.</span> <span class="nav-text">data(dataset)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#enter"><span class="nav-number">5.1.4.</span> <span class="nav-text">enter()</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#append-“p”-1"><span class="nav-number">5.1.4.1.</span> <span class="nav-text">append(“p”)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义函数"><span class="nav-number">5.1.5.</span> <span class="nav-text">自定义函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加样式"><span class="nav-number">5.1.6.</span> <span class="nav-text">添加样式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于数据绘图"><span class="nav-number">6.</span> <span class="nav-text">基于数据绘图　</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#data-的魔力"><span class="nav-number">6.1.</span> <span class="nav-text">data()的魔力</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建SVG"><span class="nav-number">6.1.1.</span> <span class="nav-text">创建SVG</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加入色彩"><span class="nav-number">6.1.2.</span> <span class="nav-text">加入色彩</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制条形图"><span class="nav-number">6.2.</span> <span class="nav-text">绘制条形图</span></a></li></ol></li></ol></div>
             
 
           </div>
