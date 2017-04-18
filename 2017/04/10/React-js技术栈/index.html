@@ -87,17 +87,17 @@
 
 
 
-<meta name="description" content="1.React定义组件（封装的js，css，html代码）的方式  1.1 ES6（我喜欢）    import React,{Component} from ‘react’    class Button extends Component{        constructor(props){            super(props);        }     static defau">
+<meta name="description" content="ReactNodeReactNode  包含两个基本元素ReactElement和ReactText一个ReactNode数组被称为ReactFragment React.createElement(type,props,children);这个函数是React的入口 type可以是原生的html标签自己定义的组件的名字 props是一个JavaScript对象，他会被从父元素传到子元素中去var">
 <meta name="keywords" content="react,javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React.js技术栈">
 <meta property="og:url" content="https://wangxufeng8023.github.io/2017/04/10/React-js技术栈/index.html">
 <meta property="og:site_name" content="爱演说的程序员">
-<meta property="og:description" content="1.React定义组件（封装的js，css，html代码）的方式  1.1 ES6（我喜欢）    import React,{Component} from ‘react’    class Button extends Component{        constructor(props){            super(props);        }     static defau">
-<meta property="og:updated_time" content="2017-04-13T02:25:19.908Z">
+<meta property="og:description" content="ReactNodeReactNode  包含两个基本元素ReactElement和ReactText一个ReactNode数组被称为ReactFragment React.createElement(type,props,children);这个函数是React的入口 type可以是原生的html标签自己定义的组件的名字 props是一个JavaScript对象，他会被从父元素传到子元素中去var">
+<meta property="og:updated_time" content="2017-04-14T03:31:54.812Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React.js技术栈">
-<meta name="twitter:description" content="1.React定义组件（封装的js，css，html代码）的方式  1.1 ES6（我喜欢）    import React,{Component} from ‘react’    class Button extends Component{        constructor(props){            super(props);        }     static defau">
+<meta name="twitter:description" content="ReactNodeReactNode  包含两个基本元素ReactElement和ReactText一个ReactNode数组被称为ReactFragment React.createElement(type,props,children);这个函数是React的入口 type可以是原生的html标签自己定义的组件的名字 props是一个JavaScript对象，他会被从父元素传到子元素中去var">
 
 
 
@@ -415,7 +415,18 @@
       
 
       
-        <p>1.React定义组件（封装的js，css，html代码）的方式<br>  1.1 ES6（我喜欢）<br>    import React,{Component} from ‘react’<br>    class Button extends Component{<br>        constructor(props){<br>            super(props);<br>        }</p>
+        <h2 id="ReactNode"><a href="#ReactNode" class="headerlink" title="ReactNode"></a>ReactNode</h2><h3 id="ReactNode-1"><a href="#ReactNode-1" class="headerlink" title="ReactNode"></a>ReactNode</h3><p>  包含两个基本元素<br>ReactElement和ReactText<br>一个ReactNode数组被称为ReactFragment</p>
+<h3 id="React-createElement-type-props-children"><a href="#React-createElement-type-props-children" class="headerlink" title="React.createElement(type,props,children);"></a>React.createElement(type,props,children);</h3><p>这个函数是React的入口</p>
+<h4 id="type"><a href="#type" class="headerlink" title="type"></a>type</h4><p>可以是原生的html标签<br>自己定义的组件的名字</p>
+<h3 id="props"><a href="#props" class="headerlink" title="props"></a>props</h3><p>是一个JavaScript对象，他会被从父元素传到子元素中去<br>var reactElement = React.createElement(‘h1’,{className:’header’});<br>上面这种方法也是可以创建一个组件，{className:’header’}就是props的数据</p>
+<p></p><h1 class="header"></h1><br>我认为会给子元素，原来就是给自己。<p></p>
+<h3 id="children"><a href="#children" class="headerlink" title="children"></a>children</h3><p>var p = React.createElement(‘p’,{className:’header’}，”fuck”);<br>var p1 = React.createElement(‘p’,{className:’header1’},”you”);<br>var reactFrament=[p,p1];<br>var section = React.createElement(‘section’,{className:’content’},reactFrament);<br>结果</p>
+<p><section class="content"><br>  <p class="header">fuck</p><br>  <p class="header1">you</p> </section></p>
+<p></p>
+<h3 id="工厂函数"><a href="#工厂函数" class="headerlink" title="工厂函数"></a>工厂函数</h3><p>var list=React.createFactory(“li”);<br>var listem=list({className:”HEA”},’FUCK’);<br>描述这个元素应该含有的子元素，子元素可以是ReactNode的类型</p>
+<h2 id="渲染React元素"><a href="#渲染React元素" class="headerlink" title="渲染React元素"></a>渲染React元素</h2><p>ReactDOM.render(ReactElement,DomElemnet,callback);<br>在服务端，ReactDOMServer.renderToString(ReactElement);也可以渲染出html</p>
+<h2 id="jsx"><a href="#jsx" class="headerlink" title="jsx"></a>jsx</h2><p> 处理用原生的React来创建Virtual Dom 我们还可以用jsx来创建。<br>组件是分为有状态和无状态的，当然无状态的也没有实际的用处</p>
+<h2 id="React定义组件"><a href="#React定义组件" class="headerlink" title="React定义组件"></a>React定义组件</h2><p>（封装的js，css，html代码）的方式<br>  1.1 ES6（我喜欢）<br>    import React,{Component} from ‘react’<br>    class Button extends Component{<br>        constructor(props){<br>            super(props);<br>        }</p>
 <pre><code>    static defaultProps = {
         color:&apos;blue&apos;,
         text:&apos;conform&apos;,
@@ -432,79 +443,107 @@
 
 
 }
+</code></pre><p>render会告诉React要渲染一个什么样的组件，里面内容就是你要渲染到浏览器中的<br>this.props 是从父组件传递过来的，子组件不能改变<br>this.state是定义在子组件的，用来修改状态<br>组件是最小的的单元，不能在往下面分割<br>多个组件最后应该封装成一个组件，<br>在我们application组件中定义了一个collection子主键</p>
+<p><collection tweet="{this.state.collection}" onremovecollection="{this.removecollection}" onremoveallcollection="{this.removeAllcollection}"> 其中方法都在application中定义了<br>两个函数允许collection 组件改变application组件的state，tweet属性把application组件的state传递个collection，collection获得了state的只读权限。<br>只用通过application传递个collection的函数，来改变application的state。</collection></p>
+<h3 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h3><p> class Button extends Component{<br>      //函数<br>      fuss(){</p>
+<pre><code>}
+  render(){
+    return (
+    &lt;fuck onChange={this.fuss}&gt;
+    &lt;em&gt;{text}&lt;/em&gt;
+    &lt;/button&gt;
 
-1.2以前最常用的
-  const Button =React.createClass({
-      getDefaultProps = {
-        return{
-        color:&apos;blue&apos;,
-        text:&apos;conform&apos;,
-    };
-    }
-    render(){
+    );
 
-           const {color,text} = this.props;
-
-        return (
-        &lt;button className={`btn btn-${color}`}&gt;
-        &lt;em&gt;{text}&lt;/em&gt;
-        &lt;/button&gt;
-
-        );
-
-    }
+  }
 
 
-    });
-1.3无状态函数（官方推荐）简介
-    function Button ({color = &apos;blue&apos;,text = &apos;conform&apos;}){
+}                                                                                                                                           class fuck extends Component{
 
-        return (
-        &lt;button className={`btn btn-${color}`}&gt;
-        &lt;em&gt;{text}&lt;/em&gt;
-        &lt;/button&gt;
+  render(){
+    return (
+    &lt;button onClick=this.props.onChange&gt;
 
-        );
+    );
 
+  }
 
 
-    }
-</code></pre><p>2 React 的数据流<br>   数据都是自顶向下单向流动的，父组件到子组件<br>   2.1 stat 管理组建的内部状态<br>   2.2 props 从上到下<br>      React提供了默认配置，defaultProps静态变量的方式配置props<br>      propTypes 用来规范props的类型与必要的状态。<br>          React.PropTypes.array           // 队列</p>
-<pre><code>React.PropTypes.bool.isRequired // Boolean 且必须
+}                                                                    父组件Button给子组件fuck提供了onchange属性，同时将Button的函数fuss出传递个fuck， onClick=this.props.onChange来接收，并绑定到点击事件onClick，点击的时候会触发Button的fuss，修改Button的属性state                                                                                                                          
+</code></pre><h3 id="以前最常用的"><a href="#以前最常用的" class="headerlink" title="以前最常用的"></a>以前最常用的</h3><pre><code>const Button =React.createClass({
+    getDefaultProps = {
+      return{
+      color:&apos;blue&apos;,
+      text:&apos;conform&apos;,
+  };
+  }
+  render(){
 
-React.PropTypes.func            // 函数
+         const {color,text} = this.props;
 
-React.PropTypes.number          // 数字
+      return (
+      &lt;button className={`btn btn-${color}`}&gt;
+      &lt;em&gt;{text}&lt;/em&gt;
+      &lt;/button&gt;
 
-React.PropTypes.object          // 对象
+      );
 
-React.PropTypes.string          // 字符串
-
-React.PropTypes.node            // 任何类型的: numbers, strings, elements 或者数组
-
-React.PropTypes.element         // React 元素
-
-React.PropTypes.instanceOf(XXX) // 某种XXX类型的对象
-
-React.PropTypes.oneOf([&apos;foo&apos;, &apos;bar&apos;]) // 其中的一个字符串
-
-React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.array]) // 其中的一种类型
-
-React.PropTypes.arrayOf(React.PropTypes.string)  // 某种类型的数组(字符串)
-
-React.PropTypes.objectOf(React.PropTypes.string) // 元素是字符串的对象
-
-React.PropTypes.shape({                          // 是否符合指定格式的对象
-
-  color: React.PropTypes.string,
-  fontSize: React.PropTypes.number
-});
-React.PropTypes.any.isRequired  // 可以是任何格式，且必要。
+  }
 
 
-      }  
-</code></pre><p>3.生命周期：<br>   挂载  渲染  卸载<br>   3.1挂载(组件状态的初始时化)</p>
-<pre><code>import React,{Component} from &apos;react&apos;
+  });
+</code></pre><h3 id="无状态函数（官方推荐）简介"><a href="#无状态函数（官方推荐）简介" class="headerlink" title="无状态函数（官方推荐）简介"></a>无状态函数（官方推荐）简介</h3><pre><code>function Button ({color = &apos;blue&apos;,text = &apos;conform&apos;}){
+
+    return (
+    &lt;button className={`btn btn-${color}`}&gt;
+    &lt;em&gt;{text}&lt;/em&gt;
+    &lt;/button&gt;
+
+    );
+
+
+
+}
+</code></pre><h2 id="React-的数据流"><a href="#React-的数据流" class="headerlink" title="React 的数据流"></a>React 的数据流</h2><p>   数据都是自顶向下单向流动的，父组件到子组件</p>
+<h3 id="stat-管理组建的内部状态"><a href="#stat-管理组建的内部状态" class="headerlink" title="stat 管理组建的内部状态"></a>stat 管理组建的内部状态</h3><h3 id="props-从上到下"><a href="#props-从上到下" class="headerlink" title="props 从上到下"></a>props 从上到下</h3><pre><code>React提供了默认配置，defaultProps静态变量的方式配置props
+propTypes 用来规范props的类型与必要的状态。
+    React.PropTypes.array           // 队列
+
+          React.PropTypes.bool.isRequired // Boolean 且必须
+
+          React.PropTypes.func            // 函数
+
+          React.PropTypes.number          // 数字
+
+          React.PropTypes.object          // 对象
+
+          React.PropTypes.string          // 字符串
+
+          React.PropTypes.node            // 任何类型的: numbers, strings, elements 或者数组
+
+          React.PropTypes.element         // React 元素
+
+          React.PropTypes.instanceOf(XXX) // 某种XXX类型的对象
+
+          React.PropTypes.oneOf([&apos;foo&apos;, &apos;bar&apos;]) // 其中的一个字符串
+
+          React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.array]) // 其中的一种类型
+
+          React.PropTypes.arrayOf(React.PropTypes.string)  // 某种类型的数组(字符串)
+
+          React.PropTypes.objectOf(React.PropTypes.string) // 元素是字符串的对象
+
+          React.PropTypes.shape({                          // 是否符合指定格式的对象
+
+            color: React.PropTypes.string,
+            fontSize: React.PropTypes.number
+          });
+          React.PropTypes.any.isRequired  // 可以是任何格式，且必要。
+
+
+                }  
+</code></pre><h2 id="生命周期："><a href="#生命周期：" class="headerlink" title="生命周期："></a>生命周期：</h2><p>   挂载  渲染  卸载</p>
+<h3 id="挂载-组件状态的初始时化"><a href="#挂载-组件状态的初始时化" class="headerlink" title="挂载(组件状态的初始时化)"></a>挂载(组件状态的初始时化)</h3><pre><code>import React,{Component} from &apos;react&apos;
 class App extends Component{
   static propTypes ={}
 
@@ -528,8 +567,16 @@ class App extends Component{
 在顶层组件中将渲染的virtual Dom 通过render渲染到真实的Dom中去。
 
 当组件初次渲染之后，再次更新时，React并不会把所有的组件重新渲染，他会用高效的dom diff算法进行局部渲染。
-</code></pre><p>4事件<br>   4.1  React 基于virtual DOM   实现了一个合成事件层</p>
-<p>  React并不会把所有的事件绑定到真实的节点上面</p>
+</code></pre><h3 id="首次挂载组件时，"><a href="#首次挂载组件时，" class="headerlink" title="首次挂载组件时，"></a>首次挂载组件时，</h3><p>先执行getDefaultProps(),getInitialState(),componentWillMount,render 和componentDidMount方法</p>
+<h3 id="卸载时"><a href="#卸载时" class="headerlink" title="卸载时"></a>卸载时</h3><p>执行 componentWillUnmount()</p>
+<h3 id="重新挂载组件的时候-getInitialState-componentWillMount-render-和componentDidMount方法-不在执行getDefaultProps"><a href="#重新挂载组件的时候-getInitialState-componentWillMount-render-和componentDidMount方法-不在执行getDefaultProps" class="headerlink" title="重新挂载组件的时候 getInitialState(),componentWillMount,render 和componentDidMount方法 不在执行getDefaultProps(),"></a>重新挂载组件的时候 getInitialState(),componentWillMount,render 和componentDidMount方法 不在执行getDefaultProps(),</h3><h3 id="再次渲染的时候，"><a href="#再次渲染的时候，" class="headerlink" title="再次渲染的时候，"></a>再次渲染的时候，</h3><p>组件接受更新的状态，componentWillReceiverProps shoulidComponentUpdate componentWillUpdate render componentDidUpdate</p>
+<h3 id="自定义组件的生命周期"><a href="#自定义组件的生命周期" class="headerlink" title="自定义组件的生命周期"></a>自定义组件的生命周期</h3><p>有三个状态 MOUNTING RECEIVER-PROPS UNMOUNTING<br>三个状态对应着三个方法 mountcomponent  updateComponent unmountComponet<br>带will的是进入之前执行，带did的是进入之后调用</p>
+<h3 id="重点讲解"><a href="#重点讲解" class="headerlink" title="重点讲解"></a>重点讲解</h3><h4 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h4><p>getInitialState()<br>    |<br>    |<br>componentWillmount()<br>    |<br>    |<br> render()<br>    |<br>    |<br>componentdidmount()    </p>
+<h4 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h4><p>componentWillUnmount() </p>
+<h4 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h4><p>componentWillReceiverProps  可以使用this.props对象和nextProps对象来比较单钱组件和下一个组件的属性，<br>根据比较的结果，可以选择使用this.setState()函数来更新组件state<br>componentWillReceiveProps(nextProps) { //这是状态发生变化是会调用该函数的意思吗？<br>        if (this.props.sign !== nextProps.sign) {//是如果本次的状态和上次状态不一样时的意思吗？<br>            const user = nextProps.sign.get(‘user’);//获取本次输入的用户<br>            if (user &amp;&amp; user !== this.props.sign.get(‘user’)) {<br>                browserHistory.push(‘/console/‘)//这是什么意思？<br>            } else if (nextProps.sign.has(‘signinError’)) {<br>                this.props.form.setFieldsValue({password: ‘’});//设置password控件的值为空<br>                window.alert(nextProps.sign.getIn([‘signinError’, ‘errMsg’]));//弹出一个警示框显示错误<br>            }<br>        }<br>    }<br>    |<br>    |<br>    |<br>shouldComponentUpdate(nextProps,nextState) //通过这个方法可以决定下一个状态时候触发组建的重新渲染，这个方法返回一个布尔值，默认true，返回fasle，下面的函数都不会触发,我们可以判断，然后根据返回的false或是true，来判断是否需要重新渲染，提高性能。</p>
+<pre><code>| 
+</code></pre><p>componentWillUpdate<br>nextState：下一个状态对象<br>nextProps：下一个属性对象 this.props.data 存到是当前已经渲染过后的数据，nextProps是更新后来的数据，prevProps是this.props.data的上一个数据，fuck。<br>在这个函数中不能用this.setState()修改状态<br>要改的话去componentWillReceiverProps 方法中去修改<br>    |<br>render<br>    |<br>componentDidUpdate(prevProps,proevState)<br>prevProps 上一个属性对象<br>provState 上一个状态对象</p>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><h3 id="React-基于virtual-DOM-实现了一个合成事件层"><a href="#React-基于virtual-DOM-实现了一个合成事件层" class="headerlink" title="React 基于virtual DOM   实现了一个合成事件层"></a>React 基于virtual DOM   实现了一个合成事件层</h3><p>  React并不会把所有的事件绑定到真实的节点上面</p>
 <pre><code>在结构的最外层使用一个公用的事件监听器
 
 
@@ -538,97 +585,196 @@ class App extends Component{
        处理函数
 
 当一个事件发生改变时---》监听器---》查事件监听---》找到对应的处理函数
-</code></pre><p>  4.2自动绑定<br>    4.2.1  onclick={this.hanlechkc.bind(                   this,”参数”)}<br>           如果没有参数：简写<br>          onclick = {::this.hanlehcil}<br>    4.2.2 构造器内声明：<br>        handleclick(e){<br>            this.handleclick = this.handleclick.bind(this);}<br>        onclick = {this.handleclick}<br>    4.2.3 箭头函数：<br>       const handleclick=(e)=&gt;{console.log();}<br>       onclick = {this.handleclick}<br>    4.2.4 同样我们可使用js原生的事件绑定机制<br>      react 合成事件是js原生事件的一个子集</p>
-<ol>
-<li><p>我的第一个完整的demo<br>5.1<html><br><head><br> <title></title><br><meta charset="utf-8"></head></html></p>
- <script src="react.js"></script>
- <script src="react-dom.js"></script>
+</code></pre><h3 id="自动绑定"><a href="#自动绑定" class="headerlink" title="自动绑定"></a>自动绑定</h3><pre><code>####  onclick={this.hanlechkc.bind(                   this,&quot;参数&quot;)}
+       如果没有参数：简写
+      onclick = {::this.hanlehcil}
+</code></pre><h4 id="构造器内声明："><a href="#构造器内声明：" class="headerlink" title="构造器内声明："></a>构造器内声明：</h4><pre><code>    handleclick(e){
+        this.handleclick = this.handleclick.bind(this);}
+    onclick = {this.handleclick}
+#### 箭头函数：
+   const handleclick=(e)=&gt;{console.log();}
+   onclick = {this.handleclick}
+4.2.4 同样我们可使用js原生的事件绑定机制
+  react 合成事件是js原生事件的一个子集
+</code></pre><h2 id="我的第一个完整的demo"><a href="#我的第一个完整的demo" class="headerlink" title="我的第一个完整的demo"></a>我的第一个完整的demo</h2><p>   ### </p>
+<pre><code class="bash">   &lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;&lt;/title&gt;
+  &lt;meta charset=<span class="string">"utf-8"</span>&gt;
+    &lt;script src=<span class="string">"react.js"</span>&gt;&lt;/script&gt;
+    &lt;script src=<span class="string">"react-dom.js"</span>&gt;&lt;/script&gt;
 
-<script src="JSXTransformer.js"></script>
-
-
-</li>
-</ol>
-<p></p>
-<p><body><br> <div id="example"></div><br>    <script type="text/jsx"><br> class LikeButton extends React.Component {<br>        constructor(props){<br>            super(props);<br>            this.state = {switch: false,inputvalue:’’,radioValue:’’,coffee:[],area:’’};<br>            this.handleClick = this.handleClick.bind(this);</p>
-<pre><code>      this.handleinputClick = this.handleinputClick.bind(this);
-
-      this.handleRaidoClick = this.handleRaidoClick.bind(this);
-
-      this.handleCheckClick = this.handleCheckClick.bind(this);
-
-      this.handleSelectClick = this.handleSelectClick.bind(this);
-
-   }
-   handleClick(event) {
-      this.setState({switch: !this.state.switch});
-   }
- handleinputClick(event){
-this.setState({inputvalue:event.target.value});
+  &lt;script src=<span class="string">"JSXTransformer.js"</span>&gt;&lt;/script&gt;
 
 
- }
- handleRaidoClick(event){
-</code></pre><p>this.setState({radioValue:event.target.value});</p>
-<pre><code>}
-handleCheckClick(event){
-</code></pre><p>  const {checked,value} =event.target;<br>  let {coffee} =this.state;<br>  if(checked&amp;&amp;coffee.indexOf(value)===-1)<br>  {<br>  coffee.push(value);<br>  }<br>  else{<br>    coffee=coffee.filter(i=&gt; i!=value);</p>
-<p>  }</p>
-<p>this.setState({coffee,});</p>
-<pre><code>}
-handleSelectClick(event){
-</code></pre><p>this.setState({area:event.target.value});</p>
-<pre><code>}
-  render() {
-     let text = this.state.switch ? &apos;on&apos; : &apos;off&apos;;
-     let values=this.state.inputvalue;
-     const radioValue =this.state.radioValue;
-     const coffee = this.state.coffee;
-     const area=this.state.area;
-     return (
-     &lt;div&gt;
-      &lt;p&gt;单行输入:&lt;input onChange={this.handleinputClick} type=&quot;text&quot; name=&quot;input&quot; /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+ &lt;div id=<span class="string">"example"</span>&gt;&lt;/div&gt;
+    &lt;script <span class="built_in">type</span>=<span class="string">"text/jsx"</span>&gt;
+ class LikeButton extends React.Component {
+        constructor(props){
+            super(props);
+            this.state = {switch: <span class="literal">false</span>,inputvalue:<span class="string">''</span>,radioValue:<span class="string">''</span>,coffee:[],area:<span class="string">''</span>};
+            this.handleClick = this.handleClick.bind(this);
+
+            this.handleinputClick = this.handleinputClick.bind(this);
+
+            this.handleRaidoClick = this.handleRaidoClick.bind(this);
+
+            this.handleCheckClick = this.handleCheckClick.bind(this);
+
+            this.handleSelectClick = this.handleSelectClick.bind(this);
+
+         }
+         handleClick(event) {
+            this.setState({switch: !this.state.switch});
+         }
+       handleinputClick(event){
+      this.setState({inputvalue:event.target.value});
 
 
-      &lt;span&gt;content:{values}&lt;/span&gt;&lt;/p&gt;
-
-       &lt;button onClick={this.handleClick}&gt;
-         On: {text}
-
-       &lt;/button&gt;
-
-       &lt;p&gt;gender:&lt;/p&gt;
-       &lt;label&gt;male:
-     &lt;input type=&quot;radio&quot; name=&quot;radio&quot; value=&quot;male&quot; checked={radioValue===&apos;male&apos;} onChange = {this.handleRaidoClick}/&gt;
-
-       &lt;/label&gt;
-           &lt;label&gt;female:
-     &lt;input type=&quot;radio&quot; name=&quot;radio&quot; value=&quot;female&quot; checked={radioValue===&apos;female&apos;} onChange = {this.handleRaidoClick}/&gt;
-
-       &lt;/label&gt;
-       &lt;span&gt;选择：{radioValue}&lt;/span&gt;
-</code></pre><p><select value={area} onChange={this.handleSelectClick}><br>  <option value="beijing">背景</option><br>  <option value="beijing1">背景1</option><br>  <option value="beijing2">背景2</option></p>
-<p></select><br><span>{area}</span></p>
-<p><p>选择你喜欢的咖啡</p></p>
-<label><br>  <input type="checkbox" value="Cappuccino" checked={coffee.indexOf('Cappuccino')!==-1} onChange={this.handleCheckClick}/>cappuccino<br>  </label><br><label><br>  <input type="checkbox" value="拿铁" checked={coffee.indexOf('拿铁')!==-1} onChange={this.handleCheckClick}/>拿铁<br>  </label><br>  <label><br>  <input type="checkbox" value="卡布基诺" checked={coffee.indexOf('卡布基诺')!==-1} onChange={this.handleCheckClick}/>卡布基诺<br>  </label><br>   <label><br>  <input type="checkbox" value="焦糖" checked={coffee.indexOf('焦糖')!==-1} onChange={this.handleCheckClick}/>焦糖<br>  </label>
-
- <ol><br>                    {<br>                        coffee.map(function(username){<br>                            return <li>{username}</li><br>                        })<br>                    }<br>                </ol>
+       }
+       handleRaidoClick(event){
+this.setState({radioValue:event.target.value});
 
 
-<pre><code>    &lt;/div&gt;
-  );
-}
-</code></pre><p>  }<br>ReactDOM.render(<br>  <LikeButton />,<br>  document.getElementById(‘example’)<br>); </p>
-<p>   </script><br></body><br><br>中间有一个插曲，button不能获得input的内容，这也许就是virtual Dom 把，我们要做处理。<br>上面我们定义了太多handle…click()函数，<br>我们可以抽象出来一个函数：<br>handlechange(name,e){<br>    const {value} = e.target;<br>    this.setState{([name]:value)}</p>
-<p>}<br>6 受控组件  当组件变化是，state状态会发生变化，input等提倡使用受控组件<br>7非受控组件<br>8.refs<br>  ref是React中的一种属性，当render函数返回某个组件的实例时，可以给render中的某个虚拟DOM节点添加一个ref属性，如下面的代码所示<br>  给<input>标签设置ref属性有什么用途呢？下面是官方文档给出的解释：<br>在其它代码中（典型地事件处理代码），通过 this.refs 获取支撑实例（ backing instance ），就像这样：this.refs.input。其中”input”就是上面给<input>标签设置的ref属性的值。<br>通过ref属性，我们还可以拿到该虚拟DOM对应的真实DOM节点，有两种方法可以拿到真实DOM节点，如下代码所示：<br>[html] view plain copy print?在CODE上查看代码片派生到我的代码片</p>
+       }
+       handleCheckClick(event){
+  const {checked,value} =event.target;
+  <span class="built_in">let</span> {coffee} =this.state;
+  <span class="keyword">if</span>(checked&amp;&amp;coffee.indexOf(value)===-1)
+  {
+  coffee.push(value);
+  }
+  <span class="keyword">else</span>{
+    coffee=coffee.filter(i=&gt; i!=value);
+
+  }
+
+
+
+this.setState({coffee,});
+
+
+       }
+       handleSelectClick(event){
+this.setState({area:event.target.value});
+
+
+       }
+         <span class="function"><span class="title">render</span></span>() {
+            <span class="built_in">let</span> text = this.state.switch ? <span class="string">'on'</span> : <span class="string">'off'</span>;
+            <span class="built_in">let</span> values=this.state.inputvalue;
+            const radioValue =this.state.radioValue;
+            const coffee = this.state.coffee;
+            const area=this.state.area;
+            <span class="built_in">return</span> (
+            &lt;div&gt;
+             &lt;p&gt;单行输入:&lt;input onChange={this.handleinputClick} <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"input"</span> /&gt;
+
+
+             &lt;span&gt;content:{values}&lt;/span&gt;&lt;/p&gt;
+
+              &lt;button onClick={this.handleClick}&gt;
+                On: {text}
+
+              &lt;/button&gt;
+
+              &lt;p&gt;gender:&lt;/p&gt;
+              &lt;label&gt;male:
+            &lt;input <span class="built_in">type</span>=<span class="string">"radio"</span> name=<span class="string">"radio"</span> value=<span class="string">"male"</span> checked={radioValue===<span class="string">'male'</span>} onChange = {this.handleRaidoClick}/&gt;
+
+              &lt;/label&gt;
+                  &lt;label&gt;female:
+            &lt;input <span class="built_in">type</span>=<span class="string">"radio"</span> name=<span class="string">"radio"</span> value=<span class="string">"female"</span> checked={radioValue===<span class="string">'female'</span>} onChange = {this.handleRaidoClick}/&gt;
+
+              &lt;/label&gt;
+              &lt;span&gt;选择：{radioValue}&lt;/span&gt;
+&lt;select value={area} onChange={this.handleSelectClick}&gt;
+  &lt;option value=<span class="string">"beijing"</span>&gt;背景&lt;/option&gt;
+  &lt;option value=<span class="string">"beijing1"</span>&gt;背景1&lt;/option&gt;
+  &lt;option value=<span class="string">"beijing2"</span>&gt;背景2&lt;/option&gt;
+
+
+
+&lt;/select&gt;
+&lt;span&gt;{area}&lt;/span&gt;
+&lt;p&gt;选择你喜欢的咖啡&lt;/p&gt;
+&lt;label&gt;
+  &lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> value=<span class="string">"Cappuccino"</span> checked={coffee.indexOf(<span class="string">'Cappuccino'</span>)!==-1} onChange={this.handleCheckClick}/&gt;cappuccino
+  &lt;/label&gt;
+&lt;label&gt;
+  &lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> value=<span class="string">"拿铁"</span> checked={coffee.indexOf(<span class="string">'拿铁'</span>)!==-1} onChange={this.handleCheckClick}/&gt;拿铁
+  &lt;/label&gt;
+  &lt;label&gt;
+  &lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> value=<span class="string">"卡布基诺"</span> checked={coffee.indexOf(<span class="string">'卡布基诺'</span>)!==-1} onChange={this.handleCheckClick}/&gt;卡布基诺
+  &lt;/label&gt;
+   &lt;label&gt;
+  &lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> value=<span class="string">"焦糖"</span> checked={coffee.indexOf(<span class="string">'焦糖'</span>)!==-1} onChange={this.handleCheckClick}/&gt;焦糖
+  &lt;/label&gt;
+
+ &lt;ol&gt;  
+                    {  
+                        coffee.map(<span class="keyword">function</span>(username){  
+                            <span class="built_in">return</span> &lt;li&gt;{username}&lt;/li&gt;  
+                        })  
+                    }  
+                &lt;/ol&gt;
+
+
+              &lt;/div&gt;
+            );
+          }
+  }
+ReactDOM.render(
+  &lt;LikeButton /&gt;,
+  document.getElementById(<span class="string">'example'</span>)
+); 
+
+
+
+
+
+   &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>中间有一个插曲，button不能获得input的内容，这也许就是virtual Dom 把，我们要做处理。<br>上面我们定义了太多handle…click()函数，<br>我们可以抽象出来一个函数：<br>handlechange(name,e){<br>    const {value} = e.target;<br>    this.setState{([name]:value)}</p>
+<p>}</p>
+<h2 id="受控组件"><a href="#受控组件" class="headerlink" title="受控组件"></a>受控组件</h2><p>当组件变化是，state状态会发生变化，input等提倡使用受控组件</p>
+<h2 id="非受控组件"><a href="#非受控组件" class="headerlink" title="非受控组件"></a>非受控组件</h2><p>##.refs<br>  ref是React中的一种属性，当render函数返回某个组件的实例时，可以给render中的某个虚拟DOM节点添加一个ref属性，如下面的代码所示<br>  给<input>标签设置ref属性有什么用途呢？下面是官方文档给出的解释：<br>在其它代码中（典型地事件处理代码），通过 this.refs 获取支撑实例（ backing instance ），就像这样：this.refs.input。其中”input”就是上面给<input>标签设置的ref属性的值。<br>通过ref属性，我们还可以拿到该虚拟DOM对应的真实DOM节点，有两种方法可以拿到真实DOM节点，如下代码所示：<br>[html] view plain copy print?在CODE上查看代码片派生到我的代码片</p>
 <input type="text" ref="username">  
 
-<p>//下面4种方式都可以通过ref获取真实DOM节点<br>var usernameDOM = this.refs.username.getDOMNode();<br>var usernameDOM = React.findDOMNode(this.refs.username);<br>var usernameDOM = this.refs[‘username’].getDOMNode();<br>var usernameDOM = React.findDOMNode(this.refs[‘username’]);<br>10 样式处理（css）<br>const style ={<br>    color:’red’,<br>    background:url(${imgurl}),<br>    WebkitTransition:all—&gt;-webkit-<br>    msTransiton:all</p>
-<p>}<br>const component =<component style="{style}/">;<br>react 会给我们自动加上PX<br>10.1 css Modules<br>   css样式的导入和导出<br>   css Modules 内部通过ICSS来解决样式导入和导出的两个问题，<br>   分别对应着：import 和：export连个新增的伪类</component></p>
+<p>//下面4种方式都可以通过ref获取真实DOM节点<br>var usernameDOM = this.refs.username.getDOMNode();<br>var usernameDOM = React.findDOMNode(this.refs.username);<br>var usernameDOM = this.refs[‘username’].getDOMNode();<br>var usernameDOM = React.findDOMNode(this.refs[‘username’]);</p>
+<h2 id="样式处理（css）"><a href="#样式处理（css）" class="headerlink" title="样式处理（css）"></a>样式处理（css）</h2><p>const style ={<br>    color:’red’,<br>    background:url(${imgurl}),<br>    WebkitTransition:all—&gt;-webkit-<br>    msTransiton:all</p>
+<p>}<br>const component =<component style="{style}/">;<br>react 会给我们自动加上PX</component></p>
+<h3 id="css-Modules"><a href="#css-Modules" class="headerlink" title="css Modules"></a>css Modules</h3><p>   css样式的导入和导出<br>   css Modules 内部通过ICSS来解决样式导入和导出的两个问题，<br>   分别对应着：import 和：export连个新增的伪类</p>
 <p>   :import(“path/to/dep.css”)<br>   {<br>   localAlias:keyFromDep;<br>   }<br>   :export{</p>
 <pre><code>exportdeKey:exportedValue;
 </code></pre><p>   }</p>
+<h2 id="组件通信"><a href="#组件通信" class="headerlink" title="组件通信"></a>组件通信</h2><h3 id="父组件向子组件通信"><a href="#父组件向子组件通信" class="headerlink" title="父组件向子组件通信"></a>父组件向子组件通信</h3><p>React组件也是单项数据流，父组件通过props向子组件传递数据，&lt;!DOCTYPE html&gt;</p>
+<p><html></html></p>
+<p><head><br>  <title></title><br>  <meta charset="utf-8"><br>  <script src="react.js"></script><br>  <script src="react-dom.js"></script></head></p>
+  <script src="JSXTransformer.js"></script>
 
+
+<p></p>
+<p><body><br> <div id="example"></div><br>    <script type="text/jsx"><br>  class Team extends React.Component{<br>getDefaultProps(){<br>    return {<br>text:’’,<br> checked:false,<br>    };<br>  }<br>  constructor(props){<br>  super(props);<br>   this.onHungry = this.onHungry.bind(this);<br>  }<br>onHungry(name) {<br>alert(name + “ is hungry”);<br>}<br> render(){</p>
+<p>return (<div>Team onwer is: <People name={this.props.name} onHungry={this.onHungry}></People></div></p>
+<p> );}<br> }</p>
+<p>class People extends React.Component{</p>
+<p>  getDefaultProps(){<br>    return {<br>         list:[],<br> handleItemChange:()=&gt;{},<br>    };<br>  }</p>
+<p> constructor(props){<br> super(props);<br>  this.handleClick = this.handleClick.bind(this);<br> }<br> handleClick(){<br>this.props.onHungry(this.props.name);<br>} </p>
+<p> render(){</p>
+<p>  return (<span onClick={this.handleClick}>{this.props.name}</span>  </p>
+<p> );}<br> }</p>
+<p>ReactDOM.render(  </p>
+<p><Team name='Lucy' />,<br>document.getElementById(‘example’)<br>);  </p>
+<pre><code>&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h3 id="子组件向父组件传递"><a href="#子组件向父组件传递" class="headerlink" title="子组件向父组件传递"></a>子组件向父组件传递</h3><h4 id="利用回到函数，拿到状态"><a href="#利用回到函数，拿到状态" class="headerlink" title="利用回到函数，拿到状态"></a>利用回到函数，拿到状态</h4><h4 id="利用自定义事件机制"><a href="#利用自定义事件机制" class="headerlink" title="利用自定义事件机制"></a>利用自定义事件机制</h4><p>定义默认的props属性<br>getDefaultProps(){<br>    return {<br>text:’’,<br> checked:false,<br>    };<br>  }</p>
+<h3 id="跨组件通信"><a href="#跨组件通信" class="headerlink" title="跨组件通信"></a>跨组件通信</h3></script></body></p>
       
     </div>
 
@@ -733,8 +879,17 @@ handleSelectClick(event){
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -749,7 +904,7 @@ handleSelectClick(event){
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -760,7 +915,7 @@ handleSelectClick(event){
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -771,7 +926,7 @@ handleSelectClick(event){
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -795,6 +950,22 @@ handleSelectClick(event){
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ReactNode"><span class="nav-number">1.</span> <span class="nav-text">ReactNode</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ReactNode-1"><span class="nav-number">1.1.</span> <span class="nav-text">ReactNode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React-createElement-type-props-children"><span class="nav-number">1.2.</span> <span class="nav-text">React.createElement(type,props,children);</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#type"><span class="nav-number">1.2.1.</span> <span class="nav-text">type</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#props"><span class="nav-number">1.3.</span> <span class="nav-text">props</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#children"><span class="nav-number">0.1.</span> <span class="nav-text">children</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工厂函数"><span class="nav-number">0.2.</span> <span class="nav-text">工厂函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#渲染React元素"><span class="nav-number">1.</span> <span class="nav-text">渲染React元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsx"><span class="nav-number">2.</span> <span class="nav-text">jsx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React定义组件"><span class="nav-number">3.</span> <span class="nav-text">React定义组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重点"><span class="nav-number">3.1.</span> <span class="nav-text">重点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以前最常用的"><span class="nav-number">3.2.</span> <span class="nav-text">以前最常用的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无状态函数（官方推荐）简介"><span class="nav-number">3.3.</span> <span class="nav-text">无状态函数（官方推荐）简介</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-的数据流"><span class="nav-number">4.</span> <span class="nav-text">React 的数据流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#stat-管理组建的内部状态"><span class="nav-number">4.1.</span> <span class="nav-text">stat 管理组建的内部状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#props-从上到下"><span class="nav-number">4.2.</span> <span class="nav-text">props 从上到下</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生命周期："><span class="nav-number">5.</span> <span class="nav-text">生命周期：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#挂载-组件状态的初始时化"><span class="nav-number">5.1.</span> <span class="nav-text">挂载(组件状态的初始时化)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#首次挂载组件时，"><span class="nav-number">5.2.</span> <span class="nav-text">首次挂载组件时，</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载时"><span class="nav-number">5.3.</span> <span class="nav-text">卸载时</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重新挂载组件的时候-getInitialState-componentWillMount-render-和componentDidMount方法-不在执行getDefaultProps"><span class="nav-number">5.4.</span> <span class="nav-text">重新挂载组件的时候 getInitialState(),componentWillMount,render 和componentDidMount方法 不在执行getDefaultProps(),</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#再次渲染的时候，"><span class="nav-number">5.5.</span> <span class="nav-text">再次渲染的时候，</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义组件的生命周期"><span class="nav-number">5.6.</span> <span class="nav-text">自定义组件的生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重点讲解"><span class="nav-number">5.7.</span> <span class="nav-text">重点讲解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#挂载"><span class="nav-number">5.7.1.</span> <span class="nav-text">挂载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#卸载"><span class="nav-number">5.7.2.</span> <span class="nav-text">卸载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更新"><span class="nav-number">5.7.3.</span> <span class="nav-text">更新</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件"><span class="nav-number">6.</span> <span class="nav-text">事件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#React-基于virtual-DOM-实现了一个合成事件层"><span class="nav-number">6.1.</span> <span class="nav-text">React 基于virtual DOM   实现了一个合成事件层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动绑定"><span class="nav-number">6.2.</span> <span class="nav-text">自动绑定</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#构造器内声明："><span class="nav-number">6.2.1.</span> <span class="nav-text">构造器内声明：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我的第一个完整的demo"><span class="nav-number">7.</span> <span class="nav-text">我的第一个完整的demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#受控组件"><span class="nav-number">8.</span> <span class="nav-text">受控组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非受控组件"><span class="nav-number">9.</span> <span class="nav-text">非受控组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样式处理（css）"><span class="nav-number">10.</span> <span class="nav-text">样式处理（css）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#css-Modules"><span class="nav-number">10.1.</span> <span class="nav-text">css Modules</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组件通信"><span class="nav-number">11.</span> <span class="nav-text">组件通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#父组件向子组件通信"><span class="nav-number">11.1.</span> <span class="nav-text">父组件向子组件通信</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
