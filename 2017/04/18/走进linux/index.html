@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="sheel,linux," />
+  <meta name="keywords" content="linux,sheel," />
 
 
 
@@ -88,13 +88,13 @@
 
 
 <meta name="description" content="lastlast -n 5 &amp;lt;==仅取出前五行 umask当我们使用touck命令创建一个文件时，没有给权限，那么就采用umask中默认的属性我们可以设置这个属性umask 002设置规则： 目录规则：首先设定777然后从777中减掉002 文件规则：将目录规则中的可执行x去掉就可以 suid和guidSUID 是 Set User ID, SGID 是 Set Group ID的意思 ch">
-<meta name="keywords" content="sheel,linux">
+<meta name="keywords" content="linux,sheel">
 <meta property="og:type" content="article">
 <meta property="og:title" content="走进linux">
 <meta property="og:url" content="https://wangxufeng8023.github.io/2017/04/18/走进linux/index.html">
 <meta property="og:site_name" content="爱演说的程序员">
 <meta property="og:description" content="lastlast -n 5 &amp;lt;==仅取出前五行 umask当我们使用touck命令创建一个文件时，没有给权限，那么就采用umask中默认的属性我们可以设置这个属性umask 002设置规则： 目录规则：首先设定777然后从777中减掉002 文件规则：将目录规则中的可执行x去掉就可以 suid和guidSUID 是 Set User ID, SGID 是 Set Group ID的意思 ch">
-<meta property="og:updated_time" content="2017-04-23T07:57:26.610Z">
+<meta property="og:updated_time" content="2017-04-24T15:22:31.296Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="走进linux">
 <meta name="twitter:description" content="lastlast -n 5 &amp;lt;==仅取出前五行 umask当我们使用touck命令创建一个文件时，没有给权限，那么就采用umask中默认的属性我们可以设置这个属性umask 002设置规则： 目录规则：首先设定777然后从777中减掉002 文件规则：将目录规则中的可执行x去掉就可以 suid和guidSUID 是 Set User ID, SGID 是 Set Group ID的意思 ch">
@@ -466,7 +466,19 @@
 <p>nl /etc/passwd | sed ‘2a drink tea’<br>那如果是要在第二行前</p>
 <p> nl /etc/passwd | sed ‘2i drink tea’<br> sed -n ‘2p’ test.txt 打印第2行<br> sed -n ‘4,/the/‘p 在第四行中匹配the，<br> $代表最后一行<br> sed -e ‘/music/=’ =是代表打印行号<br> sed也可以是脚本的形式</p>
 <p> #！/usr/bin/sed -f<br> /commod/ a\<br> then suddendy ap suppose<br> 在commod匹配后加入一句话</p>
-<h2 id="和并与分割"><a href="#和并与分割" class="headerlink" title="和并与分割"></a>和并与分割</h2><h3 id="sort命令"><a href="#sort命令" class="headerlink" title="sort命令"></a>sort命令</h3>
+<h2 id="和并与分割"><a href="#和并与分割" class="headerlink" title="和并与分割"></a>和并与分割</h2><h3 id="sort命令"><a href="#sort命令" class="headerlink" title="sort命令"></a>sort命令</h3><p>-c 测试文件是否已经分类<br>-m 合并两个分类文件<br>-u 删除所有复制行<br>-o 存储sort结果的输出文件名<br>-t 分隔符<br>sort -t: test.txt //基本的排序，按照第一个域<br>sort -t: -r test.txt 逆序输出<br>sort -t: +1 test.txt 按照制定的域进行排序，第二域进行分类<br>如果要分类的数值，需要加上n<br>sort -t: +1n test.txt<br>sort -u test.txt 去除重复的行<br>sort -t: -k4 test.txt 对第四域进行分类<br>sort -t: -k4 -k1test.txt 先对第四域进行分类，在对第一域进行分类<br>sort +0 -2 +3 先对域0分类，忽略域2，然后在对域3分类<br>按照域的字符分类<br>sort -t: +1.2 //按照第一域中的第三个字符分类<br>head -1 显示文件的第一行<br>tail -1 显示文件的最后一行<br>通过管道配合awk使用<br>sort -t: -r -k4 | tail -1 | awk ‘{print ‘name is ‘ $1,’price is ‘ $3}’<br>合并两个分类文件<br>sort -t: -m +0 video.txt  test.txt</p>
+<h3 id="uniq"><a href="#uniq" class="headerlink" title="uniq"></a>uniq</h3><p>从文件中去除重复行<br>-u  只显示不重复行<br>-d 只显示有重复数据行<br>-c 打印每一行连续重复的次数</p>
+<h3 id="join"><a href="#join" class="headerlink" title="join"></a>join</h3><p>合并两个分类文件<br>和mysql中的join差不多<br>join name.txt result.txt<br>把result.txt 域中和name一样的放在一起<br>join -a1 -a2 name.txt result.txt<br>join -a1  name.txt result.txt //当result.txt 中有的内容name.txt 中没有时，自动忽略result.txt 的内容<br>制定特殊的域进行链接<br>join -j1 3 -j2 1  name.txt result.txt  文件一的第三域和文件2的第一域进行链接</p>
+<h3 id="cut-用法"><a href="#cut-用法" class="headerlink" title="cut 用法"></a>cut 用法</h3><p>用来从文件中裁剪列或者域<br>-c 指定裁剪的字符数<br>-f 指定裁剪域<br>-f 1,5 裁剪第一域和第五域<br>-d分割符<br>cut -d： -f3 text.txt 裁处第三域</p>
+<h3 id="paste"><a href="#paste" class="headerlink" title="paste"></a>paste</h3><p>将cut裁剪出来的域拼接起来，形成一个新文件<br>-d 链接的符号</p>
+<p>paste -d： name.txt age.txt<br>ls | paste -d”” - -  其中-代表输出的格式是一行两个元素，空格作为输入的一个标准</p>
+<h3 id="split"><a href="#split" class="headerlink" title="split"></a>split</h3><p>将大文件分割成小文件</p>
+<h2 id="tr"><a href="#tr" class="headerlink" title="tr"></a>tr</h2><p>用来从标准输入通过变化来改变字符<br>大小写转换<br>删除空行<br>tr -s [a-z] text.txt //去除text.txt 中字符a-z中重复的字符<br>tr -s “[\012]” text.txt //删除空行<br>tr -s [“\n”] text.txt //删除空行<br>tr “[a-z]” “[A-Z]” 小写转大写<br>tr “[0<em>4]” “</em>“ text.txt 匹配至少含有四个零的项，并将每个字符转换为*</p>
+<h2 id="登录环境"><a href="#登录环境" class="headerlink" title="登录环境"></a>登录环境</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>name=value //设置值<br>name+value //如果设置了name的值 ，则重新设置值<br>name:?value //如果未设置name的值，提示用户错误信息<br>name？value //如果未设置name的值，提示系统错误信息<br>name:=value // 如果未设置name，设置其值<br>name：-value //如果未设置name，设置其值，如果设置了，则用设置的不用value<br>例子<br>name=”wangxufeng”<br>echo ${name}<br>unset name 清除变量<br>set 显示本地所有变量<br>readonly name 设置变量的名字为只读</p>
+<h3 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h3><p>name=value；export name<br>env 显示所有的环境变量<br>IFS 指定作用域的分隔符<br>LOGNAME<br>PATH<br>PS1 shell命令行的修饰符<br>ps2<br>pwd<br>pager<br>子进程之间相互访问变量<br>当在1.sh<br>中定义 FILE=”aaaaaa”<br>export FILE<br>在2.sh中我们可以直接使用$FILE</p>
+<h3 id="位置变量参数"><a href="#位置变量参数" class="headerlink" title="位置变量参数"></a>位置变量参数</h3><p>$0 脚本名字<br>$1<br>|<br>$9<br>传入脚本参数</p>
+<h3 id="特定变量参数"><a href="#特定变量参数" class="headerlink" title="特定变量参数"></a>特定变量参数</h3><p>$# 传递到脚本的参数个数<br>$* 所有参数的字符串表示形式<br>$$ 进程id<br>$? 最后退出的状态，0表示没有错误</p>
+
       
     </div>
 
@@ -495,9 +507,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/sheel/" rel="tag"># sheel</a>
-          
             <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/sheel/" rel="tag"># sheel</a>
           
         </div>
       
@@ -596,7 +608,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -607,7 +619,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -618,7 +630,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -652,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#last"><span class="nav-number">1.</span> <span class="nav-text">last</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#umask"><span class="nav-number">2.</span> <span class="nav-text">umask</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#目录规则："><span class="nav-number">2.1.</span> <span class="nav-text">目录规则：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件规则："><span class="nav-number">2.2.</span> <span class="nav-text">文件规则：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#suid和guid"><span class="nav-number">3.</span> <span class="nav-text">suid和guid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chown和chmod"><span class="nav-number">4.</span> <span class="nav-text">chown和chmod</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#符号链接-快捷方式"><span class="nav-number">5.</span> <span class="nav-text">符号链接(快捷方式)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find和xargs"><span class="nav-number">6.</span> <span class="nav-text">find和xargs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cron和crontab"><span class="nav-number">7.</span> <span class="nav-text">cron和crontab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#at"><span class="nav-number">8.</span> <span class="nav-text">at</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#amp-不会占用前端控制台"><span class="nav-number">9.</span> <span class="nav-text">& 不会占用前端控制台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入输出"><span class="nav-number">10.</span> <span class="nav-text">输入输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tee"><span class="nav-number">11.</span> <span class="nav-text">tee</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重定向"><span class="nav-number">12.</span> <span class="nav-text">重定向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算符"><span class="nav-number">13.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则"><span class="nav-number">14.</span> <span class="nav-text">正则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#grep家族"><span class="nav-number">15.</span> <span class="nav-text">grep家族</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk"><span class="nav-number">16.</span> <span class="nav-text">awk</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#awk-高级应用"><span class="nav-number">16.1.</span> <span class="nav-text">awk 高级应用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#还可以使用"><span class="nav-number"></span> <span class="nav-text">还可以使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#awk-的内置变量"><span class="nav-number">0.1.</span> <span class="nav-text">awk 的内置变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk的内置函数"><span class="nav-number">0.2.</span> <span class="nav-text">awk的内置函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk的printf"><span class="nav-number">0.3.</span> <span class="nav-text">awk的printf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk-脚本"><span class="nav-number">0.4.</span> <span class="nav-text">awk 脚本</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搜索用户名-wangxufeng-并输出账号细节"><span class="nav-number"></span> <span class="nav-text">搜索用户名 wangxufeng 并输出账号细节</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sed"><span class="nav-number">1.</span> <span class="nav-text">sed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和并与分割"><span class="nav-number">2.</span> <span class="nav-text">和并与分割</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sort命令"><span class="nav-number">2.1.</span> <span class="nav-text">sort命令</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#last"><span class="nav-number">1.</span> <span class="nav-text">last</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#umask"><span class="nav-number">2.</span> <span class="nav-text">umask</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#目录规则："><span class="nav-number">2.1.</span> <span class="nav-text">目录规则：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件规则："><span class="nav-number">2.2.</span> <span class="nav-text">文件规则：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#suid和guid"><span class="nav-number">3.</span> <span class="nav-text">suid和guid</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chown和chmod"><span class="nav-number">4.</span> <span class="nav-text">chown和chmod</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#符号链接-快捷方式"><span class="nav-number">5.</span> <span class="nav-text">符号链接(快捷方式)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find和xargs"><span class="nav-number">6.</span> <span class="nav-text">find和xargs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cron和crontab"><span class="nav-number">7.</span> <span class="nav-text">cron和crontab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#at"><span class="nav-number">8.</span> <span class="nav-text">at</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#amp-不会占用前端控制台"><span class="nav-number">9.</span> <span class="nav-text">& 不会占用前端控制台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入输出"><span class="nav-number">10.</span> <span class="nav-text">输入输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tee"><span class="nav-number">11.</span> <span class="nav-text">tee</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重定向"><span class="nav-number">12.</span> <span class="nav-text">重定向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算符"><span class="nav-number">13.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则"><span class="nav-number">14.</span> <span class="nav-text">正则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#grep家族"><span class="nav-number">15.</span> <span class="nav-text">grep家族</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#awk"><span class="nav-number">16.</span> <span class="nav-text">awk</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#awk-高级应用"><span class="nav-number">16.1.</span> <span class="nav-text">awk 高级应用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#还可以使用"><span class="nav-number"></span> <span class="nav-text">还可以使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#awk-的内置变量"><span class="nav-number">0.1.</span> <span class="nav-text">awk 的内置变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk的内置函数"><span class="nav-number">0.2.</span> <span class="nav-text">awk的内置函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk的printf"><span class="nav-number">0.3.</span> <span class="nav-text">awk的printf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk-脚本"><span class="nav-number">0.4.</span> <span class="nav-text">awk 脚本</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搜索用户名-wangxufeng-并输出账号细节"><span class="nav-number"></span> <span class="nav-text">搜索用户名 wangxufeng 并输出账号细节</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sed"><span class="nav-number">1.</span> <span class="nav-text">sed</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#和并与分割"><span class="nav-number">2.</span> <span class="nav-text">和并与分割</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sort命令"><span class="nav-number">2.1.</span> <span class="nav-text">sort命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uniq"><span class="nav-number">2.2.</span> <span class="nav-text">uniq</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#join"><span class="nav-number">2.3.</span> <span class="nav-text">join</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cut-用法"><span class="nav-number">2.4.</span> <span class="nav-text">cut 用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#paste"><span class="nav-number">2.5.</span> <span class="nav-text">paste</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#split"><span class="nav-number">2.6.</span> <span class="nav-text">split</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tr"><span class="nav-number">3.</span> <span class="nav-text">tr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登录环境"><span class="nav-number">4.</span> <span class="nav-text">登录环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">4.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置环境变量"><span class="nav-number">4.2.</span> <span class="nav-text">设置环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位置变量参数"><span class="nav-number">4.3.</span> <span class="nav-text">位置变量参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特定变量参数"><span class="nav-number">4.4.</span> <span class="nav-text">特定变量参数</span></a></li></ol></li></ol></div>
             
 
           </div>

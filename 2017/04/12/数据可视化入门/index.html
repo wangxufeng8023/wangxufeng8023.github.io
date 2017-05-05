@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="爱演说的程序员">
 <meta property="og:description" content="D3（有时候也叫D3或d3.js）是一个JavaScript 库，用于创建数据可视化图形。但事实上，D3 是一个缩写，它的全称叫Data-DrivenDocuments（数据驱动的文档）。数据来源于你，而文档就是基于Web 的文档（或者网页），代表可以在浏览器中展现的一切，比如HTML、SVG。D3 扮演的是一个驱动程序的角色，因为它联系着数据和文档 DataWrapper•一个非常漂亮的在线服务">
 <meta property="og:image" content="https://wangxufeng8023.github.io/2017/04/12/数据可视化入门/logo.png">
-<meta property="og:updated_time" content="2017-04-12T07:07:17.098Z">
+<meta property="og:updated_time" content="2017-04-25T01:40:32.649Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据可视化入门">
 <meta name="twitter:description" content="D3（有时候也叫D3或d3.js）是一个JavaScript 库，用于创建数据可视化图形。但事实上，D3 是一个缩写，它的全称叫Data-DrivenDocuments（数据驱动的文档）。数据来源于你，而文档就是基于Web 的文档（或者网页），代表可以在浏览器中展现的一切，比如HTML、SVG。D3 扮演的是一个驱动程序的角色，因为它联系着数据和文档 DataWrapper•一个非常漂亮的在线服务">
@@ -510,7 +510,12 @@
 
 
     &lt;/script&gt;
-</code></pre><h3 id="绘制散点图"><a href="#绘制散点图" class="headerlink" title="绘制散点图"></a>绘制散点图</h3></script>
+</code></pre><h3 id="绘制散点图"><a href="#绘制散点图" class="headerlink" title="绘制散点图"></a>绘制散点图</h3><p>var w = 500;<br>var h = 100;<br>var dataset = [<br>               [ 5,     20 ],<br>               [ 480,   90 ],<br>               [ 250,   50 ],<br>               [ 100,   33 ],<br>               [ 330,   95 ],<br>               [ 410,   12 ],<br>               [ 475,   44 ],<br>               [ 25,    67 ],<br>               [ 85,    21 ],<br>               [ 220,   88 ]<br>           ];<br>var svg = d3.select(“body”)<br>.append(“svg”)<br>.attr(“width”, w)<br>.attr(“height”, h);</p>
+<p>svg.selectAll(“circle”)  // &lt;– 不是”rect” 了<br>.data(dataset)<br>.enter()<br>.append(“circle”)     // &lt;– 不是”rect” 了<br>.attr(“cx”, function(d) {<br>    return d[0];<br>})<br>.attr(“cy”, function(d) {<br>    return d[1];<br>})<br>.attr(“r”, function(d) {<br>    return Math.sqrt(h - d[1]);<br>});            </p>
+<p>svg.selectAll(“text”)  // &lt;– 注意是”text<br>.data(dataset)<br>.enter()<br>.append(“text”)     // &lt;– 这里也一样！</p>
+<p>.text(function(d) {<br>     return d[0] + “,” + d[1];<br>})<br>   .attr(“x”, function(d) {<br>        return d[0];<br>   })<br>   .attr(“y”, function(d) {<br>        return d[1];<br>   })</p>
+<p>   .attr(“font-family”, “sans-serif”)<br>   .attr(“font-size”, “11px”)<br>   .attr(“ﬁll”, “red”);</p>
+<h2 id="比例尺"><a href="#比例尺" class="headerlink" title="比例尺"></a>比例尺</h2></script>
       
     </div>
 
@@ -632,7 +637,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -643,7 +648,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -654,7 +659,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">35</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
